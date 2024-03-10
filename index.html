@@ -32,13 +32,13 @@
         /////// LAYOUT */
         .main-container {
             display: flex;
-            margin: 180px auto 0;
+            margin: 160px auto 0;
             max-width: 1400px; /*////////// Adjust width as needed  */
             gap: 100px;
         }
         .stepper-container {
             position: sticky;
-            top: 180px;
+            top: 160px;
             height: 600px; /*////////// Adjust height as needed  */
             display: flex;
             gap: 10px;
@@ -67,7 +67,7 @@
             height: 40px; 
             font-weight: 600;
             font-style: italic;
-            color: var(--secondary-lighter);
+            color: var(--gray-light);
             cursor: pointer;
         }
         .step-circle {
@@ -212,7 +212,7 @@
                             <h5>Ambito di Bando</h5>
                             <p>Seleziona a quale specifico ambito (definito dal Bando) afferisce il tuo Progetto.</p>
                             <div class="col-12 d-flex gap-3 align-items-center">
-                                <select id="basic-select" class="form-select shadow" aria-label="Default select example">
+                                <select id="basic-select" class="form-select" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
@@ -225,13 +225,13 @@
                             <h5>Titolo del Progetto (max 100 char)</h5>
                             <p>Specifica un titolo di progetto che sia chiaro, semplice, comunicativo.</p>
                             <div class="input-group">
-                                <input type="text" class="form-control shadow" placeholder="Titolo progetto" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Titolo progetto" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div>
                             <h5>Abstract di Progetto (max 500 char)</h5>
                             <p>Dai una definizione sintetica del tuo progetto che sarà utilizzata come standard in tutta la comunicazione. Deve contenere tutto ciò che è in grado di caratterizzare e distinguere il progetto di ricerca.</p>
-                            <div class="form-floating shadow">
+                            <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Rispondi qui (risposta obbligatoria)</label>
                             </div>
@@ -239,7 +239,7 @@
                         <div>
                             <h5>Ambito di Ricerca</h5>
                             <p>Fornisci un elenco di massimo 5 (cinque) frasi chiave che descrivano precisamente l'ambito e il settore specifico di ricerca del tuo progetto.</p>
-                            <table class="table shadow">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                     <th scope="col">N</th>
@@ -260,12 +260,12 @@
                                     <td colspan="4"></td>
                                     </tr>
                                 </tbody>
-                                </table>
+                            </table>
                         </div>
                         <div>
                             <h5>Tecnologie concorrenti</h5>
                             <p>Fornisci un elenco di massimo 10 (dieci) frasi chiaveche descrivano precisamente le tecnologie concorrenti (possibili alternative o competitor) attualmente già sviluppate e applicate nel tuo specifico ambito di ricerca, sia a livello italiano che mondiale.</p>
-                            <table class="table shadow">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                     <th scope="col">N</th>
@@ -373,14 +373,14 @@
                         <div>
                             <div class="col-6">
                                 <h5>Mail del Proponente (obbligatoria)</h5>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-5 shadow">
                                     <span class="input-group-text" id="basic-addon1">@</span>
                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <h5>Telefono del Proponente (obbligatorio)</h5>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-5 shadow">
                                     <span class="input-group-text" id="basic-addon1">@</span>
                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>

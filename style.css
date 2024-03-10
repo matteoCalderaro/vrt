@@ -3,20 +3,20 @@
 }
 
 :root {
-    --gray-light: #E9E9E9;
-    --secondary-lighter: rgba(98, 98, 98, 40%);
+    --gray-light: #c5c5c5;
+    /* --secondary-lighter: rgba(98, 98, 98, 40%); */
     --secondary: #626262;
     --primary: #BB8F42;
     /* button hover */
     --primary-darker: #a57e3b;
 }
 
-
-
-
-
-
-
+html {
+    font-size: 14px;
+}
+body {
+    background-color: #bb8f4247;
+}
 
 
 
@@ -26,7 +26,7 @@
 /* BTN-VRT-PRIMARY */
 .btn-vrt-primary {
     min-width: 130px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     border: 2px solid var(--primary);
     border-radius: 5px;
     background-color: var(--primary);
@@ -45,8 +45,8 @@
     background-color: transparent;
     min-width: 130px;
     border: 2px solid var(--primary);
-    color: var(--primary);
-    padding: 10px 20px;
+    color: var(--secondary);
+    padding: 5px 20px;
     border-radius: 5px;
 }
 .btn-vrt-outline-primary:hover {

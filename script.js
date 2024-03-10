@@ -26,7 +26,7 @@ function displayStep(stepNumber) {
             $('.circle').slice(stepNumber).removeClass('step-circle-colored').addClass('step-circle')
         }
 
-        $('.label').css("color", "var(--secondary-lighter)").eq(stepNumber -1).css("color", "var(--secondary)")
+        $('.label').css("color", "var(--gray-light)").eq(stepNumber -1).css("color", "var(--secondary)")
         // $(".step-" + currentStep).hide();
         // $(".step-" + stepNumber).show();
         $(".step-" + currentStep).addClass("animate__animated animate__fadeOut");
@@ -60,7 +60,7 @@ function displayStep(stepNumber) {
           updateProgressBar();
         }, 200);
       }
-      $('.label').css("color", "var(--secondary-lighter)").eq(currentStep -1).css("color", "var(--secondary)")
+      $('.label').css("color", "var(--gray-light)").eq(currentStep -1).css("color", "var(--secondary)")
       
     });
 
@@ -75,7 +75,7 @@ function displayStep(stepNumber) {
           updateProgressBar();
         }, 200);
       }
-      $('.label').css("color", "var(--secondary-lighter)").eq(currentStep -1).css("color", "var(--secondary)")
+      $('.label').css("color", "var(--gray-light)").eq(currentStep -1).css("color", "var(--secondary)")
     });
 
     updateProgressBar = function() {

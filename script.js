@@ -33,14 +33,11 @@ function displayStep(stepNumber) {
         setTimeout(function() {
             $(".step").removeClass("animate__animated animate__fadeOut").hide();
             $(".step-" + stepNumber).show().addClass("animate__animated animate__fadeIn");
-           
-          }, 200);
-
-        
+        }, 200);
     }
-
     currentStep = stepNumber;
     updateProgressBar();
+    $(window).scrollTop(0);
 }
 
   $(document).ready(function() {
@@ -60,8 +57,9 @@ function displayStep(stepNumber) {
           updateProgressBar();
         }, 200);
       }
-      $('.label').css("color", "var(--gray-light)").eq(currentStep -1).css("color", "var(--secondary)")
-      
+      $('.label').css("color", "var(--gray-light)").eq(currentStep -1).css("color", "var(--secondary)");
+      $('.circle').slice(1,currentStep).removeClass('step-circle').addClass('step-circle-colored');
+      $(window).scrollTop(0);
     });
 
     $(".prev-step").click(function() {
@@ -75,7 +73,10 @@ function displayStep(stepNumber) {
           updateProgressBar();
         }, 200);
       }
-      $('.label').css("color", "var(--gray-light)").eq(currentStep -1).css("color", "var(--secondary)")
+      $('.label').css("color", "var(--gray-light)").eq(currentStep -1).css("color", "var(--secondary)");
+      $('.circle').slice(currentStep).removeClass('step-circle-colored').addClass('step-circle');
+      $(window).scrollTop(0);
+
     });
 
     updateProgressBar = function() {

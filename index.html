@@ -74,7 +74,7 @@
             background-color: var(--secondary) !important;
         }
         .progress-2 { 
-            background-color:var(--gray-light)
+            background-color:#ffff
         }
         .progress-bar-2 {
             background-color: var(--primary) !important ;
@@ -191,18 +191,16 @@
     </nav>
 
     <!-- PROGRESS BAR MOBILE -->
-    <div class="d-flex gap-2 p-2 progress-mobile">
+    <div class="d-flex gap-3 p-3 progress-mobile">
         <button type="button" class="btn btn-outline-light prev-step">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
             </svg>
         </button>
-        <div class="flex-grow-1 text-white">
+        <div class="d-flex flex-column flex-grow-1 gap-2 justify-content-end text-white">
             <div class="step-value"><span>Progetto</span></div>
-            <div class="flex-grow-1">
-                <div class="progress progress-2" style="height: 15px">
-                    <div class="progress-bar progress-bar-2" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+            <div class="progress progress-2" style="height: 15px">
+                <div class="progress-bar progress-bar-2" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
         <button type="button" class="btn btn-outline-light  next-step">
@@ -264,7 +262,7 @@
                         <!-- content -->
                         <div>
                             <h3 class="mb-4">Definizione del Progetto di Ricerca</h3>
-                            <p>Qui dovrai fornire i dettagli decisivi della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti.</p>
+                            <p class="mb-0">Qui dovrai fornire i dettagli decisivi della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti.</p>
                         </div>
                         <div>
                             <h5>Ambito di Bando</h5>
@@ -374,7 +372,7 @@
                         <!-- content -->
                         <div>
                             <h3 class="mb-4">Dettagli di definizione della Ricerca</h3>
-                            <p>Qui dovrai fornire dettagli molto importanti della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti. Compila con molta attenzione questa scheda!</p>
+                            <p class="mb-0">Qui dovrai fornire dettagli molto importanti della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti. Compila con molta attenzione questa scheda!</p>
                         </div>
                         <div>
                             <h5>Identificazione di aziende o enti per la commercializzazione o per lo sviluppo di partnership (max 400 char)</h5>
@@ -410,23 +408,25 @@
                         </div>
                         <div>
                             <h5>Categoria di appartenenza del Proponente (scegliere una delle opzioni)</h5>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Professore Universitario o Ricercatore, anche con contratto a tempo determinato, dell'Università di Trento e degli enti pubblici di ricerca o enti trentini.
-                                </label>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Studente dell'Università di Trento, anche di dottorato, regolarmente iscritto ai Corsi Universitari dell'Anno Accademico in cui viene indetto il Bando.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Legale Rappresentante di Fondazioni, Startup, Microimprese, scuole, società, società benefit o Enti non Profit.
-                                </label>
+                            <div class="d-flex flex-column gap-2 ps-3 mt-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Professore Universitario o Ricercatore, anche con contratto a tempo determinato, dell'Università di Trento e degli enti pubblici di ricerca o enti trentini.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Studente dell'Università di Trento, anche di dottorato, regolarmente iscritto ai Corsi Universitari dell'Anno Accademico in cui viene indetto il Bando.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Legale Rappresentante di Fondazioni, Startup, Microimprese, scuole, società, società benefit o Enti non Profit.
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div>

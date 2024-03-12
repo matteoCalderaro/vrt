@@ -36,6 +36,7 @@
             max-width: 1400px; /*////////// Adjust width as needed  */
             gap: 100px;
         }
+        /* STEPPER CONTAINER */
         .stepper-container {
             position: sticky;
             top: 160px;
@@ -43,13 +44,19 @@
             display: flex;
             gap: 10px;
         }
+        @media (max-width: 767px){
+            .stepper-container {
+                display: none;
+            }
+        }
+        /* FORM CONTAINER */
         .form-container {
             flex: 1;
             height: fit-content;
         }
 
-        /*//////////////////////
-        ///// PROGRESS BAR - it overrides bootstrap style   */
+        /*/////////////////////////////////////////////////////
+        ///// PROGRESS BAR DESKTOP (it overrides bootstrap style) */
         .progress-1 { 
             transform: rotate(90deg) translateX(50%);
             width: 590px; /*////////// Adjust height depending on the stepper-container  */
@@ -64,7 +71,24 @@
             background-color:var(--gray-light)
         }
         .progress-bar-2 {
-            background-color: var(--primary) ;
+            background-color: var(--primary) !important ;
+        }
+
+        /*//////////////////////
+        ///// PROGRESS BAR MOBILE (it overrides bootstrap style) */
+        .progress-mobile {
+            width:100%; 
+            background-color: var(--secondary);
+            bottom: 0px; 
+            z-index: 50;
+            position: fixed;
+            visibility: hidden;
+        }
+        @media (max-width: 767px){
+            .progress-mobile {
+                position: fixed; 
+                visibility: visible;
+            }
         }
 
         /*////////////////////////////
@@ -160,15 +184,15 @@
         </div>
     </nav>
 
-    <!-- STEPPER MOBILE -->
-    <div class="d-flex gap-2 p-2" style="width:400px; padding: 5px 5px; background-color: var(--secondary);position: fixed; bottom: 0px; left: 50%; transform: translateX(-50%); z-index: 50;">
-        <button type="button" class="btn btn-outline-light  prev-step">
+    <!-- PROGRESS BAR MOBILE -->
+    <div class="d-flex gap-2 p-2 progress-mobile">
+        <button type="button" class="btn btn-outline-light prev-step">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
             </svg>
         </button>
-        <div style="flex: 1;">
-            <div class="step-value" style="color: white; font-size: 16px;">Progetto</div>
+        <div class="flex-grow-1 text-white">
+            <div class="step-value"><span>Progetto</span></div>
             <div class="flex-grow-1">
                 <div class="progress progress-2" style="height: 15px">
                     <div class="progress-bar progress-bar-2" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -182,11 +206,10 @@
         </button>
     </div>
     
-        
     <div class="main-container px-4">
-        <!-- STEPPER -->
+        <!-- PROGRESS BAR DESKTOP -->
         <div class="stepper-container">
-            <!-- labels -->
+          
             <div class="d-flex flex-column justify-content-between">
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(1)" style="color: var(--secondary);">PROGETTO</div>
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(2)">DETTAGLI DI RICERCA</div>
@@ -198,7 +221,7 @@
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(8)">CRITERIO 5</div>
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(9)">CRITERIO 6</div>
             </div>
-            <!-- circles -->
+          
             <div class="d-flex flex-column justify-content-between align-items-center">
                 <div class="progress progress-1" style="height: 3px;">
                     <div class="progress-bar progress-bar-1" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -683,6 +706,15 @@
             
     </div>
 
+    
+        <div class="scroll-icon-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+            </svg>
+        </div>
+        
+        
+  
 
 
 

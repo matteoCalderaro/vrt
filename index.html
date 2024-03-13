@@ -14,7 +14,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- My style -->
     <link rel="stylesheet" href="style.css">
-    
+    <style>
+        .form-label:after { 
+            content:"*";
+            color:red;
+        }   
+        .red {
+            color: red;
+        }
+    </style>
 </head>
   <body class="register">
     
@@ -129,12 +137,36 @@
                             </div>
                         </div>
                         <!-- content -->
-                        <!-- <div>
-                            <h3 class="mb-4">Definizione del Progetto di Ricerca</h3>
-                            <p class="mb-0">Qui dovrai fornire i dettagli decisivi della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti.</p>
+                        <div>
+                            <label for="exampleFormControlInput1" class="form-label">Scegli la categoria di appartenenza</label>
+                            <select class="form-select" aria-label="Default select example" id="exampleFormControlInput1">
+                                <option selected>Scegli la categoria</option>
+                                <option value="1">APASS_Azienda Provinciale Servizi Sanitari</option>
+                                <option value="2">FBK_Fondazione Bruno Kessler</option>
+                                <option value="3">FEM_Fondazione Endmund Mach</option>
+                                <option value="4">INFN_Istituto Nazionale di Fisica Nucleare</option>
+                                <option value="5">UNITN_Università di Trento</option>
+                                <option value="6">Altro_Startup - microimprese - scuole - società - società benefit - enti non profit</option>
+                            </select>
                         </div>
                         <div>
-                            <h5>Ambito di Bando</h5>
+                            <label for="exampleFormControlInput1" class="form-label">Fornisci i dati indicati e la tua mail per tutte le comunicazioni con il <span class="red">nome a dominio indicato</span></label>
+                            <select class="form-select" aria-label="Default select example" id="exampleFormControlInput1">
+                                <option selected>Scegli il dipartimento</option>
+                                <option value="1">UNITN C3A - Centro Agricoltura Alimenti Ambiente</option>
+                                <option value="2">UNITN Centro SSI - Scuola di Studi Internazionali</option>
+                                <option value="3">UNITN CIMeC - Centro Interdipartimentale Mente / Cervello</option>
+                                <option value="4">UNITN Dipartimento di Biologia Cellulare, Computazionale e Integrata - CIBIO</option>
+                                <option value="5">UNITN Dipartimento di Fisica</option>
+                                <option value="6">UNITN Dipartimento di Ingegneria e Scienza dell'Informazione</option>
+                                <option value="7">UNITN Dipartimento di Ingegneria Industriale</option>
+                                <option value="8">UNITN Dipartimento di Lettere e Filosofia</option>
+                                <option value="9">UNITN Dipartimento di Matematica</option>
+                                <option value="10">.....</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h5>Scegli la categoria di appartenenza</h5>
                             <p>Seleziona a quale specifico ambito (definito dal Bando) afferisce il tuo Progetto.</p>
                             <div class="form-floating">
                                 <select class="form-select shadow" id="floatingSelect" aria-label="Floating label select example">
@@ -213,7 +245,7 @@
                                     </tr>
                                 </tbody>
                                 </table>
-                        </div> -->
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="py-5">
@@ -552,11 +584,11 @@
     </div>
 
     
-        <div class="scroll-icon-inner">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
-            </svg>
-        </div>
+    <div class="scroll-icon-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+        </svg>
+    </div>
         
         
   

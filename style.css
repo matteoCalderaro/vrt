@@ -213,6 +213,22 @@ h5 {
     opacity: 0.65;
 }
 
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: var(--secondary);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+.link:hover,
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
+}
+
 
 
  /*//////////////////////////////////

@@ -14,113 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- My style -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        /*/////////////////
-        /////// NAVBAR */
-        .vrt-navbar {
-            border-bottom: 1px solid var(--primary);
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 10;
-        }
-        .vrt-navbar .container-fluid {
-            max-width: 1400px; /*////////// Adjust width as needed  */
-        }
-
-        /*/////////////////
-        /////// LAYOUT */
-        .main-container {
-            display: flex;
-            margin: 160px auto 0;
-            max-width: 1400px; /*////////// Adjust width as needed  */
-            gap: 100px;
-        }
-        .stepper-container {
-            position: sticky;
-            top: 160px;
-            height: 600px; /*////////// Adjust height as needed  */
-            display: flex;
-            gap: 10px;
-        }
-        .form-container {
-            flex: 1;
-            height: fit-content;
-        }
-
-        /*//////////////////////
-        ///// PROGRESS BAR - it overrides bootstrap style   */
-        .progress-1 { 
-            transform: rotate(90deg) translateX(50%);
-            width: 590px; /*////////// Adjust height depending on the stepper-container  */
-            position: absolute;
-            top: 2px;
-            background-color:var(--gray-light)
-        }
-        .progress-bar-1 {
-            background-color: var(--secondary) !important;
-        }
-        .progress-2 { 
-            background-color:var(--gray-light)
-        }
-        .progress-bar-2 {
-            background-color: var(--primary) ;
-        }
-
-        /*////////////////////////////
-        ///// LABELS AND CIRCLES  */
-        .stepper-container .label { /*it sets the labels height equals to circles height */
-            height: 40px; 
-            font-weight: 600;
-            font-style: italic;
-            color: var(--gray-light);
-            cursor: pointer;
-        }
-        .step-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #fff;
-            border: 3px solid var(--gray-light);
-            cursor: pointer;
-            z-index: 5;
-        }
-        .step-circle-colored {
-            background-color: var(--primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: inset 0 0 0 3px var(--secondary), inset 0 0 0 6px #fff;
-            cursor: pointer;
-            z-index: 5;
-        }
-        /*////////////////////////////
-        ///// CONTENT CONTAINER  */
-        .content-container {
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            padding-bottom: 20px;
-        }
-
-        h3 {
-            font-weight: 700;
-        }
-        h5 {
-            font-weight: 500;
-        }
-
-        .tag {
-            border-radius: 4px;
-            color: #fff;
-            background-color: var(--primary);
-            font-weight: 500;
-        }
-        
-
-    </style>
+    
 </head>
-  <body>
+  <body class="login">
     
     <!-- NAVBAR -->
     <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
@@ -132,12 +28,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="index.html">REGISTER</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link active" aria-current="page" href="login.html">LOGIN</a>
                 </li>
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li> -->
+                <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown
                 </a>
@@ -150,44 +49,41 @@
                 </li>
                 <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
+                </li> -->
             </ul>
-            <form class="d-flex" role="search">
+            <!-- <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-            </div>
+            </div> -->
         </div>
     </nav>
 
-    <!-- STEPPER MOBILE -->
-    <div class="d-flex gap-2 p-2" style="width:400px; padding: 5px 5px; background-color: var(--secondary);position: fixed; bottom: 0px; left: 50%; transform: translateX(-50%); z-index: 50;">
-        <button type="button" class="btn btn-outline-light  prev-step">
+    <!-- PROGRESS MOBILE -->
+    <div class="d-flex gap-3 px-3 py-2 stepper-mobile">
+        <button type="button" class="btn btn-light prev-step">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
             </svg>
         </button>
-        <div style="flex: 1;">
-            <div class="step-value" style="color: white; font-size: 16px;">Progetto</div>
-            <div class="flex-grow-1">
-                <div class="progress progress-2" style="height: 15px">
-                    <div class="progress-bar progress-bar-2" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+        <div class="d-flex flex-column flex-grow-1 gap-2 justify-content-end">
+            <div class="step-value text-white"><span>Progetto</span></div>
+            <div class="progress" style="height: 15px">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
-        <button type="button" class="btn btn-outline-light  next-step">
+        <button type="button" class="btn btn-light  next-step">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
             </svg>
         </button>
     </div>
     
-        
     <div class="main-container px-4">
-        <!-- STEPPER -->
-        <div class="stepper-container">
-            <!-- labels -->
-            <div class="d-flex flex-column justify-content-between">
+        <!-- PROGRESS DESKTOP -->
+        <div class=" stepper-desktop">
+          
+            <div class="d-flex flex-column justify-content-between" >
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(1)" style="color: var(--secondary);">PROGETTO</div>
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(2)">DETTAGLI DI RICERCA</div>
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(3)">BENEFICIARIO</div>
@@ -198,10 +94,10 @@
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(8)">CRITERIO 5</div>
                 <div class="label d-flex align-items-center justify-content-end" onclick="displayStep(9)">CRITERIO 6</div>
             </div>
-            <!-- circles -->
-            <div class="d-flex flex-column justify-content-between align-items-center">
-                <div class="progress progress-1" style="height: 3px;">
-                    <div class="progress-bar progress-bar-1" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          
+            <div class="d-flex flex-column justify-content-between align-items-center ">
+                <div class="progress" style="height: 3px;">
+                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <div class="circle step-circle-colored " onclick="displayStep(1)"></div>
                 <div class="circle step-circle" onclick="displayStep(2)"></div>
@@ -235,40 +131,41 @@
                         <!-- content -->
                         <div>
                             <h3 class="mb-4">Definizione del Progetto di Ricerca</h3>
-                            <p>Qui dovrai fornire i dettagli decisivi della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti.</p>
+                            <p class="mb-0">Qui dovrai fornire i dettagli decisivi della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti.</p>
                         </div>
                         <div>
                             <h5>Ambito di Bando</h5>
                             <p>Seleziona a quale specifico ambito (definito dal Bando) afferisce il tuo Progetto.</p>
-                            <div class="col-12 d-flex gap-3 align-items-center">
-                                <select id="basic-select" class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                            <div class="form-floating">
+                                <select class="form-select shadow" id="floatingSelect" aria-label="Floating label select example">
+                                  <option selected>Open this select menu</option>
+                                  <option value="1">La salute e il benessere</option>
+                                  <option value="2">Il pianeta e l'ambiente</option>
+                                  <option value="3">La montagna e lo sport</option>
                                 </select>
-                                <label for="basic-select" class="col-8">La scelta è obbligatoria</label>
+                                <label for="floatingSelect">La scelta è obbligatoria</label>
                             </div>
                         </div>
                         <div>
                             <h5>Titolo del Progetto (max 100 char)</h5>
                             <p>Specifica un titolo di progetto che sia chiaro, semplice, comunicativo.</p>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Titolo progetto" aria-label="Username" aria-describedby="basic-addon1">
+                            <div class="form-floating">
+                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
+                                <label for="floatingTextarea2">Risposta obbligatoria</label>
                             </div>
                         </div>
                         <div>
                             <h5>Abstract di Progetto (max 500 char)</h5>
                             <p>Dai una definizione sintetica del tuo progetto che sarà utilizzata come standard in tutta la comunicazione. Deve contenere tutto ciò che è in grado di caratterizzare e distinguere il progetto di ricerca.</p>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Rispondi qui (risposta obbligatoria)</label>
+                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Risposta obbligatoria</label>
                             </div>
                         </div>
                         <div>
                             <h5>Ambito di Ricerca</h5>
                             <p>Fornisci un elenco di massimo 5 (cinque) frasi chiave che descrivano precisamente l'ambito e il settore specifico di ricerca del tuo progetto.</p>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered shadow">
                                 <thead>
                                     <tr>
                                     <th scope="col">N</th>
@@ -293,8 +190,8 @@
                         </div>
                         <div>
                             <h5>Tecnologie concorrenti</h5>
-                            <p>Fornisci un elenco di massimo 10 (dieci) frasi chiaveche descrivano precisamente le tecnologie concorrenti (possibili alternative o competitor) attualmente già sviluppate e applicate nel tuo specifico ambito di ricerca, sia a livello italiano che mondiale.</p>
-                            <table class="table table-bordered">
+                            <p>Fornisci un elenco di massimo 10 (dieci) frasi chiave che descrivano precisamente le tecnologie concorrenti (possibili alternative o competitor) attualmente già sviluppate e applicate nel tuo specifico ambito di ricerca, sia a livello italiano che mondiale.</p>
+                            <table class="table table-bordered shadow">
                                 <thead>
                                     <tr>
                                     <th scope="col">N</th>
@@ -344,74 +241,80 @@
                         <!-- content -->
                         <div>
                             <h3 class="mb-4">Dettagli di definizione della Ricerca</h3>
-                            <p>Qui dovrai fornire dettagli molto importanti della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti. Compila con molta attenzione questa scheda!</p>
+                            <p class="mb-0">Qui dovrai fornire dettagli molto importanti della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti. Compila con molta attenzione questa scheda!</p>
                         </div>
                         <div>
                             <h5>Identificazione di aziende o enti per la commercializzazione o per lo sviluppo di partnership (max 400 char)</h5>
                             <p>Specifica quali aziende o enti o organizzazioni potrebbero essere considerati per la commercializzazione degli esiti del tuo progetto o per lo sviluppo di partnership e alleanze.</p>
-                            <div class="form-floating shadow">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Comments</label>
+                            <div class="form-floating">
+                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Risposta obbligatoria</label>
                             </div>
                         </div>
                         <div>
                             <h5>Mercato target (max 400 char)</h5>
                             <p>Descrivi chiaramente chi saranno i potenziali utilizzatori e acquirenti dei prodotti e/o servizi sviluppati attraverso la ricerca. Identifica i segmenti di mercato specifici a cui si rivolgeranno i tuoi prodotti/servizi.</p>
-                            <div class="form-floating shadow">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Comments</label>
+                            <div class="form-floating">
+                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Risposta obbligatoria</label>
                             </div>
                         </div>
                         <div>
                             <h5>Stato della Ricerca di ambito e Ricerche in corso (max 400 char)</h5>
                             <p>Fornisci informazioni dettagliate sullo stato della ricerca ("stato dell'arte") nel campo specifico del tuo progetto sia a livello nazionale che internazionale. Ciò include identificare con chiarezza i gruppi (Università, Enti di Ricerca, Aziende, o altri contesti) che stanno attualmente conducendo ricerca su questo stesso argomento sia a livello nazionale che internazionale.</p>
-                            <div class="form-floating shadow">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Comments</label>
+                            <div class="form-floating">
+                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Risposta obbligatoria</label>
                             </div>
                         </div>
                         <div>
                             <h5>Profilo del Proponente (max 400 char)</h5>
                             <p>Fornisci un breve profilo del Proponente. Definiscine le competenze, il ruolo all'interno del Progetto. Ricorda che il Proponente individuerà, all'interno della Domanda, il Responsabile e definirà il Team che porterà a termine gli Obiettivi indicati nella Domanda di Contributo. Il Proponente potrà ricoprire anche il ruolo di Responsabile.</p>
-                            <div class="form-floating shadow">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Comments</label>
+                            <div class="form-floating">
+                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Risposta obbligatoria</label>
                             </div>
                         </div>
                         <div>
                             <h5>Categoria di appartenenza del Proponente (scegliere una delle opzioni)</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Professore Universitario o Ricercatore, anche con contratto a tempo determinato, dell'Università di Trento e degli enti pubblici di ricerca o enti trentini.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Studente dell'Università di Trento, anche di dottorato, regolarmente iscritto ai Corsi Universitari dell'Anno Accademico in cui viene indetto il Bando.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Legale Rappresentante di Fondazioni, Startup, Microimprese, scuole, società, società benefit o Enti non Profit.
-                                </label>
+                            <div class="d-flex flex-column gap-2 ps-3 mt-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Professore Universitario o Ricercatore, anche con contratto a tempo determinato, dell'Università di Trento e degli enti pubblici di ricerca o enti trentini.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Studente dell'Università di Trento, anche di dottorato, regolarmente iscritto ai Corsi Universitari dell'Anno Accademico in cui viene indetto il Bando.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Legale Rappresentante di Fondazioni, Startup, Microimprese, scuole, società, società benefit o Enti non Profit.
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <div class="col-6">
+                            <div class="col-lg-6">
                                 <h5>Mail del Proponente (obbligatoria)</h5>
                                 <div class="input-group mb-5 shadow">
                                     <span class="input-group-text" id="basic-addon1">@</span>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-lg-6">
                                 <h5>Telefono del Proponente (obbligatorio)</h5>
                                 <div class="input-group mb-5 shadow">
-                                    <span class="input-group-text" id="basic-addon1">@</span>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                                        </svg>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                         </div>
@@ -672,7 +575,7 @@
                             </button>
                         </div>
                         <div>
-                            <button type="button" class="btn-vrt-primary  next-step align-items-center d-flex gap-2 justify-content-center">
+                            <button type="button" class="btn-vrt-primary align-items-center d-flex gap-2 justify-content-center">
                                 SALVA
                             </button>
                         </div>
@@ -683,6 +586,15 @@
             
     </div>
 
+    
+        <div class="scroll-icon-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+            </svg>
+        </div>
+        
+        
+  
 
 
 

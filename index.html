@@ -501,6 +501,34 @@
                             </div>
                         </div>
                         <!-- content -->
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <label for="naturaGiuridica" class="form-label">Natura giuridica</label>
+                                <select class="form-select" aria-label="Default select example" id="naturaGiuridica">
+                                    <option selected>Seleziona...</option>
+                                    <option value="1">Società a responsabilità limitata</option>
+                                    <option value="2">Società per azioni</option>
+                                    <option value="3">....</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="formaGiuridica" class="form-label">Forma giuridica</label>
+                                <select class="form-select" aria-label="Default select example" id="formaGiuridica">
+                                    <option selected>Seleziona...</option>
+                                    <option value="1">Società di persone</option>
+                                    <option value="2">Società di capitali</option>
+                                    <option value="3">.....</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <h5>Date Picker da implementare</h5>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <h5>Date Picker da implementare</h5>
+                            </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="d-flex justify-content-between py-5">
@@ -605,18 +633,18 @@
             
             let validateStep1 = () =>{
                 console.log('validazione step 1')
-                function checkInput() {
-                    var value = document.getElementById( "validationTextarea" ).value;
+                // function checkInput() {
+                //     var value = document.getElementById( "validationTextarea" ).value;
                     
-                    if ( value.length < 5 ) {
-                        input.classList.remove( "is-valid" );
-                        input.classList.add( "is-invalid" );
-                    } else {
-                        input.classList.add( "is-valid" );
-                        input.classList.remove( "is-invalid" );
-                    }
-                    checkInput()
-            }
+                //     if ( value.length < 5 ) {
+                //         input.classList.remove( "is-valid" );
+                //         input.classList.add( "is-invalid" );
+                //     } else {
+                //         input.classList.add( "is-valid" );
+                //         input.classList.remove( "is-invalid" );
+                //     }
+                //     checkInput()
+                // }
             }
             let validateStep2 = () =>{
                 console.log('validazione step 2')

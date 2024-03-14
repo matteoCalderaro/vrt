@@ -186,17 +186,17 @@
                         <div class="row gap-5 gap-md-0">
                             <div class="col-12 col-md-6">
                                 <label for="nome" class="form-label">Nome</label>
-                                <input type="email" class="form-control" id="nome" placeholder="">
+                                <input type="text" class="form-control" id="nome" placeholder="">
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="cognome" class="form-label">Cognome</label>
-                                <input type="email" class="form-control" id="cognome" placeholder="">
+                                <input type="text" class="form-control" id="cognome" placeholder="">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <label for="codiceFiscale" class="form-label">Codice fiscale</label>
-                                <input type="email" class="form-control" id="codiceFiscale" placeholder="">
+                                <input type="text" class="form-control" id="codiceFiscale" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -320,14 +320,17 @@
                 <div class="step step-4">
                     <div class="content-container">
                         <!-- tag -->
-                        <div class="d-flex">
-                            <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
-                                <span>SEDI</span>
+                        <div class="d-flex flex-column gap-1">
+                            <div class="d-flex">
+                                <div class="tag align-items-center d-flex gap-2 px-3 py-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
+                                        <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
+                                        <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
+                                    </svg>
+                                    <span>SEDI</span>
+                                </div>
                             </div>
+                            <span style="font-size: 12px; font-weight: 600;">NUOVA SEDE</span>
                         </div>
                         <!-- content -->
                         <div>

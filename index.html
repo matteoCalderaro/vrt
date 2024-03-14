@@ -179,6 +179,7 @@
                                 <select class="form-select" aria-label="Default select example" id="dominio">
                                     <option selected>Scegli il dominio</option>
                                     <option value="1">@unitn.it</option>
+                                    <option value="2">@studenti.unitn.it</option>
                                 </select>
                             </div>
                         </div>
@@ -329,6 +330,62 @@
                             </div>
                         </div>
                         <!-- content -->
+                        <div>
+                            <label for="tipoIndirizzo" class="form-label">Tipo indirizzo</label>
+                            <select class="form-select" aria-label="Default select example" id="tipoIndirizzo">
+                                <option selected>Seleziona....</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="indirizzo" class="form-label">Indirizzo</label>
+                            <input type="text" class="form-control" id="indirizzo" placeholder="c/o">
+                        </div>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <input type="text" class="form-control" id="nome" placeholder="Indirizzo (specificare Via/Piazza/Loc./etc)">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <input type="text" class="form-control" id="cognome" placeholder="Civico">
+                            </div>
+                        </div>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-4">
+                                <input type="text" class="form-control" id="frazione" placeholder="Frazione">
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <input type="text" class="form-control" id="cap" placeholder="Cap">
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <input type="text" class="form-control" id="comune" placeholder="Comune">
+                            </div>
+                        </div>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-4">
+                                <select class="form-select" aria-label="Default select example" id="provincia">
+                                    <option selected>Provincia</option>
+                                    <option value="1">Trento</option>
+                                    <option value="2">.....</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <select class="form-select" aria-label="Default select example" id="regione">
+                                    <option selected>Regione</option>
+                                    <option value="1">Trentino Alto Adige</option>
+                                    <option value="2">......</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <select class="form-select" aria-label="Default select example" id="nazione">
+                                    <option selected>Nazione</option>
+                                    <option value="1">Italia</option>
+                                    <option value="2">......</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="d-flex justify-content-between py-5">

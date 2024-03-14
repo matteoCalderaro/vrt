@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>VRT - progress</title>
@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="style.css">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <style>
         .form-label:after { 
             content:"*";
@@ -25,7 +28,7 @@
             color: red;
         }
     </style>
-</head>
+    </head>
     <body class="register">
     
         <!-- NAVBAR -->
@@ -126,7 +129,7 @@
             <form class="form-container">
                 <!-- STEP 1 -->
                 <div class="step step-1">
-                    <div class="content-container">
+                    <div class="content-container gap-5">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
@@ -139,8 +142,8 @@
                         </div>
                         <!-- content -->
                         <div>
-                            <label for="exampleFormControlInput1" class="form-label">Scegli la categoria di appartenenza</label>
-                            <select class="form-select" aria-label="Default select example" id="exampleFormControlInput1">
+                            <label for="categoria" class="form-label">Scegli la categoria di appartenenza</label>
+                            <select class="form-select" aria-label="Default select example" id="categoria">
                                 <option selected>Scegli la categoria</option>
                                 <option value="1">APASS_Azienda Provinciale Servizi Sanitari</option>
                                 <option value="2">FBK_Fondazione Bruno Kessler</option>
@@ -151,8 +154,8 @@
                             </select>
                         </div>
                         <div>
-                            <label for="exampleFormControlInput1" class="form-label">Fornisci i dati indicati e la tua mail per tutte le comunicazioni con il <span class="red">nome a dominio indicato</span></label>
-                            <select class="form-select" aria-label="Default select example" id="exampleFormControlInput1">
+                            <label for="dipartimento" class="form-label">Fornisci i dati indicati e la tua mail per tutte le comunicazioni con il <span class="red">nome a dominio indicato</span></label>
+                            <select class="form-select" aria-label="Default select example" id="dipartimento">
                                 <option selected>Scegli il dipartimento</option>
                                 <option value="1">UNITN C3A - Centro Agricoltura Alimenti Ambiente</option>
                                 <option value="2">UNITN Centro SSI - Scuola di Studi Internazionali</option>
@@ -166,87 +169,35 @@
                                 <option value="10">.....</option>
                             </select>
                         </div>
-                        <div>
-                            <h5>Scegli la categoria di appartenenza</h5>
-                            <p>Seleziona a quale specifico ambito (definito dal Bando) afferisce il tuo Progetto.</p>
-                            <div class="form-floating">
-                                <select class="form-select shadow" id="floatingSelect" aria-label="Floating label select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">La salute e il benessere</option>
-                                    <option value="2">Il pianeta e l'ambiente</option>
-                                    <option value="3">La montagna e lo sport</option>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="dominio" class="form-label">Scegli il dominio</label>
+                                <select class="form-select" aria-label="Default select example" id="dominio">
+                                    <option selected>Scegli il dominio</option>
+                                    <option value="1">@unitn.it</option>
                                 </select>
-                                <label for="floatingSelect">La scelta è obbligatoria</label>
                             </div>
                         </div>
-                        <!-- <div>
-                            <h5>Titolo del Progetto (max 100 char)</h5>
-                            <p>Specifica un titolo di progetto che sia chiaro, semplice, comunicativo.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="email" class="form-control" id="nome" placeholder="">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="cognome" class="form-label">Cognome</label>
+                                <input type="email" class="form-control" id="cognome" placeholder="">
                             </div>
                         </div>
-                        <div>
-                            <h5>Abstract di Progetto (max 500 char)</h5>
-                            <p>Dai una definizione sintetica del tuo progetto che sarà utilizzata come standard in tutta la comunicazione. Deve contenere tutto ciò che è in grado di caratterizzare e distinguere il progetto di ricerca.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <label for="codiceFiscale" class="form-label">Codice fiscale</label>
+                                <input type="email" class="form-control" id="codiceFiscale" placeholder="">
                             </div>
                         </div>
-                        <div>
-                            <h5>Ambito di Ricerca</h5>
-                            <p>Fornisci un elenco di massimo 5 (cinque) frasi chiave che descrivano precisamente l'ambito e il settore specifico di ricerca del tuo progetto.</p>
-                            <table class="table table-bordered shadow">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">N</th>
-                                    <th scope="col">Ambito di ricerca</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    <th scope="row">1</th>
-                                    <td colspan="4">Almeno due definizioni sono obbligatorie</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td colspan="4"></td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="4"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <h5>Tecnologie concorrenti</h5>
-                            <p>Fornisci un elenco di massimo 10 (dieci) frasi chiave che descrivano precisamente le tecnologie concorrenti (possibili alternative o competitor) attualmente già sviluppate e applicate nel tuo specifico ambito di ricerca, sia a livello italiano che mondiale.</p>
-                            <table class="table table-bordered shadow">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">N</th>
-                                    <th scope="col">Tecnologia concorrente</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    <th scope="row">1</th>
-                                    <td colspan="4">Almeno quattro definizioni sono obbligatorie</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td colspan="4"></td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="4"></td>
-                                    </tr>
-                                </tbody>
-                                </table>
-                        </div> -->
                     </div>
                     <!-- buttons -->
                     <div class="py-5">
@@ -273,85 +224,78 @@
                             </div>
                         </div>
                         <!-- content -->
-                        <!-- <div>
-                            <h3 class="mb-4">Dettagli di definizione della Ricerca</h3>
-                            <p class="mb-0">Qui dovrai fornire dettagli molto importanti della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti. Compila con molta attenzione questa scheda!</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Azienda etc che è già presente nel database di FVRT
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Nuova Azienda etc (non già presente nel database di FVRT)
+                            </label>
+                        </div>
+
+
+
+                        <div>
+                            <label for="categoria" class="form-label">Scegli la categoria di appartenenza</label>
+                            <select class="form-select" aria-label="Default select example" id="categoria">
+                                <option selected>Scegli la categoria</option>
+                                <option value="1">APASS_Azienda Provinciale Servizi Sanitari</option>
+                                <option value="2">FBK_Fondazione Bruno Kessler</option>
+                                <option value="3">FEM_Fondazione Endmund Mach</option>
+                                <option value="4">INFN_Istituto Nazionale di Fisica Nucleare</option>
+                                <option value="5">UNITN_Università di Trento</option>
+                                <option value="6">Altro_Startup - microimprese - scuole - società - società benefit - enti non profit</option>
+                            </select>
                         </div>
                         <div>
-                            <h5>Identificazione di aziende o enti per la commercializzazione o per lo sviluppo di partnership (max 400 char)</h5>
-                            <p>Specifica quali aziende o enti o organizzazioni potrebbero essere considerati per la commercializzazione degli esiti del tuo progetto o per lo sviluppo di partnership e alleanze.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                            <label for="dipartimento" class="form-label">Fornisci i dati indicati e la tua mail per tutte le comunicazioni con il <span class="red">nome a dominio indicato</span></label>
+                            <select class="form-select" aria-label="Default select example" id="dipartimento">
+                                <option selected>Scegli il dipartimento</option>
+                                <option value="1">UNITN C3A - Centro Agricoltura Alimenti Ambiente</option>
+                                <option value="2">UNITN Centro SSI - Scuola di Studi Internazionali</option>
+                                <option value="3">UNITN CIMeC - Centro Interdipartimentale Mente / Cervello</option>
+                                <option value="4">UNITN Dipartimento di Biologia Cellulare, Computazionale e Integrata - CIBIO</option>
+                                <option value="5">UNITN Dipartimento di Fisica</option>
+                                <option value="6">UNITN Dipartimento di Ingegneria e Scienza dell'Informazione</option>
+                                <option value="7">UNITN Dipartimento di Ingegneria Industriale</option>
+                                <option value="8">UNITN Dipartimento di Lettere e Filosofia</option>
+                                <option value="9">UNITN Dipartimento di Matematica</option>
+                                <option value="10">.....</option>
+                            </select>
+                        </div>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="dominio" class="form-label">Scegli il dominio</label>
+                                <select class="form-select" aria-label="Default select example" id="dominio">
+                                    <option selected>Scegli il dominio</option>
+                                    <option value="1">@unitn.it</option>
+                                </select>
                             </div>
                         </div>
-                        <div>
-                            <h5>Mercato target (max 400 char)</h5>
-                            <p>Descrivi chiaramente chi saranno i potenziali utilizzatori e acquirenti dei prodotti e/o servizi sviluppati attraverso la ricerca. Identifica i segmenti di mercato specifici a cui si rivolgeranno i tuoi prodotti/servizi.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="email" class="form-control" id="nome" placeholder="">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="cognome" class="form-label">Cognome</label>
+                                <input type="email" class="form-control" id="cognome" placeholder="">
                             </div>
                         </div>
-                        <div>
-                            <h5>Stato della Ricerca di ambito e Ricerche in corso (max 400 char)</h5>
-                            <p>Fornisci informazioni dettagliate sullo stato della ricerca ("stato dell'arte") nel campo specifico del tuo progetto sia a livello nazionale che internazionale. Ciò include identificare con chiarezza i gruppi (Università, Enti di Ricerca, Aziende, o altri contesti) che stanno attualmente conducendo ricerca su questo stesso argomento sia a livello nazionale che internazionale.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <label for="codiceFiscale" class="form-label">Codice fiscale</label>
+                                <input type="email" class="form-control" id="codiceFiscale" placeholder="">
                             </div>
                         </div>
-                        <div>
-                            <h5>Profilo del Proponente (max 400 char)</h5>
-                            <p>Fornisci un breve profilo del Proponente. Definiscine le competenze, il ruolo all'interno del Progetto. Ricorda che il Proponente individuerà, all'interno della Domanda, il Responsabile e definirà il Team che porterà a termine gli Obiettivi indicati nella Domanda di Contributo. Il Proponente potrà ricoprire anche il ruolo di Responsabile.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
-                            </div>
-                        </div>
-                        <div>
-                            <h5>Categoria di appartenenza del Proponente (scegliere una delle opzioni)</h5>
-                            <div class="d-flex flex-column gap-2 ps-3 mt-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Professore Universitario o Ricercatore, anche con contratto a tempo determinato, dell'Università di Trento e degli enti pubblici di ricerca o enti trentini.
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Studente dell'Università di Trento, anche di dottorato, regolarmente iscritto ai Corsi Universitari dell'Anno Accademico in cui viene indetto il Bando.
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Legale Rappresentante di Fondazioni, Startup, Microimprese, scuole, società, società benefit o Enti non Profit.
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="col-lg-6">
-                                <h5>Mail del Proponente (obbligatoria)</h5>
-                                <div class="input-group mb-5 shadow">
-                                    <span class="input-group-text" id="basic-addon1">@</span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <h5>Telefono del Proponente (obbligatorio)</h5>
-                                <div class="input-group mb-5 shadow">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                        </svg>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <!-- buttons -->
                     <div class="d-flex justify-content-between py-5">
@@ -596,6 +540,18 @@
             
             let validateStep1 = () =>{
                 console.log('validazione step 1')
+                function checkInput() {
+                    var value = document.getElementById( "validationTextarea" ).value;
+                    
+                    if ( value.length < 5 ) {
+                        input.classList.remove( "is-valid" );
+                        input.classList.add( "is-invalid" );
+                    } else {
+                        input.classList.add( "is-valid" );
+                        input.classList.remove( "is-invalid" );
+                    }
+                    checkInput()
+            }
             }
             let validateStep2 = () =>{
                 console.log('validazione step 2')
@@ -623,8 +579,7 @@
             }
             
         </script>
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+            
         <!-- My script -->
         <script src="script.js"></script>
     </body>

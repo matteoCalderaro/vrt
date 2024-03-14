@@ -90,6 +90,7 @@ $(document).ready(function() {
     if (currentStep < totalStepNumber+1) {
       
       // CHIAMA FUNZIONI VALIDAZIONE INPUT
+      // asincrona
       eval(`validateStep${currentStep}`)();
      
       // colora la circonferenza dello step cliccato 

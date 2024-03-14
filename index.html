@@ -564,6 +564,47 @@
                             </div>
                         </div>
                         <!-- content -->
+                        <div class="row gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <label for="banca" class="form-label">Banca</label>
+                                <input type="text" class="form-control" id="banca" placeholder="">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="agenzia" class="form-label">Agenzia</label>
+                                <input type="text" class="form-control" id="agenzia" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row align-items-end gap-5 gap-md-0">
+                            <div class="col-12 col-md-6">
+                                <label for="intestatario" class="form-label">Intestatario</label>
+                                <input type="text" class="form-control" id="intestatario" placeholder="">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="iban" class="form-label">IBAN</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="iban" aria-label="Amount (to the nearest dollar)">
+                                    <span class="input-group-text">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                                            <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Non italiano
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Attivo/Utilizzato
+                                    </label>
+                                </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="d-flex justify-content-between py-5">

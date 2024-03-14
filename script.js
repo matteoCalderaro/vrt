@@ -22,9 +22,9 @@ var totalStepNumber
 function displayStep(stepNumber) {
 
   // esce se lo step cliccato non è quello immediatamente sucessivo a quello cliccato 
-  if(stepNumber > currentStep +1 ){
-    return
-  }
+  // if(stepNumber > currentStep +1 ){
+  //   return
+  // }
   // esce se lo step cliccato non è quello immediatamente precedente o sucessivo a quello cliccato 
   // if(stepNumber > currentStep +1 || stepNumber < currentStep - 1){
   //     return

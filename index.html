@@ -230,70 +230,29 @@
                                 Azienda etc che è già presente nel database di FVRT
                             </label>
                         </div>
+                        <span>Cerca tra le aziende, stratup etc già presenti in anagrafica. Selezionando una azienda già presente in database, buona parte dei dati saranno già precompilati</span>
+                        <div class="d-flex align-items-end gap-2">
+                            <div class="flex-grow-1">
+                                <label for="nomeAzienda" class="form-label">Nome Azienda</label>
+                                <input type="email" class="form-control" id="nomeAzienda" placeholder="">
+                            </div>
+                            <div>
+                                <button class="btn-vrt-outline-primary">Cerca nel db</button>
+                            </div>
+                        </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                             <label class="form-check-label" for="flexRadioDefault2">
                                 Nuova Azienda etc (non già presente nel database di FVRT)
                             </label>
                         </div>
-
-
-
-                        <div>
-                            <label for="categoria" class="form-label">Scegli la categoria di appartenenza</label>
-                            <select class="form-select" aria-label="Default select example" id="categoria">
-                                <option selected>Scegli la categoria</option>
-                                <option value="1">APASS_Azienda Provinciale Servizi Sanitari</option>
-                                <option value="2">FBK_Fondazione Bruno Kessler</option>
-                                <option value="3">FEM_Fondazione Endmund Mach</option>
-                                <option value="4">INFN_Istituto Nazionale di Fisica Nucleare</option>
-                                <option value="5">UNITN_Università di Trento</option>
-                                <option value="6">Altro_Startup - microimprese - scuole - società - società benefit - enti non profit</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="dipartimento" class="form-label">Fornisci i dati indicati e la tua mail per tutte le comunicazioni con il <span class="red">nome a dominio indicato</span></label>
-                            <select class="form-select" aria-label="Default select example" id="dipartimento">
-                                <option selected>Scegli il dipartimento</option>
-                                <option value="1">UNITN C3A - Centro Agricoltura Alimenti Ambiente</option>
-                                <option value="2">UNITN Centro SSI - Scuola di Studi Internazionali</option>
-                                <option value="3">UNITN CIMeC - Centro Interdipartimentale Mente / Cervello</option>
-                                <option value="4">UNITN Dipartimento di Biologia Cellulare, Computazionale e Integrata - CIBIO</option>
-                                <option value="5">UNITN Dipartimento di Fisica</option>
-                                <option value="6">UNITN Dipartimento di Ingegneria e Scienza dell'Informazione</option>
-                                <option value="7">UNITN Dipartimento di Ingegneria Industriale</option>
-                                <option value="8">UNITN Dipartimento di Lettere e Filosofia</option>
-                                <option value="9">UNITN Dipartimento di Matematica</option>
-                                <option value="10">.....</option>
-                            </select>
-                        </div>
-                        <div class="row gap-5 gap-md-0">
-                            <div class="col-12 col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <div class="d-flex align-items-end gap-2">
+                            <div class="flex-grow-1">
+                                <label for="nomeNuovaAzienda" class="form-label">Nome Azienda</label>
+                                <input type="email" class="form-control" id="nomeNuovaAzienda" placeholder="">
                             </div>
-                            <div class="col-12 col-md-6">
-                                <label for="dominio" class="form-label">Scegli il dominio</label>
-                                <select class="form-select" aria-label="Default select example" id="dominio">
-                                    <option selected>Scegli il dominio</option>
-                                    <option value="1">@unitn.it</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row gap-5 gap-md-0">
-                            <div class="col-12 col-md-6">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="email" class="form-control" id="nome" placeholder="">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label for="cognome" class="form-label">Cognome</label>
-                                <input type="email" class="form-control" id="cognome" placeholder="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <label for="codiceFiscale" class="form-label">Codice fiscale</label>
-                                <input type="email" class="form-control" id="codiceFiscale" placeholder="">
+                            <div>
+                                <button class="btn-vrt-outline-primary">Crea Nuova</button>
                             </div>
                         </div>
                     </div>

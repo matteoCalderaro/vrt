@@ -33,7 +33,7 @@
     </style>
     </head>
     <body class="register">
-    
+        
         <!-- NAVBAR -->
         <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
             <div class="container-fluid px-0">
@@ -74,6 +74,70 @@
                 </div>
             </div>
         </nav>
+
+        <!-- MODALE -->
+        <!-- modale 1 -->
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Azienda esistente</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- CONTENT -->
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Scegli tra queste aziende già presenti nel databse di FVRT</option>
+                        <option value="1">Agraxx srl</option>
+                        <option value="2">Azienda Agricola Toblino Tartufi</option>
+                        <option value="3">Baolfly srl Società Agricola - Società Benefit</option>
+                        <option value="4">Lagarina società agricola semplice</option>
+                    </select>
+                    <p>Fornisci i dati indicati e la tua mail per tutte le comunicazioni</p>
+                    <div>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    </div>
+                    <div class="row gap-5 gap-md-0">
+                        <div class="col-12 col-md-6">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="cognome" class="form-label">Cognome</label>
+                            <input type="text" class="form-control" id="cognome" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="codiceFiscale" class="form-label">Codice fiscale</label>
+                            <input type="text" class="form-control" id="codiceFiscale" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- modale 2 -->
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                Hide this modal and show the first with the button below.
+                </div>
+                <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+                </div>
+            </div>
+            </div>
+        </div>
 
         <!-- PROGRESS MOBILE -->
         <div class="d-flex gap-3 px-3 py-2 stepper-mobile">
@@ -129,7 +193,7 @@
             </div>
                 
             <!-- FORM -->
-            <form class="form-container">
+            <div class="form-container">
                 <!-- STEP 1 -->
                 <div class="step step-1">
                     <div class="content-container gap-5">
@@ -241,7 +305,7 @@
                                 <input type="email" class="form-control" id="nomeAzienda" placeholder="">
                             </div>
                             <div>
-                                <button class="btn-vrt-outline-primary">Cerca nel db</button>
+                                <button class="btn-vrt-outline-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Cerca nel db</button>
                             </div>
                         </div>
                         <div class="form-check">
@@ -763,7 +827,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
                 
         </div>
 

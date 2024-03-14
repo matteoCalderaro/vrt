@@ -196,22 +196,6 @@ h5 {
     opacity: 0.65;
 }
 
-/* BTN-VRT-PRIMARY-ICON */
-.btn-vrt-primary-icon {
-    padding: 5px 20px;
-    border: 2px solid var(--primary);
-    border-radius: 5px;
-    background-color: var(--primary);
-    color: white;
-}
-.btn-vrt-primary-icon:hover {
-    background-color: var(--primary-darker);    
-}
-.btn-vrt-primary-icon:disabled {
-    background-color: var(--primary);
-    opacity: 0.65;
-}
-
 /* BTN-VRT-OUTLINE-PRIMARY */
 .btn-vrt-outline-primary {
     background-color: transparent;
@@ -225,6 +209,23 @@ h5 {
     background-color: var(--gray-light);
 }
 .btn-vrt-outline-primary:disabled {
+    background-color: var(--gray-light);
+    opacity: 0.65;
+}
+
+/* BTN-VRT-OUTLINE-PRIMARY */
+/* usato nella register per aggiunta organo direttivo */
+.btn-vrt-outline-primary-icon {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--secondary);
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+.btn-vrt-outline-primary-icon:hover {
+    background-color: var(--gray-light);
+}
+.btn-vrt-outline-primary-icon:disabled {
     background-color: var(--gray-light);
     opacity: 0.65;
 }

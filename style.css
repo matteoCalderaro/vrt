@@ -225,8 +225,8 @@ h5 {
 
 .link:hover,
 .link:active {
-  color: #cf711f;
-  border-bottom: 1px solid transparent;
+  color: var(--secondary);
+  border-bottom: 1px solid currentColor;
 }
 
 

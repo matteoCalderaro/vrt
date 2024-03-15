@@ -10,10 +10,10 @@ var totalStepNumber
 
 // Intro:
 // Alla varibile globale currentStep è assegnato lo step corrente (le funzioni A + B aggiornano il valore)
-// Le funzioni A + B effettuano il toggle degli step (nodi dom). Il toggle è associato ad animazione css (libreria animate.css).
+// Le funzioni A e B effettuano il toggle degli step (nodi dom). Il toggle è associato ad animazione css (libreria animate.css).
 // La funzione A è invocata da attributo onClick su labels e circonferenze (desktop). L'attributo passa il numero dello step verso il quale verrà effetuato il toggle.
 // La funzione B è invocata al caricamento dell'app e associa a tutti i bottoni avanti/indietro (desktop + mobile) un event handler
-// che effettua il toggle solo verso lo step precedente o successivo
+// che effettua il toggle verso lo step precedente (bottone avanti) o successivo (bottone indietro)
 
 
 /* 
@@ -73,7 +73,7 @@ $(document).ready(function() {
   // elimina dal dom tutti gli step, tranne lo step 1
   $('.form-container').find('.step').slice(1).hide();
 
-  // totale step in base alle pagina
+  // totale step in base alla pagina
   let body =document.querySelector('body')
   if(body.classList.contains('register')){
     totalStepNumber = 7
@@ -91,7 +91,9 @@ $(document).ready(function() {
       
       // CHIAMA FUNZIONI VALIDAZIONE INPUT
       // asincrona
+      
       eval(`validateStep${currentStep}`)();
+      // return
      
       // colora la circonferenza dello step cliccato 
       $('.circle').eq(currentStep).removeClass('step-circle').addClass('step-circle-colored')
@@ -174,4 +176,21 @@ window.addEventListener("scroll", () => {
   else {
     scrollIcon.style.visibility = "hidden"
   }
+});
+
+
+///////////////////////////////////
+//////// PASSWORD EYE
+$(".show_hide_password span").on('click', function(event) {
+  console.log('ciao')
+    event.preventDefault();
+    if($('.show_hide_password input').attr("type") == "text"){
+        $('.show_hide_password input').attr('type', 'password');
+        $('.show_hide_password i').addClass( "bi-eye-slash" );
+        $('.show_hide_password i').removeClass( "bi-eye" );
+    }else if($('.show_hide_password input').attr("type") == "password"){
+        $('.show_hide_password input').attr('type', 'text');
+        $('.show_hide_password i').removeClass( "bi-eye-slash" );
+        $('.show_hide_password i').addClass( "bi-eye" );
+    }
 });

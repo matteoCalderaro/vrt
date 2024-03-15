@@ -232,7 +232,7 @@ h5 {
 
 
 
-/* BTN SALVA BOZZA */
+/* BOTTONE SALVA BOZZA */
 .link:link,
 .link:visited {
   display: inline-block;
@@ -252,7 +252,7 @@ h5 {
 
 
  /*//////////////////////////////////
- ///////// SCROLL TO TOP ICON */
+ ///////// ICONA SCROLL TO TOP */
 .scroll-icon-inner {
     width: 3rem;
     height: 3rem;
@@ -273,7 +273,7 @@ h5 {
 
 
 /*//////////////////////////////////
- ///////// OTP INPUT STYLE */
+ ///////// OTP INPUT  */
 .otp-code {
     border: none;
     width: 10.5ch;
@@ -295,9 +295,21 @@ h5 {
   
  
 
-/* usato nella navbar - da cancellare */
-.active {
-    font-weight: 800 !important;
-    text-decoration: underline;
+.red {
+    color: red;
 }
 
+
+.form-label:after { 
+    content:"*";
+    color:red;
+}   
+.file-size-label {
+    font-size: 12px;
+}
+@media (max-width: 544px) {  
+    .navbar-text {
+        font-size:1rem !important
+    }
+    
+  }

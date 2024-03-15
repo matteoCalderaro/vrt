@@ -80,13 +80,13 @@
             </div>
         </nav>
 
-        <!-- MODALE -->
+        <!-- MODALE AZIENDA ESISTENTE-->
         <!-- modale 1 -->
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="modEsistente1" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title red fs-5" id="exampleModalToggleLabel">Azienda esistente</h1>
+                  <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Azienda esistente</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="d-flex flex-column gap-4 p-3">
@@ -109,11 +109,113 @@
                     <div class="gap-4 gap-md-0 row">
                         <div class="col-12 col-md-6">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="" disabled>
+                            <input type="text" class="form-control" id="nome" placeholder="Mario" disabled>
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="cognome" class="form-label">Cognome</label>
-                            <input type="text" class="form-control" id="cognome" placeholder="" disabled>
+                            <input type="text" class="form-control" id="cognome" placeholder="Rossi" disabled>
+                        </div>
+                    </div>
+                    <!-- codice fiscale -->
+                    <div class="row gap-5">
+                        <div class="col-12">
+                            <label for="codiceFiscale" class="form-label">Codice fiscale</label>
+                            <input type="text" class="form-control" id="codiceFiscale" placeholder="MRDTT78E14A952N" disabled>
+                        </div>
+                    </div>
+                    <!-- password -->
+                    <div class="gap-4 gap-md-0 row">
+                        <div class="col-12 col-md-6">
+                            <div>
+                                <div class="input-group show_hide_password" id="password">
+                                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="bi bi-eye-slash"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div>
+                                <div class="input-group show_hide_password" id="passwordConferma">
+                                    <input type="password" class="form-control" placeholder="Conferma password" aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="bi bi-eye-slash"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- recaptcha -->
+                    <div class="g-recaptcha" data-sitekey="your_site_key"></div>                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-vrt-primary align-items-center d-flex gap-2 justify-content-center" data-bs-target="#modEsistente2" data-bs-toggle="modal">
+                        INVIA
+                    </button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- modale 2 -->
+        <div class="modal fade" id="modEsistente2" aria-hidden="true" aria-labelledby="modEsistenteLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modEsistenteLabel2">Codice OTP</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Inserisci qui sotto il codice che hai ricevuto via email.
+                    <div class="otp-container text-center p-4">
+                        <input class="otp-code" maxlength='7' />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-vrt-outline-primary align-items-center d-flex gap-2 justify-content-center" data-bs-target="#modEsistente1" data-bs-toggle="modal">
+                        INDIETRO
+                    </button>
+                    <button type="button" class="btn-vrt-primary  next-step align-items-center d-flex gap-2 justify-content-center" data-bs-dismiss="modal" aria-label="Close">
+                        INVIA
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- MODALE NUOVA AZIENDA  -->
+        <div class="modal fade" id="modNuova" aria-hidden="true" aria-labelledby="modNuovaLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title red fs-5" id="modNuovaLabel">Nuova Azienda Srl</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-column gap-4 p-3">
+                    <!-- CONTENT -->
+                    <!-- select -->
+                    <!-- <select class="form-select" aria-label="Default select example">
+                        <option selected>Scegli tra queste aziende già presenti nel databse di FVRT</option>
+                        <option value="1">Agraxx srl</option>
+                        <option value="2">Azienda Agricola Toblino Tartufi</option>
+                        <option value="3">Baolfly srl Società Agricola - Società Benefit</option>
+                        <option value="4">Lagarina società agricola semplice</option>
+                    </select> -->
+                    <p class="mb-0">Fornisci i dati indicati e la tua mail per tutte le comunicazioni</p>
+                    <!-- email -->
+                    <div>
+                        <label for="email" class="form-label">Email completa</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    </div>
+                    <!-- nome/cognome -->
+                    <div class="gap-4 gap-md-0 row">
+                        <div class="col-12 col-md-6">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="cognome" class="form-label">Cognome</label>
+                            <input type="text" class="form-control" id="cognome" placeholder="">
                         </div>
                     </div>
                     <!-- codice fiscale -->
@@ -150,39 +252,18 @@
                     <div class="g-recaptcha" data-sitekey="your_site_key"></div>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-vrt-primary align-items-center d-flex gap-2 justify-content-center" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
-                        INVIA
+                    <button type="button" class="btn-vrt-outline-primary align-items-center d-flex gap-2 justify-content-center" data-bs-dismiss="modal" aria-label="Close">
+                        INDIETRO
+                    </button>
+                    <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center" data-bs-dismiss="modal" aria-label="Close">
+                        SALVA
                     </button>
                 </div>
               </div>
             </div>
         </div>
-        <!-- modale 2 -->
-        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Codice OTP</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Inserisci qui sotto il codice che hai ricevuto via email.
-                    <div class="otp-container text-center p-4">
-                        <input class="otp-code" maxlength='7' />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn-vrt-outline-primary align-items-center d-flex gap-2 justify-content-center" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
-                        INDIETRO
-                    </button>
-                    <button type="button" class="btn-vrt-primary  next-step align-items-center d-flex gap-2 justify-content-center" data-bs-dismiss="modal" aria-label="Close">
-                        INVIA
-                    </button>
-                </div>
-            </div>
-            </div>
-        </div>
 
+        
         <!-- PROGRESS MOBILE -->
         <div class="d-flex gap-3 px-3 py-2 stepper-mobile">
             <button type="button" class="btn btn-light prev-step">
@@ -349,7 +430,7 @@
                                 <input type="email" class="form-control" id="nomeAzienda" placeholder="">
                             </div>
                             <div>
-                                <button class="btn-vrt-outline-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Cerca nel db</button>
+                                <button class="btn-vrt-outline-primary" data-bs-target="#modEsistente1" data-bs-toggle="modal">Cerca nel db</button>
                             </div>
                         </div>
                         <div class="form-check">
@@ -364,7 +445,7 @@
                                 <input type="email" class="form-control" id="nomeNuovaAzienda" placeholder="">
                             </div>
                             <div>
-                                <button class="btn-vrt-outline-primary">Crea Nuova</button>
+                                <button class="btn-vrt-outline-primary" data-bs-target="#modNuova" data-bs-toggle="modal">Crea Nuova</button>
                             </div>
                         </div>
                     </div>

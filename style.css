@@ -272,6 +272,29 @@ h5 {
 }
 
 
+/*//////////////////////////////////
+ ///////// OTP INPUT STYLE */
+.otp-code {
+    border: none;
+    width: 10.5ch;
+    background: 
+      repeating-linear-gradient(90deg, 
+          dimgrey 0, 
+          dimgrey 1ch, 
+          transparent 0, 
+          transparent 1.5ch) 
+        0 100%/100% 2px no-repeat;
+    color: dimgrey;
+    font: 5ch consolas, monospace;
+    letter-spacing: .5ch;
+  }
+  .otp-code:focus {
+    outline: none;
+    color: dodgerblue;
+  }
+  
+ 
+
 /* usato nella navbar - da cancellare */
 .active {
     font-weight: 800 !important;

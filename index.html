@@ -86,7 +86,7 @@
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title text-danger fs-5" id="exampleModalToggleLabel">Azienda esistente</h1>
+                  <h1 class="modal-title red fs-5" id="exampleModalToggleLabel">Azienda esistente</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="d-flex flex-column gap-4 p-3">
@@ -162,11 +162,14 @@
             <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Codice OTP</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                Hide this modal and show the first with the button below.
+                    Inserisci qui sotto il codice che hai ricevuto via email.
+                    <div class="otp-container text-center p-4">
+                        <input class="otp-code" maxlength='7' />
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-vrt-outline-primary align-items-center d-flex gap-2 justify-content-center" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">

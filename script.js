@@ -1,3 +1,26 @@
+// DA DOCUMENTAZIONE BOOTSTRAP -> https://getbootstrap.com/docs/5.3/forms/validation/#custom-styles
+
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  //Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+      if (!form.checkValidity()||form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+      }, false)
+  })
+})()
+
+////////////////////////
+
 var labelArrayLogin = ['Progetto','Dettagli ricerca','Beneficiario','Criterio 1','Criterio 2','Criterio 3','Criterio 4','Criterio 5','Criterio 6']
 var labelArrayRegister = ['Categoria','Anagrafica','Accettazioni','Sedi','Legale rappresentante','Dati specifici','Banca','Documenti']
 
@@ -89,31 +112,39 @@ $(document).ready(function() {
   $(".next-step").click(function() {
     if (currentStep < totalStepNumber+1) {
       
-      // CHIAMA FUNZIONI VALIDAZIONE INPUT
-      // asincrona
-      
-      eval(`validateStep${currentStep}`)();
-      // return
-     
-      // colora la circonferenza dello step cliccato 
-      $('.circle').eq(currentStep).removeClass('step-circle').addClass('step-circle-colored')
-      // colora la label cliccata
-      $('.label').css("color", "var(--gray-light)").eq(currentStep).css("color", "var(--secondary)");
-      // fade out corrente step
-      $(".step-" + currentStep).addClass("animate__animated animate__fadeOut");
-      
-      currentStep++;
-      
-      // mobile | trova la label nel rispettivo array
-      progressMobileLabel = labelArray[currentStep-1]
+      //////////////////////////////////////
+      //// CHIAMA FUNZIONI VALIDAZIONE FORM
+      ////////////////////////////////////
+      (async () => {
+        const result = await eval(`validateStep${currentStep}`)()
+        if (result == true) {
+            
+          // colora la circonferenza dello step cliccato 
+          $('.circle').eq(currentStep).removeClass('step-circle').addClass('step-circle-colored')
+          // colora la label cliccata
+          $('.label').css("color", "var(--gray-light)").eq(currentStep).css("color", "var(--secondary)");
+          // fade out corrente step
+          $(".step-" + currentStep).addClass("animate__animated animate__fadeOut");
+          
+          currentStep++;
+          
+          // mobile | trova la label nel rispettivo array
+          progressMobileLabel = labelArray[currentStep-1]
 
-      setTimeout(function() {
-        // rimuove corrente step
-        $(".step").removeClass("animate__animated animate__fadeOut").hide();
-        // visualizza sucessivo step
-        $(".step-" + currentStep).show().addClass("animate__animated animate__fadeIn");
-        updateProgressBar();
-      }, 200);
+          setTimeout(function() {
+            // rimuove corrente step
+            $(".step").removeClass("animate__animated animate__fadeOut").hide();
+            // visualizza sucessivo step
+            $(".step-" + currentStep).show().addClass("animate__animated animate__fadeIn");
+            updateProgressBar();
+          }, 200);
+
+        } else {
+            console.log('respinta')
+            return
+        }
+      })()
+      
     }
 
     $(window).scrollTop(0);
@@ -194,3 +225,7 @@ $(".show_hide_password span").on('click', function(event) {
         $('.show_hide_password i').addClass( "bi-eye" );
     }
 });
+
+
+
+

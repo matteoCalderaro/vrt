@@ -5,21 +5,27 @@
 :root {
     --gray-light: #c5c5c5;
     /* --secondary-lighter: rgba(98, 98, 98, 40%); */
-    --secondary: #626262;
     --primary: #BB8F42;
+    --secondary: #626262;
+    --tertiary: #585858;
     /* button hover */
     --primary-darker: #a57e3b;
+    
 }
 
 html {
     font-size: 14px;
 }
-/* body {
-    background-color: #bb8f4247;
-} */
+body {
+    color: var(--tertiary);
+    /* background-color: #aeaeae */
+}
 
 h3 {
     font-weight: 700;
+}
+h4 {
+    color: var(--secondary);
 }
 h5 {
     font-weight: 500;
@@ -30,6 +36,27 @@ h5 {
     color: #fff;
     background-color: var(--primary);
     font-weight: 500;
+}
+
+/* TEXT COLOR */
+.card {
+    color: inherit;
+}
+
+input::placeholder,
+select { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--tertiary) !important;
+    opacity: 1 !important; /* Firefox */
+}
+
+input:-ms-input-placeholder,
+select { /* Internet Explorer 10-11 */
+    color: var(--tertiary) !important;
+}
+
+input::-ms-input-placeholder,
+select { /* Microsoft Edge */
+    color: var(--tertiary) !important;
 }
 
 
@@ -207,6 +234,14 @@ h5 {
     background-color: var(--gray-light);
     opacity: 0.65;
 }
+/* BTN-VRT-OUTLINE-PRIMARY interfacce caricamento */
+.btn-vrt-add {
+    color: var(--primary);
+}
+.btn-vrt-add i {
+    color:var(--primary);
+    font-size: 19px;
+}
 
 /* BTN-VRT-OUTLINE-PRIMARY */
 /* usato nella register per aggiunta organo direttivo */
@@ -305,9 +340,34 @@ h5 {
     content:"*";
     color:red;
 }  
-/* specifiche file in (register -> documenti) */ 
-.file-size-label {
+
+/* 
+utilizzato:
+- labels specifiche file in (register -> documenti)
+- labels home page
+
+*/ 
+.small-label {
     font-size: 12px;
 }
 
+/*//////////////////////////////////
+ ///////// CALLOUTS  */
 
+ .callout {
+   
+    border-left: 2px solid var(--primary);
+    /* border-radius: 15px;
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent; */
+   
+ }
+
+ .list-no-border .list-group-item{
+    border: none;
+ }
+
+ .input-add-on-icon {
+    border-top-right-radius: 5.25px !important;
+    border-bottom-right-radius: 5.25px !important;
+}

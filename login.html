@@ -1,30 +1,33 @@
 <!doctype html>
 <html lang="en">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VRT - progress</title>
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
-    <!-- Bootstrap icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- My style -->
-    <link rel="stylesheet" href="style.css">
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- recaptcha -->
-    <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>VRT - progress</title>
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+        <!-- Bootstrap icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <!-- My style -->
+        <link rel="stylesheet" href="style.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- recaptcha -->
+        <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <style>
+            
+        </style>
 
+            
     </head>
     <body class="login">
     
@@ -86,7 +89,7 @@
                     <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
-            <button type="button" class="btn btn-light  next-step">
+            <button class="btn btn-light next-step btn-mob">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                 </svg>
@@ -126,59 +129,64 @@
 
             </div>
                 
-            <!-- FORM -->
-            <form class="form-container">
-                <!-- STEP 1 -->
-                <div class="step step-1">
+            <!-- FORMS -->
+            <div class="form-container">
+                <!-- STEP 1 | Progetto -->
+                <form class="step step-1 needs-validation"  novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>PROGETTO</span>
                             </div>
                         </div>
-                        <!-- content -->
+                        <!-- header -->
                         <div>
                             <h3 class="mb-4">Definizione del Progetto di Ricerca</h3>
                             <p class="mb-0">Qui dovrai fornire i dettagli decisivi della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti.</p>
                         </div>
+                        <!-- ambito bando -->
                         <div>
                             <h5>Ambito di Bando</h5>
                             <p>Seleziona a quale specifico ambito (definito dal Bando) afferisce il tuo Progetto.</p>
-                            <div class="form-floating">
-                                <select class="form-select shadow" id="floatingSelect" aria-label="Floating label select example">
-                                    <option selected>Open this select menu</option>
+                            <div>
+                                <select class="form-select" id="ambito" aria-label="select example" required>
+                                    <option value="">Effettua una scelta</option>
                                     <option value="1">La salute e il benessere</option>
                                     <option value="2">Il pianeta e l'ambiente</option>
                                     <option value="3">La montagna e lo sport</option>
                                 </select>
-                                <label for="floatingSelect">La scelta è obbligatoria</label>
+                                <div class="invalid-feedback">La scelta è obbligatoria</div>
                             </div>
                         </div>
+                        <!-- titolo progetto -->
                         <div>
                             <h5>Titolo del Progetto (max 100 char)</h5>
                             <p>Specifica un titolo di progetto che sia chiaro, semplice, comunicativo.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="titolo" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
                             </div>
                         </div>
+                        <!-- abstract progetto -->
                         <div>
                             <h5>Abstract di Progetto (max 500 char)</h5>
                             <p>Dai una definizione sintetica del tuo progetto che sarà utilizzata come standard in tutta la comunicazione. Deve contenere tutto ciò che è in grado di caratterizzare e distinguere il progetto di ricerca.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="abstract" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
                             </div>
                         </div>
+                        <!-- tabella ambito di ricerca -->
                         <div>
                             <h5>Ambito di Ricerca</h5>
                             <p>Fornisci un elenco di massimo 5 (cinque) frasi chiave che descrivano precisamente l'ambito e il settore specifico di ricerca del tuo progetto.</p>
-                            <table class="table table-bordered shadow">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                     <th scope="col">N</th>
@@ -201,10 +209,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        <!-- tabella tecnologie concorrenti -->
                         <div>
                             <h5>Tecnologie concorrenti</h5>
                             <p>Fornisci un elenco di massimo 10 (dieci) frasi chiave che descrivano precisamente le tecnologie concorrenti (possibili alternative o competitor) attualmente già sviluppate e applicate nel tuo specifico ambito di ricerca, sia a livello italiano che mondiale.</p>
-                            <table class="table table-bordered shadow">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                     <th scope="col">N</th>
@@ -233,108 +242,119 @@
                         <div></div>
                         <!-- double button -->
                         <div class="align-items-center align-items-sm-end d-flex flex-column flex-sm-row gap-4 gap-sm-5">
-                            <div>
-                                <a href="#" class="link">Salva bozza</a>
-                            </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <a href="#" class="link">Salva bozza</a>
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 2 -->
-                <div class="step step-2">
+                </form>
+                <!-- STEP 2 | Dettagli di ricerca -->
+                <form class="step step-2 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>DETTAGLI DI RICERCA</span>
                             </div>
                         </div>
-                        <!-- content -->
+                        <!-- header -->
                         <div>
                             <h3 class="mb-4">Dettagli di definizione della Ricerca</h3>
                             <p class="mb-0">Qui dovrai fornire dettagli molto importanti della tua ricerca. Sono informazioni che mettono in grado di inquadrare con chiarezza l'ambito di ricerca, lo stato dell'arte di tale ambito e il posizionamento rispetto a strumenti e centri di ricerca concorrenti. Compila con molta attenzione questa scheda!</p>
                         </div>
+                        <!-- partner -->
                         <div>
                             <h5>Identificazione di aziende o enti per la commercializzazione o per lo sviluppo di partnership (max 400 char)</h5>
                             <p>Specifica quali aziende o enti o organizzazioni potrebbero essere considerati per la commercializzazione degli esiti del tuo progetto o per lo sviluppo di partnership e alleanze.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="partner" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
                             </div>
                         </div>
+                        <!-- mercato target -->
                         <div>
                             <h5>Mercato target (max 400 char)</h5>
                             <p>Descrivi chiaramente chi saranno i potenziali utilizzatori e acquirenti dei prodotti e/o servizi sviluppati attraverso la ricerca. Identifica i segmenti di mercato specifici a cui si rivolgeranno i tuoi prodotti/servizi.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="mercatoTarget" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
                             </div>
                         </div>
+                        <!-- stato ricerca -->
                         <div>
                             <h5>Stato della Ricerca di ambito e Ricerche in corso (max 400 char)</h5>
                             <p>Fornisci informazioni dettagliate sullo stato della ricerca ("stato dell'arte") nel campo specifico del tuo progetto sia a livello nazionale che internazionale. Ciò include identificare con chiarezza i gruppi (Università, Enti di Ricerca, Aziende, o altri contesti) che stanno attualmente conducendo ricerca su questo stesso argomento sia a livello nazionale che internazionale.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="statoRicerca" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
                             </div>
                         </div>
+                        <!-- proponente -->
                         <div>
                             <h5>Profilo del Proponente (max 400 char)</h5>
                             <p>Fornisci un breve profilo del Proponente. Definiscine le competenze, il ruolo all'interno del Progetto. Ricorda che il Proponente individuerà, all'interno della Domanda, il Responsabile e definirà il Team che porterà a termine gli Obiettivi indicati nella Domanda di Contributo. Il Proponente potrà ricoprire anche il ruolo di Responsabile.</p>
-                            <div class="form-floating">
-                                <textarea class="form-control shadow" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Risposta obbligatoria</label>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="proponente" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
                             </div>
                         </div>
+                        <!-- checks categoria del proponente -->
                         <div>
                             <h5>Categoria di appartenenza del Proponente (scegliere una delle opzioni)</h5>
                             <div class="d-flex flex-column gap-2 ps-3 mt-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkProfessore">
+                                    <label class="form-check-label" for="checkProfessore">
                                         Professore Universitario o Ricercatore, anche con contratto a tempo determinato, dell'Università di Trento e degli enti pubblici di ricerca o enti trentini.
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkStudente" checked>
+                                    <label class="form-check-label" for="checkStudente">
                                         Studente dell'Università di Trento, anche di dottorato, regolarmente iscritto ai Corsi Universitari dell'Anno Accademico in cui viene indetto il Bando.
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkRappresentante" checked>
+                                    <label class="form-check-label" for="checkRappresentante">
                                         Legale Rappresentante di Fondazioni, Startup, Microimprese, scuole, società, società benefit o Enti non Profit.
                                     </label>
                                 </div>
                             </div>
                         </div>
+                        <!-- mail/tel proponente -->
                         <div>
                             <div class="col-lg-6">
                                 <h5>Mail del Proponente (obbligatoria)</h5>
-                                <div class="input-group mb-5 shadow">
-                                    <span class="input-group-text" id="basic-addon1">@</span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                                <div class="input-group mb-5">
+                                    <span class="input-group-text" id="email">@</span>
+                                    <input type="mail" class="form-control input-add-on-icon" id="email" placeholder="" aria-label="Mail del proponente" aria-describedby="email" required>
+                                    <div class="invalid-feedback">
+                                        La mail è obbligatoria
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <h5>Telefono del Proponente (obbligatorio)</h5>
-                                <div class="input-group mb-5 shadow">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                                        </svg>
+                                <div class="input-group mb-5">
+                                    <span class="input-group-text" id="telefono">
+                                        <i class="bi bi-telephone"></i>
                                     </span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control input-add-on-icon" id="telefono" placeholder="" aria-label="Telefono del proponente" aria-describedby="telefono" required>
+                                    <div class="invalid-feedback">
+                                        Il telefono è obbligatorio
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -343,9 +363,7 @@
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
@@ -354,37 +372,42 @@
                             <div>
                                 <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 3 -->
-                <div class="step step-3">
+                </form>
+                <!-- STEP 3 | Beneficiario -->
+                <form class="step step-3 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>BENEFICIARIO</span>
                             </div>
                         </div>
                         <!-- content -->
+                        <div>
+                            <h3 class="mb-4">Ruolo del Beneficiario in questo specifico Bando (max 500 char)</h3>
+                            <p class="mb-0">Qui dovrai definire con chiarezza il ruolo del Beneficiario della tua ricerca. I dati anagrafici sono già definiti, qui invece devi definire l'implicazione del Beneficiario per questo specifico Bando, come esso cioè beneficerà della ricerca e come è coinvolto attivamente nella ricerca stessa</p>
+                        </div>
+                        <div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="rouloBeneficiario" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
@@ -393,37 +416,100 @@
                             <div>
                                 <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 4 -->
-                <div class="step step-4">
+                </form>
+                <!-- STEP 4 | Criterio 1 -->
+                <form class="step step-4 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>CRITERIO 1</span>
                             </div>
                         </div>
-                        <!-- content -->
+                        <!-- header -->
+                        <div>
+                            <h3 class="mb-4">Innovazione con caratteristiche "Scalabili" e/o "Disruptive"</h3>
+                            <h5>Tecnologie basate su un'innovazione che abbia un potenziale di scalabilità</h5>
+                        </div>
+                        <div>
+                            <p>Nella descrizione si richiede che venga descritto in maniera chiara e concisa:</p>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    l'obiettivo misurabile che si intende raggiungere entro 6 mesi grazie al Contributo Fondazione VRT
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    la metrica di Misurazione dell'Obiettivo che si intende raggiungere entro 6 mesi
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    la principale caratteristica “ Disruptive” del Progetto
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <!-- allineamento -->
+                        <div>
+                            <h5>Allineamento con i Temi del Bando (max 400 char)</h5>
+                            <p>Assicurati cheil tuo progetto sia strettamente allineato con l'ambito del bando che hai selezionato [Ambito di Applicazione].
+                                Dettaglia come vi sia aderenza all'ambito e quale sia il contributo specifico del tuo progetto all'area tematica che hai indicato.</p>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="allineamento" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
+                        <!-- misurabilità -->
+                        <div>
+                            <h5>Definizione e Misurabilità dell'Obiettivo (max 400 char)</h5>
+                            <p>Fornisci una definizione chiara e specifica dell'obiettivo del progetto. Indica come concretamente misurerai il raggiungimento dell'obiettivo entro un periodo di tempo di 6 mesi.</p>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="misurabilita" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
+                        <!-- scalabilità -->
+                        <div>
+                            <h5>Dettaglio dell'Innovazione e Potenziale di Scalabilità (max 400 char)</h5>
+                            <p>Descrivi come la tua proposta si differenzia dalle soluzioni attualmente disponibili nel settore. Spiega l'unicità del tuo approccio rispetto agli altri. Discuti il potenziale di scalabilità della tua innovazione: è progettata per crescere e adattarsi a un contesto più ampio o ad altre applicazioni? Assicurati di includere informazioni chiare e specifiche sia riguardo a innovazione che scalabilità.</p>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="scalabilita" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
+                        <!-- disruptive -->
+                        <div>
+                            <h5>Caratteristica Disruptive e Impatto Potenziale (max 400 char)</h5>
+                            <p>Dettaglia la descrizione della caratteristica “disruptive” del tuo progetto: in che modo proponi un cambiamento significativo rispetto allo stato dell'arte? Rispetto ad altri Centri di Ricerca? Rispetto al mercato?
+                                Descrivi come hai articolato l'impiego di tecnologie, brevetti o know-how esclusivi che contribuiscono all'unicità del tuo progetto.</p>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="disruptive" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
@@ -432,37 +518,88 @@
                             <div>
                                 <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 5 -->
-                <div class="step step-5">
+                </form>
+                <!-- STEP 5 | Criterio 2 -->
+                <form class="step step-5 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>CRITERIO 2</span>
                             </div>
                         </div>
-                        <!-- content -->
+                        <!-- header -->
+                        <div>
+                            <h3>Ricadute per le persone</h3>
+                        </div>
+                        <div>
+                            <p>Nella descrizione si richiede che venga descritto in maniera chiara e concisa:</p>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    il bisogno a cui il Progetto intende dare risposte
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    il numero di persone che beneficeranno delle ricadute dirette e indirette del Progetto in Trentino e fuori dal Trentino (le prime ricadute misurabili entro 6 mesi);
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    l 'indicatore principale di misurazione dell'Impatto/Ricaduta del Progetto.
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <!-- bisogno specifico -->
+                        <div>
+                            <h5>Identificazione e Comprensione del Bisogno Specifico (max 400 char)</h5>
+                            <p>Descrivi il bisogno a cui il progetto intende rispondere.
+                                Il progetto si basa su un'analisi approfondita di un bisogno specifico?
+                                Il bisogno è rilevante per il contesto del Trentino e/o oltre?</p>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="bisogno" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ampiezza impatto sociale -->
+                        <div>
+                            <h5>Ampiezza dell'Impatto Sociale (max 400 char)</h5>
+                            <p>Definisci chiaramente il numero di persone che beneficeranno direttamente e indirettamente delle ricadute del progetto. Le previsioni sulle ricadute devono essere basate su dati o ricerche credibili e riferirsi a un arco temporale dei primi 6 mesi e un arco temporale di un quinquennio.</p>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="ampiezzaImpatto" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
+                        <!-- misura impatto sociale -->
+                        <div>
+                            <h5>Misurabilità dell'Impatto/Ricaduta (max 400 char)</h5>
+                            <p>Fornisci l'indicatore principale di misurazione dell'Impatto/Ricaduta del Progetto. L'indicatore principale di misurazione dell'impatto/ricaduta proposto è quantificabile e consente una misurazione oggettiva e verificabile nel tempo?</p>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="misuraImpatto" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
@@ -471,37 +608,138 @@
                             <div>
                                 <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 6 -->
-                <div class="step step-6">
+                </form>
+                <!-- STEP 6 | Criterio 3 -->
+                <form class="step step-6 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>CRITERIO 3</span>
                             </div>
                         </div>
-                        <!-- content -->
+                        <!-- header -->
+                        <div>
+                            <h3 class="mb-4">Sostenibilità nel lungo periodo</h3>
+                            <h5>Sostenibilità nel lungo periodo (minimo 5 anni) con le prime ricadute entro 6 mesi</h5>
+                        </div>
+                        <div>
+                            <p>Nella descrizione si richiede che vengano descritti in maniera chiara e concisa:</p>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    l'indicazione dei Partner/Clienti e del loro sostegno per lo sviluppo del Progetto (dovrai allegare alla Domanda le lettere di manifestazione di interesse dei Partner/Clienti)
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    l'indicazione del team di ricerca e della realtà ospitante (dovrai allegare alla Domanda un breve profilo del responsabile di Progetto e del team coinvolto)
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                    il Gantt e/o Timeline del Progetto a 60 mesi (dovrai allegarli alla Domanda)
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        <!-- manifestazioni di interesse -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Partner/Clienti</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkManifestazioni">
+                                <label class="form-check-label" for="checkManifestazioni">
+                                    Ci sono Partner/Clienti con Lettere di Manifestazione di lnteresse?
+                                </label>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                Manifestazioni di Interesse
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
+                        <!-- team di ricerca (profilazione base) -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Profilo e Competenze del Team di Ricerca (max 400 char)</h5>
+                            <div>
+                                <p>Descrivi in maniera completa il tuo team di ricerca usando come stimolo le seguenti domande:</p>
+                                <ol class="list-group list-group-numbered list-no-border">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            Quale è il ruolo del Responsabile di Progetto?
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            Come è composto il tuo team di ricerca dal punto di vista delle mansioni?
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            Come è assicurata la presenza di tulle le figure necessarie?
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="teamRicercaBase" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                    Team di Ricerca
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
+                        <!-- realtà ospitante -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Breve Profilo della Realtà Ospitante (max 200char)</h5>
+                            <div>
+                                <p>Dove sarà svolto il progetto e quale sostegno fornirà la realtà ospitante?</p>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="realtaOspitante" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                        </div>
+                        <!-- descrizione attività -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Descrizione dell'attività attraverso Gantt/Timeline del Progetto (max 400 char)</h5>
+                            <div>
+                                <p>Descrivi chiaramente e in maniera “narrativa” le tappe del progetto, le milestones connesse per i primi sei mesi e per i 5 anni di progetto.</p>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="descrizioneAttivita" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="gannt" class="form-label">Carica Gannt/T.L.</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="file" id="gannt" aria-describedby="gannt" required>
+                                    <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
+                                    <div class="invalid-feedback">
+                                        Allegato obbligatorio
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
@@ -510,37 +748,111 @@
                             <div>
                                 <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 7 -->
-                <div class="step step-7">
+                </form>
+                <!-- STEP 7 | Criterio 4  -->
+                <form class="step step-7 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>CRITERIO 4</span>
                             </div>
                         </div>
                         <!-- content -->
+                        <div>
+                            <h3>Progetto che ambisce a Finanziamenti/Co-Investimento/Open Innovation</h3>
+                        </div>
+                        <!-- checkbox generale accordi -->
+                        <div>
+                            <h5>Finanziamenti/Co-Investimenti/Open-Innovation</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkFinanziamenti">
+                                <label class="form-check-label" for="checkFinanziamenti">
+                                    Ci sono strategie per i Finanziamenti/Co-Investimenti/Open-Innovation
+                                </label>
+                            </div>
+                        </div>
+                        <!-- accordi finaziari-->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Strategia per gIi Investimenti Finanziari (max 400 char)</h5>
+                            <div>
+                                <p>Descrivi in modo chiaro e dettagliato la tua strategia per coinvolgere gli investitori nel progetto. Assicurati di includere le seguenti informazioni:</p>
+                                <ol class="list-group list-group-numbered list-no-border">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            tempistiche specifiche per la presentazione del progetto ai potenziali investitori 
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            obiettivi precisi che desideri raggiungere attraverso il coinvolgimento degli investitori
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            tempistiche specifiche per la presentazione del progetto ai potenziali investitori. Obiettivi precisi che desideri raggiungere attraverso il coinvolgimento degli investitori
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="accordiFinanziari" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                    Accordi Finanziari o Industriali
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
+                        <!-- accordi co-investimento -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Aspirazioni di Co-Investimento (max 400 char)</h5>
+                            <div>
+                                <p>Fornisci informazioni dettagliate e concrete sui tuoi piani di Co-Investimento, evidenziando il modo in cui si integrano con il mercato e il settore di applicazione specifici. Spiega come la tua strategia di co-finanziamento si concentra sulla condivisione dei costi e dei rischi.</p>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="coInvestimento" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                    Progetti di Co-Investimento
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
+                        <!-- progetti Open Innovation -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Obiettivi di Open Innovation (max 400 char)</h5>
+                            <div>
+                                <p>Fornisci informazioni dettagliate e concrete sui tuoi piani di Open Innovation, evidenziando il modo in cui si integrano con il mercato e il settore di applicazione specifici. Spiega come la tua strategia di Open Innovation mira a sfruttare collaborazioni esterne per accelerare l'innovazione.</p>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="openInnovation" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                    Progetti di Open Innovation
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
@@ -549,37 +861,130 @@
                             <div>
                                 <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 8 -->
-                <div class="step step-8">
+                </form>
+                <!-- STEP 8 | Criterio 5  -->
+                <form class="step step-8 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>CRITERIO 5</span>
                             </div>
                         </div>
-                        <!-- content -->
+                        <!-- header -->
+                        <div>
+                            <h3 class="mb-4">Composizione del Team di Ricerca e Sviluppo e del Team di Lavoro</h3>
+                            <h5>Composizione del team di ricerca e sviluppo e composizione del team di lavoro “operativo" (valutazione dei curriculum)</h5>
+                        </div>
+                        <div>
+                            <p>
+                                Punteggio extra di10 punti in caso che il Proponente, Responsabile e Team del Progetto siano di genere femminile (In particolare, esplicitare all’interno della domanda: Quote di partecipazione nella società, se esistente e composizione del CdA della società oppure del suo Organo decisionale).
+                            </p>
+                        </div>
+                        <!-- team di ricerca (profilazione avanzata)-->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Competenze ed Esperienze Specifiche del Team di Ricerca (max 400 char)</h5>
+                            <div>
+                                <p>Descrivi in maniera completa il tuo team di ricerca usando come stimolo le seguenti domande:</p>
+                                <ol class="list-group list-group-numbered list-no-border">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            Quali competenze distintive ha il team di ricerca?
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            Quali esperienze significative ha nell'ambito di progetto?
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="teamRicercaAdvanced" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                    Team di Ricerca
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
+                        <!-- team operativo -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Competenze ed Esperienze Specifiche del Team Lavoro “operativo” (max 400 char)</h5>
+                            <div>
+                                <p>Descrivi in maniera completa il tuo team dilavoro "operativo” usando come stimolo le seguenti domande:</p>
+                                <ol class="list-group list-group-numbered list-no-border">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            Quali ruoli e competenze sono presenti?
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            Come contribuiscono al raggiungimento dell'obiettivo di progetto?
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div>
+                                <textarea class="form-control" placeholder="" id="teamOperativo" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                    Team di lavoro "operativo"
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
+                        <!-- quote rosa  -->
+                        <div class="callout d-flex flex-column gap-3 py-3 ps-4">
+                            <h5>Quote di Partecipazione Femminile in Posizioni di Leadership</h5>
+                            <div>
+                                <p>Sono dedotte direttamente dagli elementi caricati nell'interfaccia di definizione del Team di Ricerca, in cui sono definiti:</p>
+                                <ol class="list-group list-no-border">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            - il Team di Ricerca
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            - il Responsabile del Team diRicerca il Proponente del Progetto
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            - le quote di partecipazione nelle società
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                            - la partecipazione al CdA o all'Organo Decisionale
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                                Team di Ricerca
+                                <i class="bi bi-plus-square"></i>
+                            </button>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
@@ -588,52 +993,113 @@
                             <div>
                                 <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 AVANTI
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
                     </div>
-                </div>
-                <!-- STEP 9 -->
-                <div class="step step-9">
+                </form>
+                <!-- STEP 9 | Criterio 6  -->
+                <form class="step step-9 needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
-                                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
-                                </svg>
+                                <i class="bi bi-tag"></i>
                                 <span>CRITERIO 6</span>
                             </div>
                         </div>
-                        <!-- content -->
+                        <!-- header -->
+                        <div>
+                            <h3 class="mb-4">Candidatura a Progetti EIC e ERC</h3>
+                            <h5>Progetti EIC e ERC che ambiscono a sottomettere a European Innovation/Research Council entro 12 mesi (extra punteggio applicato solo ai primi 10 progetti)</h5>
+                        </div>
+                        <div>
+                            <p>
+                                NB! Le candidature a EIC (European Innovation Council* <a href="https://eic.ec.europa.eu" target="_blank">https://eie.ec.europa.eu</a>) o a ERC (European Research Council <a href="https://erc.europa.eu" target="_blank">https://erc.europa.eu</a>) sono tra loro mutuamente esclusive. Il proponente può candidarsi a uno solo degli ambiti o a nessuno, ma non a tutti e due contemporaneamente.
+                            </p>
+                        </div>
+                        <!-- nessuna candidatura -->
+                        <div class="callout d-flex flex-column gap-3 py-2 ps-4 mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="progettiSpeciali" value="" id="nessunaScelta" checked>
+                                <h5 class="form-check-label mb-0" for="nessunaScelta">
+                                    Non mi candiderò né a EIC né a ERC
+                                </h5>
+                            </div>
+                        </div>
+                        <!-- candidatura EIC -->
+                        <div class="mb-3">
+                            <div class="callout d-flex flex-column gap-3 py-2 ps-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="progettiSpeciali" value="" id="checkEic">
+                                    <h5 class="form-check-label mb-0" for="checkEic">
+                                        Candidatura a EIC (European Innovation Council)
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-3 py-3 ps-4">
+                                <p class="fw-medium">Allineamento ai Requisiti EIC (European Innovation Council) (max1000 char)</p>
+                                <div>
+                                    <p>
+                                        Per candidarsi alla EIC (European Innovation Council) spiega in che modo l'innovazione proposta ha il potenziale per creare nuovi mercati o stimolare la crescita economica, in linea con gli obiettivi dello EIC. Come utilizzerai il contributo della Fondazione per candidarti all'EIC entro 12 mesi?
+                                    </p>
+                                </div>
+                                <div>
+                                    <textarea class="form-control" placeholder="" id="eic" style="height: 100px" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Risposta obbligatoria
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- candidatura ERC -->
+                        <div class="mb-3">
+                            <div class="callout d-flex flex-column gap-3 py-2 ps-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="progettiSpeciali" value="" id="checkErc">
+                                    <h5 class="form-check-label mb-0" for="checkErc">
+                                        Candidatura a ERC (European Research Council)
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-3 py-3 ps-4">
+                                <p class="fw-medium">Allineamento ai Requisiti ERC (European ResearchCouncil) (max 1000 char)</p>
+                                <div>
+                                    <p>
+                                        Per candidarsi allo ERC (European Research Council) spiega come la tua proposta di ricerca presenta una ricerca di base pionieristica che promuove l'eccellenza scientifica, in linea con gli standard ERC. Come utilizzerai il contributo della Fondazione per candidarti all'ERC entro12 mesi?
+                                    </p>
+                                </div>
+                                <div>
+                                    <textarea class="form-control" placeholder="" id="erc" style="height: 100px" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Risposta obbligatoria
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
                         <div>
                             <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                                </svg>
+                                <i class="bi bi-arrow-left"></i>
                                 INDIETRO
                             </button>
                         </div>
                         <!-- double button -->
                         <div class="align-items-center align-items-sm-end d-flex flex-column flex-sm-row gap-4 gap-sm-5">
                             <div>
-                                <span class="link">Salva bozza</span>
+                                <a href="#" class="link">Salva bozza</a>
                             </div>
-                            <button type="button" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                            <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
                                 SALVA
                             </button>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
                 
         </div>
 
@@ -646,32 +1112,143 @@
         
         <script>
                 
-            let validateStep1 = () =>{
-                console.log('validazione step 1')
+            let step1 = {}
+            let step2 = {}
+           
+            let validateStep1 = async (param) => {
+                let form = document.querySelector('.step-1')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep2 = () =>{
-                console.log('validazione step 2')
+            let validateStep2 = (param) =>{
+                let form = document.querySelector('.step-2')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep3 = () =>{
-                console.log('validazione step 3')
+            let validateStep3 = (param) =>{
+                let form = document.querySelector('.step-3')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep4 = () =>{
-                console.log('validazione step 4')
+            let validateStep4 = (param) =>{
+                let form = document.querySelector('.step-4')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep5 = () =>{
-                console.log('validazione step 5')
+            let validateStep5 = (param) =>{
+                let form = document.querySelector('.step-5')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep6 = () =>{
-                console.log('validazione step 6')
+            let validateStep6 = (param) =>{
+                let form = document.querySelector('.step-6')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep7 = () =>{
-                console.log('validazione step 7')
+            let validateStep7 = (param) =>{
+                let form = document.querySelector('.step-7')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep8 = () =>{
-                console.log('validazione step 8')
+            let validateStep8 = (param) =>{
+                let form = document.querySelector('.step-8')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(false)
+                    }
+                })
             }
-            let validateStep9 = () =>{
-                console.log('validazione step 8')
+            let validateStep9 = (param) =>{
+                let form = document.querySelector('.step-9')
+                // skippa se click da mobile
+                if(param.classList.contains('btn-mob')){
+                    return true
+                }
+                return new Promise((resolve, reject) => {
+                    if(form.checkValidity()){
+                        resolve(true)                       
+                    }
+                    else {
+                        resolve(true)
+                    }
+                })
             }
             
         </script>

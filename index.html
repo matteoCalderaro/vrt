@@ -1,32 +1,28 @@
 <!doctype html>
 <html lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VRT - progress</title>
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
-    <!-- Bootstrap icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- My style -->
-    <link rel="stylesheet" href="style.css">
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- recaptcha -->
-    <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-    <style>
-     
-    </style>
+    <head>   
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>VRT - progress</title>
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+        <!-- Bootstrap icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <!-- My style -->
+        <link rel="stylesheet" href="style.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- recaptcha -->
+        <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
 
@@ -77,27 +73,29 @@
 
         <div class="container-fluid position-absolute top-50 start-50 translate-middle" style="max-width: 1400px;">
             <div class="row ">
+                <!-- info generali -->
                 <div class="col-md-6 mb-3">
-                    <p>Area riservata</p>
+                    <h4>Area riservata</h4>
                     <div class="card">
                         <p class="card-header">Benvenuti nel portale "Richieste On Line" (ROL) attraverso cui è possibile inviare le richieste di contributo alla Fondazione VRT.</p>
                         <div class="card-body border-bottom">
-                            <h3 class="card-title">Primo accesso</h3>
+                            <p class="card-title fw-semibold">Primo accesso</p>
                             <p class="card-text">
-                                Al momento del primo accesso, vi verrà chiesto di compilare l'anagrafica dell'ente, attraverso l'Accreditamento. Tale procedura si effettua una volta sola, permette l'inserimento dei dati anagrafici e della documentazione amministrativa dell'organizzazione e deve essere necessariamente completata prima di inviare una richiesta di contributo.
-                                Si richiede di inserire un indirizzo email costantemente presidiato, in quanto tutte le successive comunicazioni da parte della Fondazione saranno notificate a tale indirizzo. Si raccomanda di non inserire indirizzi mail PEC, in quanto non compatibile con il presente sistema.
+                                Al momento del primo accesso, vi verrà chiesto di compilare l'anagrafica dell'ente, attraverso <span class="fw-semibold">l'Accreditamento</span>. Tale procedura si effettua una volta sola, permette l'inserimento dei dati anagrafici e della documentazione amministrativa dell'organizzazione e deve essere necessariamente completata prima di inviare una richiesta di contributo.
+                                Si richiede di inserire un indirizzo email costantemente presidiato, in quanto tutte le successive comunicazioni da parte della Fondazione saranno notificate a tale indirizzo. Si raccomanda di <span class="fw-semibold">non inserire indirizzi mail PEC</span>, in quanto non compatibile con il presente sistema.
                             </p>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">Accessi successivi</h3>
+                            <p class="card-title fw-semibold">Accessi successivi</p>
                             <p class="card-text">
                                 Attraverso l'area riservata, a cui avrete accesso utilizzando le vostre credenziali, potrete inviare nuove richieste di contributo su Bandi, consultare le richieste inviate in passato, modificare i dati del vostro ente e rendicontare i contributi deliberati.
                             </p>
                         </div>  
                     </div>
                 </div>
+                <!-- form -->
                 <div class="col-md-6">
-                    <p>Login</p>
+                    <h4>Login</h4>
                     <div class="gap-3 row">
                         <div class="col-12">
                             <div class="input-group show_hide_password" id="password">
@@ -119,22 +117,31 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
-                                  Default checkbox
+                                  Ricorda
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <!-- <div class="card">
-                        <h5 class="card-header">Featured</h5>
-                        <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="red small-label">Hai dimenticato la password?</p>
+                        <!-- button login -->
+                        <div>
+                            <button class="btn-vrt-primary align-items-center d-flex gap-2 justify-content-center ms-auto">
+                                LOGIN
+                                <!-- <i class="bi bi-arrow-right"></i> -->
+                            </button>
                         </div>
-                    </div> -->
+                        <div class="col-12"  >
+                            <hr class="border border-1 opacity-50" style="border-color: var(--primary) !important">
+                        </div>
+                        <p class="small-label">Non sei registrato?</p>
+                        <!-- button registrati -->
+                        <div>
+                            <button class="btn-vrt-outline-primary">
+                                REGISTRATI
+                                <!-- <i class="bi bi-arrow-right"></i> -->
+                            </button>
+                        </div>
+                    </div>
                 </div>
-               
-    
             </div>
         </div>
 

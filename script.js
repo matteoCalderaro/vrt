@@ -110,13 +110,14 @@ $(document).ready(function() {
   
   // bottone avanti event handler
   $(".next-step").click(function() {
+
     if (currentStep < totalStepNumber+1) {
       
       //////////////////////////////////////
       //// CHIAMA FUNZIONI VALIDAZIONE FORM
       ////////////////////////////////////
       (async () => {
-        const result = await eval(`validateStep${currentStep}`)()
+        const result = await eval(`validateStep${currentStep}`)(this)
         if (result == true) {
             
           // colora la circonferenza dello step cliccato 
@@ -193,21 +194,25 @@ $(document).ready(function() {
 ///////////////////////////////////
 //////// SCROLL TO TOP ICON
 const scrollIcon = document.querySelector('.scroll-icon-inner')
+if(scrollIcon){
 
-scrollIcon.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+  scrollIcon.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  window.addEventListener("scroll", () => {
+    let scroll = this.scrollY;
+    if(scroll>500 && window.innerWidth < 767){
+      scrollIcon.style.visibility = "visible"
+    }
+    else {
+      scrollIcon.style.visibility = "hidden"
+    }
+  });
+}
 
-window.addEventListener("scroll", () => {
-  let scroll = this.scrollY;
-  if(scroll>500 && window.innerWidth < 767){
-    scrollIcon.style.visibility = "visible"
-  }
-  else {
-    scrollIcon.style.visibility = "hidden"
-  }
-});
+
 
 
 ///////////////////////////////////

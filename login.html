@@ -166,8 +166,15 @@
                         <div>
                             <h5>Titolo del Progetto (max 100 char)</h5>
                             <p>Specifica un titolo di progetto che sia chiaro, semplice, comunicativo.</p>
-                            <div>
+                            <!-- <div>
                                 <textarea class="form-control" placeholder="" id="titolo" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div> -->
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="" id="titolo" required></textarea>
+                                <label for="titolo">Max 100 charatteri</label>
                                 <div class="invalid-feedback">
                                     Risposta obbligatoria
                                 </div>
@@ -177,8 +184,15 @@
                         <div>
                             <h5>Abstract di Progetto (max 500 char)</h5>
                             <p>Dai una definizione sintetica del tuo progetto che sarà utilizzata come standard in tutta la comunicazione. Deve contenere tutto ciò che è in grado di caratterizzare e distinguere il progetto di ricerca.</p>
-                            <div>
+                            <!-- <div>
                                 <textarea class="form-control" placeholder="" id="abstract" style="height: 100px" required></textarea>
+                                <div class="invalid-feedback">
+                                    Risposta obbligatoria
+                                </div>
+                            </div> -->
+                            <div class="form-floating">
+                                <textarea class="form-control"  id="abstract" style="height: 100px" required></textarea>
+                                <label for="abstract">Max 500 charatteri</label>
                                 <div class="invalid-feedback">
                                     Risposta obbligatoria
                                 </div>

@@ -75,6 +75,11 @@ select { /* Microsoft Edge */
 .vrt-navbar .container-fluid {
     max-width: 1400px; /*////////// Adjust width as needed  */
 }
+.vrt-navbar .active {
+    text-decoration: underline;
+    color: var(--primary) !important;
+    font-weight: 500;
+}
 
 /*/////////////////
 /////// LAYOUT 
@@ -217,6 +222,9 @@ select { /* Microsoft Edge */
     background-color: var(--primary);
     opacity: 0.65;
 }
+.btn-vrt-small{
+    min-width:unset !important;
+}
 
 /* BTN-VRT-OUTLINE-PRIMARY */
 .btn-vrt-outline-primary {
@@ -341,12 +349,12 @@ select { /* Microsoft Edge */
     color:red;
 }  
 
-/* 
-utilizzato:
-- labels specifiche file in (register -> documenti)
-- labels home page
+/* ////////////////////////
+//////  SMALL - LABELS
+- labels per specifiche file in register -> documenti
+- labels home page ('Hai dimenticato la password?')
+///////////////////////*/ 
 
-*/ 
 .small-label {
     font-size: 12px;
 }
@@ -371,4 +379,14 @@ utilizzato:
  .input-add-on-icon {
     border-top-right-radius: 5.25px !important;
     border-bottom-right-radius: 5.25px !important;
+}
+
+/*//////////////////////////////////
+ ///////// TABLE  
+ ///////////////*/
+.table-group-divider{
+    border-top-color: var(--primary) ;
+}
+.table td{
+    white-space: nowrap;
 }

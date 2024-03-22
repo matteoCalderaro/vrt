@@ -342,6 +342,12 @@ select { /* Microsoft Edge */
     }  
 }
 
+ /* arrotonda i bordi input con add-on (applicare alla label) */
+.input-add-on-icon {
+    border-top-right-radius: 5.25px !important;
+    border-bottom-right-radius: 5.25px !important;
+}
+
 
 /* simbolo asterisco su label */
 .form-label:after { 
@@ -349,8 +355,7 @@ select { /* Microsoft Edge */
     color:red;
 }  
 
-/* ////////////////////////
-//////  SMALL - LABELS
+/* SMALL LABELS
 - labels per specifiche file in register -> documenti
 - labels home page ('Hai dimenticato la password?')
 ///////////////////////*/ 
@@ -376,13 +381,9 @@ select { /* Microsoft Edge */
     border: none;
  }
 
- .input-add-on-icon {
-    border-top-right-radius: 5.25px !important;
-    border-bottom-right-radius: 5.25px !important;
-}
 
 /*//////////////////////////////////
- ///////// TABLE  
+ ///////// TABLES  
  ///////////////*/
 .table-group-divider{
     border-top-color: var(--primary) ;

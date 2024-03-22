@@ -44,10 +44,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-4 mb-sm-0">
                         <li class="nav-item mx-auto">
-                            <a class="nav-link active" aria-current="page" href="register.html">ELENCO</a>
+                            <a class="nav-link" aria-current="page" href="elenco.html">ELENCO</a>
                         </li>
                         <li class="nav-item mx-auto">
-                            <a class="nav-link active" aria-current="page" href="login.html">RENDICONTAZIONI</a>
+                            <a class="nav-link" aria-current="page" href="#">RENDICONTAZIONI</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>
@@ -610,6 +610,36 @@
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <h5 class="mb-4">Numero di persone beneficiarie del progetto entro 6 mesi a distanza di 5 anni</h5>
+                            <div class="row">
+                                <div class="mb-3 col-12 col-lg-6">
+                                    <label for="personeSeiMesi" class="form-label">Persone beneficiarie del progetto entro 6 mesi</label>
+                                    <div class="input-group">
+                                      <span class="input-group-text">numero Persone</span>
+                                      <input type="number" class="form-control" id="personeSeiMesi" aria-describedby="basic-addon3 basic-addon4" required>
+                                      <span class="input-group-text input-add-on-icon"><i class="bi bi-person"></i></span>
+                                      <div class="invalid-feedback">
+                                          Risposta obbligatoria
+                                      </div>
+                                    </div>
+                                    <!-- <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div> -->
+                                </div>
+                                <div class="mb-3 col-12 col-lg-6">
+                                    <label for="personeCinqueAnni" class="form-label">Persone beneficiarie del progetto entro 5 anni</label>
+                                    <div class="input-group">
+                                      <span class="input-group-text">numero Persone</span>
+                                      <input type="number" class="form-control" id="personeCinqueAnni" aria-describedby="basic-addon3 basic-addon4" required>
+                                      <span class="input-group-text input-add-on-icon"><i class="bi bi-person"></i></span>
+                                      <div class="invalid-feedback">
+                                          Risposta obbligatoria
+                                      </div>
+                                    </div>
+                                    <!-- <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div> -->
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                     <!-- buttons -->
                     <div class="align-items-end d-flex justify-content-between py-5">
@@ -739,16 +769,19 @@
                                     Risposta obbligatoria
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <label for="gannt" class="form-label">Carica Gannt/T.L.</label>
-                                <div class="input-group">
-                                    <input class="form-control" type="file" id="gannt" aria-describedby="gannt" required>
-                                    <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
-                                    <div class="invalid-feedback">
-                                        Allegato obbligatorio
+                            
+                                <div class="col-12 col-lg-6">
+                                    <label for="gannt" class="form-label">Carica Gannt/T.L.</label>
+                                    <div class="input-group flex-grow-1">
+                                        <input class="form-control" type="file" id="gannt" aria-describedby="gannt" required>
+                                        <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
+                                        <div class="invalid-feedback">
+                                            Allegato obbligatorio
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            
                         </div>                        
                     </div>
                     <!-- buttons -->

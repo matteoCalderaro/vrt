@@ -145,9 +145,7 @@ $(document).ready(function() {
             return
         }
       })()
-      
     }
-
     $(window).scrollTop(0);
   });
   

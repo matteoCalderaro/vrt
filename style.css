@@ -31,13 +31,6 @@ h5 {
     font-weight: 500;
 }
 
-.tag {
-    border-radius: 4px;
-    color: #fff;
-    background-color: var(--primary);
-    font-weight: 500;
-}
-
 /* TEXT COLOR */
 .card {
     color: inherit;
@@ -60,6 +53,22 @@ select { /* Microsoft Edge */
 }
 
 
+/*/////////////////
+/////// TAG 
+////////////////*/
+.tag {
+    border-radius: 4px;
+    color: #fff;
+    background-color: var(--primary);
+    font-weight: 500;
+}
+.tag.tag-outline {
+    border-radius: 4px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background-color: transparent;
+    font-weight: 500;
+}
        
 /*/////////////////
 /////// NAVBAR 
@@ -364,6 +373,11 @@ select { /* Microsoft Edge */
     font-size: 12px;
 }
 
+/* toglie i bordi dalle liste (applicare a UL/OL) */
+.list-no-border .list-group-item{
+    border: none;
+}
+
 /*//////////////////////////////////
  ///////// CALLOUTS  
  ///////////////*/
@@ -375,10 +389,6 @@ select { /* Microsoft Edge */
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent; */
    
- }
-
- .list-no-border .list-group-item{
-    border: none;
  }
 
 

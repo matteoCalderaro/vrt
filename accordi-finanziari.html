@@ -84,135 +84,86 @@
                 
             <!-- INTERFACCIA DI CARICAMENTO  -->
             <div class="form-container">
-                <!-- TEAM DI RICERCA -->
+                <!-- ACCORDI FINAZIARI -->
                 <form class="needs-validation"  novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
                                 <i class="bi bi-files"></i>
-                                <span>Team di Ricerca</span>
+                                <span>Accordi Finanziari</span>
                             </div>
                         </div>
                         <!-- header -->
                         <div>
-                            <h3 class="mb-4">Membro del Team di Ricerca</h3>
-                            <p class="mb-0">Tutti i campi sono obbligatori, compreso il CV allegato</p>
+                            <h3 class="mb-4">Accordo Finanziario o Industriale</h3>
+                            <p class="mb-0">Tutti i campi sono obbligatori, tranne l'eventuale allegato</p>
                         </div>
-                        <!-- ente + partnership -->
+                        <!-- organizzazione + natura accordo -->
                         <div class="d-flex flex-wrap justify-content-between gap-4">
-                            <!-- ente -->
-                            <div class="callout ps-4 col-12 col-md-6 d-flex flex-column gap-3 justify-content-center">
+                            <!-- organizzazione -->
+                            <div class="callout ps-4 col-12 col-md-6 d-flex flex-column gap-3">
                                 <div class="d-flex flex-wrap">
-                                    <h5 class="col-12 col-md-6">Nome</h5>
+                                    <h5 class="col-12 col-md-6">Nome Organizzazione</h5>
                                     <div class="col-12 col-md-6">
-                                        <input type="text" class="form-control" id="nomeMembroRicerca" value="" placeholder="" required>
+                                        <input type="text" class="form-control" id="nomePartnerFinanziario" value="" placeholder="Specificare un nome e natura giuridica" required>
                                         <div class="invalid-feedback">Scrivi un nome</div>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-wrap">
-                                    <h5 class="col-12 col-md-6">Cognome</h5>
+                                    <h5 class="col-12 col-md-6">Tipologia Accordo</h5>
                                     <div class="col-12 col-md-6">
-                                        <input type="text" class="form-control" id="cognomeMembroRicerca" value="" placeholder="" required>
-                                        <div class="invalid-feedback">Scrivi un nome</div>
+                                        <select class="form-select" id="tipologiaAccordo" aria-label="select example" required>
+                                            <option value="">Scegli da lista</option>
+                                            <option value="1">Business Angel</option>
+                                            <option value="2">Venture Capital</option>
+                                            <option value="3">Fondi di Investimento</option>
+                                            <option value="3">Private Equity</option>
+                                            <option value="3">Azienda</option>
+                                            <option value="4">....</option>
+                                        </select>
+                                        <div class="invalid-feedback">La scelta è obbligatoria</div>
                                     </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="femmineRicerca">
-                                    <label class="form-check-label" for="femmineRicerca">
-                                        Genere Femminile (si ricorda che questo dato contribuisce al Criterio 5)
-                                    </label>
                                 </div>
                             </div>
-                            <!-- ruolo nel team -->
-                            <div class="col-12 col-md-4 callout ps-4 d-flex flex-column gap-3 justify-content-center">
+                            <!-- natura accordo -->
+                            <div class="callout ps-4 d-flex flex-column gap-3 justify-content-center">
                                 <div class="d-flex justify-content-between">
-                                    <h5>Ruolo nel Team</h5>
+                                    <h5>Natura Accordo</h5>
                                 </div>
                                 <div class="d-flex gap-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="responsabileTeamRicerca">
-                                        <label class="form-check-label" for="responsabileTeam">
-                                            Responsabile del Team di Ricerca
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="accordoFinanziario">
+                                        <label class="form-check-label" for="accordoFinanziario">
+                                          Finanziario
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="proponente" checked>
-                                        <label class="form-check-label" for="proponente">
-                                            Proponente
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="accordoIndustriale" checked>
+                                        <label class="form-check-label" for="accordoIndustriale">
+                                          Industriale
                                         </label>
                                     </div>
                                 </div>
-                                <span>Si ricorda che in tutto il Team di Ricerca c'è sempre <strong>un solo Responsabile</strong> e <strong>un solo Proponente</strong>: essi <strong>possono coincidere</strong>.</span>
                             </div>
                         </div>
-                        <!-- mansioni -->
+                        <!-- strategia finanziamento -->
                         <div>
-                            <h5>Mansioni svolte nel progetto (max 400 char)</h5>
-                            <p>Sii specifico perché questo campo contribuisce ai criteri di valutazione (vedi Criterio 3)</p>
+                            <h5>Descrizione della strategia di finanziamento o accordo (max 200 char)</h5>
+                            <p>Definire in sintesi la strategia e importi economici. Sii specifico ed esplicito perché questo campo contribuisce ai criteri di valutazione (vedi Criterio 4)</p>
                             <div>
-                                <textarea class="form-control" placeholder="" id="mansioniMembroRicerca" style="height: 100px" required></textarea>
+                                <textarea class="form-control" placeholder="" id="strategiaFinanziamento" style="height: 100px" required></textarea>
                                 <div class="invalid-feedback">
                                     Risposta obbligatoria
                                 </div>
                             </div>
                         </div>
-                        <!-- esperienze -->
-                        <div>
-                            <h5>Esperienze specifiche nel campo di Ricerca (max 400 char)</h5>
-                            <p>Sii specifico perchéquesto campo contribuisce ai criteri di valutazione (vedi Criterio 5)</p>
-                            <div>
-                                <textarea class="form-control" placeholder="" id="esperienzeMembroRicerca" style="height: 100px" required></textarea>
-                                <div class="invalid-feedback">
-                                    Risposta obbligatoria
-                                </div>
-                            </div>
-                        </div>
-                        <!-- cv + quota di partecipazione -->
-                        <div class="d-flex flex-wrap gap-3 align-items-baseline">
-                            <!-- allega CV -->
-                            <div class="col-12 col-lg-4">
-                                <label for="gannt" class="form-label">Allega CV</label>
-                                <div class="input-group flex-grow-1">
-                                    <input class="form-control" type="file" id="cvMembroRicerca" aria-describedby="gannt" required>
-                                    <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
-                                    <div class="invalid-feedback">
-                                        Allegato obbligatorio
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- quota partecipazione -->
-                            <div class="col-12 col-lg-3">
-                                <label for="gannt" class="form-label">% di Quota di partecipazione al Capitale Sociale</label>
-                                <div class="input-group flex-grow-1">
-                                    <input class="form-control" type="number" id="partecipazioneMembroRicerca" aria-describedby="gannt" required>
-                                    <span class="input-group-text input-add-on-icon"><i class="bi bi-percent"></i></span>
-                                    <div class="invalid-feedback">
-                                        Campo obbligatorio
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ruolo all'interno del CdA -->
-                        <div>
-                            <p class="form-label">Ruolo all'interno del CdA/Organo Decisionale del Beneficiario</p>
-                            <div class="d-flex flex-wrap gap-3 align-items-baseline">
-                                <!-- ruolo -->
-                                <div class="col-12 col-lg-4">
-                                    <select class="form-select" aria-label="Default select example" id="ruoloMembroRicerca" required>
-                                        <option value="">Scegli da lista</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                    <div class="invalid-feedback">La scelta è obbligatoria</div>
-                                </div>
-                                <!-- altro ruolo -->
-                                <div class="col-12 col-lg-3">
-                                    <div class="input-group flex-grow-1">
-                                        <input class="form-control" type="text" placeholder="Altro ruolo..." id="altroRuolo" aria-describedby="gannt">
-                                    </div>
-                                </div>
+                        <!-- allega lettera di accordo -->
+                        <div class="col-12 col-lg-4">
+                            <label for="allegatoAccordo" style="margin-bottom: 0.5rem;">Allega la lettera di accordo (opzionale)</label>
+                            <div class="input-group flex-grow-1">
+                                <input class="form-control" type="file" id="allegatoAccordo" aria-describedby="gannt">
+                                <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
                             </div>
                         </div>
                     </div>
@@ -230,7 +181,7 @@
                                 <a href="#" class="link">Salva bozza</a>
                             </div> -->
                             <button class="btn-vrt-primary align-items-center d-flex gap-3 justify-content-center ms-auto">
-                                Carica Membro
+                                Carica Accordo
                                 <i class="bi bi-upload"></i>
                             </button>
                         </div>

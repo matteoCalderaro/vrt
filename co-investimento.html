@@ -84,99 +84,46 @@
                 
             <!-- INTERFACCIA DI CARICAMENTO  -->
             <div class="form-container">
-                <!-- LETTERA DI INTERESSE -->
+                <!-- CO - INVESTIMENTO -->
                 <form class="needs-validation"  novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
                             <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
                                 <i class="bi bi-files"></i>
-                                <span>Manifestazioni di Interesse</span>
+                                <span>Co-Investimento</span>
                             </div>
                         </div>
                         <!-- header -->
                         <div>
-                            <h3 class="mb-4">Lettere di manifestazione di interesse dei Partner/Clienti</h3>
-                            <p class="mb-0">Tutti i campi sono obbligatori, compreso la lettera allegata</p>
+                            <h3 class="mb-4">Partner di Co-lnvestimento</h3>
+                            <p class="mb-0">Tutti i campi sono obbligatori, tranne l'eventuale allegato</p>
                         </div>
-                        <!-- ente/partnership -->
-                        <div class="d-flex flex-wrap justify-content-between gap-4">
-                            <!-- ente -->
-                            <div class="callout ps-4 col-12 col-md-6 d-flex flex-column gap-3">
-                                <div class="d-flex flex-wrap">
-                                    <h5 class="col-12 col-md-6">Ente (da lista)</h5>
-                                    <div class="col-12 col-md-6">
-                                        <select class="form-select" id="enteDaLista" aria-label="select example" required>
-                                            <option value="">Scegli da lista</option>
-                                            <option value="1">Cibio</option>
-                                            <option value="2">DISI</option>
-                                            <option value="3">FBK</option>
-                                            <option value="3">UniTN</option>
-                                            <option value="3">....</option>
-                                        </select>
-                                        <div class="invalid-feedback">La scelta è obbligatoria</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-wrap">
-                                    <h5 class="col-12 col-md-6">Altro (solo se non in lista)</h5>
-                                    <div class="col-12 col-md-6">
-                                        <input type="text" class="form-control" id="enteAltro" value="" placeholder="" required>
-                                        <div class="invalid-feedback">Scrivi un nome</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- partnership -->
-                            <div class="callout ps-4 d-flex flex-column gap-3 justify-content-center">
-                                <div class="d-flex justify-content-between">
-                                    <h5>Partnership</h5>
-                                </div>
-                                <div class="d-flex gap-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="partner">
-                                        <label class="form-check-label" for="partner">
-                                          Partner
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="cliente" checked>
-                                        <label class="form-check-label" for="cliente">
-                                          Cliente
-                                        </label>
-                                    </div>
-                                </div>
+                        <!-- organizzazione partner -->
+                        <div class="callout ps-4 col-12 col-md-8 d-flex align-items-center gap-3 flex-wrap">
+                            <h5 class="col-12 col-md-5 mb-0">Nome Organizzazione partner</h5>
+                            <div class="col-12 col-md-6">
+                                <input type="text" class="form-control" id="nomePartnerCoFinanziamento" value="" placeholder="Specificare un nome e natura giuridica" required>
+                                <div class="invalid-feedback">Scrivi un nome</div>
                             </div>
                         </div>
-                        <!-- portata impegno -->
+                        <!-- strategia co-investimento -->
                         <div>
-                            <h5>Descrizione della natura e della portata dell'impegno (max 200 char)</h5>
-                            <p>Sii specifico ed esplicito perché questo campo contribuisce ai criteri di valutazione</p>
+                            <h5>Descrizione della strategia di Co-lnvestimento (max 200 char)</h5>
+                            <p>Definire in sintesi la strategia e importi economici. Sii specifico ed esplicito perché questo campo contribuisce ai criteri di valutazione (vedi Criterio 4)</p>
                             <div>
-                                <textarea class="form-control" placeholder="" id="portataImpegno" style="height: 100px" required></textarea>
+                                <textarea class="form-control" placeholder="" id="strategiaCoInvestimento" style="height: 100px" required></textarea>
                                 <div class="invalid-feedback">
                                     Risposta obbligatoria
                                 </div>
                             </div>
                         </div>
-                        <!-- carica del firmatario -->
-                        <div>
-                            <h5>Carica/Ruolo di chi ha firmato la lettera (max 200 char)</h5>
-                            <p>Definisci con chiarezza quale sia il ruolo della persona all'interno della tua organizzazione in relazione al livello di decisionalità che esercita. Sii specifico perché questo campo contribuisce ai criteri di valutazione (vedi criterio 5)</p>
-                            <div>
-                                <textarea class="form-control" placeholder="" id="caricaFirmatario" style="height: 100px" required></textarea>
-                                <div class="invalid-feedback">
-                                    Risposta obbligatoria
-                                </div>
-                            </div>
-                        </div>
-                        <!-- allega lettera manifestazione -->
+                        <!-- allega lettera di co-investimento -->
                         <div class="col-12 col-lg-4">
-                            <label for="allegatoManifestazione" class="form-label">Allega la lettera di manifestazione di interesse</label>
+                            <label for="allegattoCoInvestimento" style="margin-bottom: 0.5rem;">Allega la lettera di accordo (opzionale)</label>
                             <div class="input-group flex-grow-1">
-                                <input class="form-control" type="file" id="allegatoManifestazione" aria-describedby="gannt" required>
+                                <input class="form-control" type="file" id="allegattoCoInvestimento" aria-describedby="gannt">
                                 <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
-                                <div class="invalid-feedback">
-                                    Allegato obbligatorio
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,7 +141,7 @@
                                 <a href="#" class="link">Salva bozza</a>
                             </div> -->
                             <button class="btn-vrt-primary align-items-center d-flex gap-3 justify-content-center ms-auto">
-                                Carica Lettera
+                                Carica Accordo
                                 <i class="bi bi-upload"></i>
                             </button>
                         </div>

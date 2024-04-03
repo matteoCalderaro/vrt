@@ -8,6 +8,8 @@
 
   //Loop over them and prevent submission
   Array.from(forms).forEach(form => {
+    
+    console.log(form)
       form.addEventListener('submit', event => {
       if (!form.checkValidity()||form.checkValidity()) {
           event.preventDefault()
@@ -45,9 +47,9 @@ var totalStepNumber
 function displayStep(stepNumber) {
 
   // esce se lo step cliccato non è quello immediatamente sucessivo a quello cliccato 
-  // if(stepNumber > currentStep +1 ){
-  //   return
-  // }
+  if(stepNumber > currentStep +1 ){
+    return
+  }
   // esce se lo step cliccato non è quello immediatamente precedente o sucessivo a quello cliccato 
   // if(stepNumber > currentStep +1 || stepNumber < currentStep - 1){
   //     return
@@ -110,7 +112,7 @@ $(document).ready(function() {
   
   // bottone avanti event handler
   $(".next-step").click(function() {
-
+    console.log(this)
     if (currentStep < totalStepNumber+1) {
       
       //////////////////////////////////////

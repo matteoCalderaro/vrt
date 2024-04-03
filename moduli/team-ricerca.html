@@ -15,7 +15,7 @@
         <!-- Animate.css -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <!-- My style -->
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style.css">
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <!-- Bootstrap Bundle with Popper -->
@@ -34,7 +34,7 @@
         <!-- NAVBAR -->
         <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
             <div class="container-fluid px-0">
-                <a class="navbar-brand me-0 me-sm-5"  href="index.html"><img height="40" src="logoVrt.png" alt="vrt-logo"></a>
+                <a class="navbar-brand me-0 me-sm-5"  href="index.html"><img height="40" src="../media/logo/logoVrt.png" alt="vrt-logo"></a>
                 <span class="navbar-text red fw-semibold fs-5 d-md-none">
                     Valorizzazione Ricerca Trentina
                 </span>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-4 mb-sm-0">
                         <li class="nav-item mx-auto">
-                            <a class="nav-link" aria-current="page" href="elenco.html">ELENCO</a>
+                            <a class="nav-link" aria-current="page" href="../elenco.html">ELENCO</a>
                         </li>
                         <li class="nav-item mx-auto">
                             <a class="nav-link" aria-current="page" href="#">RENDICONTAZIONI</a>
@@ -55,7 +55,7 @@
                         </li> -->
                         <li class="nav-item dropdown mx-auto">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown         
+                                Moduli         
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="lettera-interesse.html">Lettera di interesse</a></li>
@@ -91,12 +91,12 @@
                         <div class="d-flex">
                             <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
                                 <i class="bi bi-files"></i>
-                                <span>Team di Lavoro</span>
+                                <span>Team di Ricerca</span>
                             </div>
                         </div>
                         <!-- header -->
                         <div>
-                            <h3 class="mb-4">Membro del Team di Lavoro</h3>
+                            <h3 class="mb-4">Membro del Team di Ricerca</h3>
                             <p class="mb-0">Tutti i campi sono obbligatori, compreso il CV allegato</p>
                         </div>
                         <!-- ente + partnership -->
@@ -106,17 +106,44 @@
                                 <div class="d-flex flex-wrap">
                                     <h5 class="col-12 col-md-6">Nome</h5>
                                     <div class="col-12 col-md-6">
-                                        <input type="text" class="form-control" id="nomeMembroOperativo" value="" placeholder="" required>
+                                        <input type="text" class="form-control" id="nomeMembroRicerca" value="" placeholder="" required>
                                         <div class="invalid-feedback">Scrivi un nome</div>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-wrap">
                                     <h5 class="col-12 col-md-6">Cognome</h5>
                                     <div class="col-12 col-md-6">
-                                        <input type="text" class="form-control" id="cognomeMembroOperativo" value="" placeholder="" required>
+                                        <input type="text" class="form-control" id="cognomeMembroRicerca" value="" placeholder="" required>
                                         <div class="invalid-feedback">Scrivi un nome</div>
                                     </div>
                                 </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="femmineRicerca">
+                                    <label class="form-check-label" for="femmineRicerca">
+                                        Genere Femminile (si ricorda che questo dato contribuisce al Criterio 5)
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- ruolo nel team -->
+                            <div class="col-12 col-md-4 callout ps-4 d-flex flex-column gap-3 justify-content-center">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Ruolo nel Team</h5>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="responsabileTeamRicerca">
+                                        <label class="form-check-label" for="responsabileTeam">
+                                            Responsabile del Team di Ricerca
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="proponente" checked>
+                                        <label class="form-check-label" for="proponente">
+                                            Proponente
+                                        </label>
+                                    </div>
+                                </div>
+                                <span>Si ricorda che in tutto il Team di Ricerca c'è sempre <strong>un solo Responsabile</strong> e <strong>un solo Proponente</strong>: essi <strong>possono coincidere</strong>.</span>
                             </div>
                         </div>
                         <!-- mansioni -->
@@ -124,7 +151,7 @@
                             <h5>Mansioni svolte nel progetto (max 400 char)</h5>
                             <p>Sii specifico perché questo campo contribuisce ai criteri di valutazione (vedi Criterio 3)</p>
                             <div>
-                                <textarea class="form-control" placeholder="" id="mansioniMembroOperativo" style="height: 100px" required></textarea>
+                                <textarea class="form-control" placeholder="" id="mansioniMembroRicerca" style="height: 100px" required></textarea>
                                 <div class="invalid-feedback">
                                     Risposta obbligatoria
                                 </div>
@@ -135,20 +162,56 @@
                             <h5>Esperienze specifiche nel campo di Ricerca (max 400 char)</h5>
                             <p>Sii specifico perchéquesto campo contribuisce ai criteri di valutazione (vedi Criterio 5)</p>
                             <div>
-                                <textarea class="form-control" placeholder="" id="esperienzeMembroOperativo" style="height: 100px" required></textarea>
+                                <textarea class="form-control" placeholder="" id="esperienzeMembroRicerca" style="height: 100px" required></textarea>
                                 <div class="invalid-feedback">
                                     Risposta obbligatoria
                                 </div>
                             </div>
                         </div>
-                        <!-- cv  -->
-                        <div class="col-12 col-lg-4">
-                            <label for="gannt" class="form-label">Allega CV</label>
-                            <div class="input-group flex-grow-1">
-                                <input class="form-control" type="file" id="cvMembroOperativo" aria-describedby="gannt" required>
-                                <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
-                                <div class="invalid-feedback">
-                                    Allegato obbligatorio
+                        <!-- cv + quota di partecipazione -->
+                        <div class="d-flex flex-wrap gap-3 align-items-baseline">
+                            <!-- allega CV -->
+                            <div class="col-12 col-lg-4">
+                                <label for="gannt" class="form-label">Allega CV</label>
+                                <div class="input-group flex-grow-1">
+                                    <input class="form-control" type="file" id="cvMembroRicerca" aria-describedby="gannt" required>
+                                    <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
+                                    <div class="invalid-feedback">
+                                        Allegato obbligatorio
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- quota partecipazione -->
+                            <div class="col-12 col-lg-3">
+                                <label for="gannt" class="form-label">% di Quota di partecipazione al Capitale Sociale</label>
+                                <div class="input-group flex-grow-1">
+                                    <input class="form-control" type="number" id="partecipazioneMembroRicerca" aria-describedby="gannt" required>
+                                    <span class="input-group-text input-add-on-icon"><i class="bi bi-percent"></i></span>
+                                    <div class="invalid-feedback">
+                                        Campo obbligatorio
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ruolo all'interno del CdA -->
+                        <div>
+                            <p class="form-label">Ruolo all'interno del CdA/Organo Decisionale del Beneficiario</p>
+                            <div class="d-flex flex-wrap gap-3 align-items-baseline">
+                                <!-- ruolo -->
+                                <div class="col-12 col-lg-4">
+                                    <select class="form-select" aria-label="Default select example" id="ruoloMembroRicerca" required>
+                                        <option value="">Scegli da lista</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <div class="invalid-feedback">La scelta è obbligatoria</div>
+                                </div>
+                                <!-- altro ruolo -->
+                                <div class="col-12 col-lg-3">
+                                    <div class="input-group flex-grow-1">
+                                        <input class="form-control" type="text" placeholder="Altro ruolo..." id="altroRuolo" aria-describedby="gannt">
+                                    </div>
                                 </div>
                             </div>
                         </div>

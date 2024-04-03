@@ -34,7 +34,7 @@
         <!-- NAVBAR -->
         <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
             <div class="container-fluid px-0">
-                <a class="navbar-brand me-0 me-sm-5"  href="index.html"><img height="40" src="logoVrt.png" alt="vrt-logo"></a>
+                <a class="navbar-brand me-0 me-sm-5"  href="index.html"><img height="40" src="media/logo/logoVrt.png" alt="vrt-logo"></a>
                 <span class="navbar-text red fw-semibold fs-5 d-md-none">
                     Valorizzazione Ricerca Trentina
                 </span>
@@ -55,11 +55,24 @@
                         </li> -->
                         <li class="nav-item dropdown mx-auto">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown         
+                                Moduli         
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="lettera-interesse.html">Lettera di interesse</a></li>
-                                <li><a class="dropdown-item" href="team-ricerca.html">Team di ricerca</a></li>
+                                <li><a class="dropdown-item" href="moduli/lettera-interesse.html">Lettera di interesse</a></li>
+                                <li><a class="dropdown-item" href="moduli/team-ricerca.html">Team di ricerca</a></li>
+                                <li><a class="dropdown-item" href="moduli/team-di-lavoro.html">Team di lavoro</a></li> 
+                                <li><a class="dropdown-item" href="moduli/accordi-finanziari.html">Accordi finanziari</a></li>
+                                <li><a class="dropdown-item" href="moduli/co-investimento.html">Co-investimento</a></li>
+                                <li><a class="dropdown-item" href="moduli/open-innovation.html">Open innovation</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown mx-auto">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Liste         
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="moduli-liste/lista_lettera-interesse.html">Lettera di interesse</a></li>
+                                <li><a class="dropdown-item" href="moduli-liste/lista_team-ricerca.html">Team di ricerca</a></li>
                                 <li><a class="dropdown-item" href="team-di-lavoro.html">Team di lavoro</a></li> 
                                 <li><a class="dropdown-item" href="accordi-finanziari.html">Accordi finanziari</a></li>
                                 <li><a class="dropdown-item" href="co-investimento.html">Co-investimento</a></li>
@@ -1166,7 +1179,7 @@
             let step1 = {}
             let step2 = {}
            
-            let validateStep1 = async (param) => {
+            let validateStep1 =  (param) => {
                 let form = document.querySelector('.step-1')
                 // skippa se click da mobile
                 if(param.classList.contains('btn-mob')){

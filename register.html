@@ -29,7 +29,7 @@
         <!-- NAVBAR -->
         <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
             <div class="container-fluid px-0">
-                <a class="navbar-brand me-3 me-sm-5 "  href="index.html"><img height="40" src="logoVrt.png" alt="vrt-logo"></a>
+                <a class="navbar-brand me-3 me-sm-5 "  href="index.html"><img height="40" src="media/logo/logoVrt.png" alt="vrt-logo"></a>
                 <span class="navbar-text red fw-semibold fs-5 me-auto">
                     Valorizzazione Ricerca Trentina
                 </span>
@@ -894,14 +894,14 @@
             let step1 = {}
             let step2 = {}
             // validazione step 1
-            let validateStep1 = async () => {
+            let validateStep1 =  () => {
                 let form = document.querySelector('.step-1')
                 return new Promise((resolve, reject) => {
                     if(form.checkValidity()){
                         resolve(true)                       
                     }
                     else {
-                        resolve(true)
+                        resolve(false)
                     }
                 })
             }
@@ -911,12 +911,15 @@
 
                 let form = document.querySelector('.step-2')
                 return new Promise((resolve, reject) => {
+                    
                     if(form.checkValidity()){
-                        resolve(true)
+                        resolve(true)                       
                     }
                     else {
-                        resolve(true)
+                        resolve(false)
                     }
+
+                    
                 })
             }
             let validateStep3 = () =>{

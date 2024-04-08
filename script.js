@@ -9,7 +9,6 @@
   //Loop over them and prevent submission
   Array.from(forms).forEach(form => {
     
-    console.log(form)
       form.addEventListener('submit', event => {
       if (!form.checkValidity()||form.checkValidity()) {
           event.preventDefault()
@@ -45,11 +44,11 @@ var totalStepNumber
   FUNCTION A
 */
 function displayStep(stepNumber) {
-
+  
   // esce se lo step cliccato non è quello immediatamente sucessivo a quello cliccato 
-  if(stepNumber > currentStep +1 ){
-    return
-  }
+  // if(stepNumber > currentStep +1 ){
+  //   return
+  // }
   // esce se lo step cliccato non è quello immediatamente precedente o sucessivo a quello cliccato 
   // if(stepNumber > currentStep +1 || stepNumber < currentStep - 1){
   //     return
@@ -59,14 +58,17 @@ function displayStep(stepNumber) {
 
     // colora le circonferenze dello step cliccato e dei precendenti 
     $('.circle').slice(1,stepNumber).removeClass('step-circle').addClass('step-circle-colored');
+    $('.circle-stepper-6').slice(1,stepNumber).removeClass('step-circle').addClass('step-circle-colored');
 
     // decolora le circonferenze degli step seguenti se lo step cliccato è precedente al corrente
     if (stepNumber < currentStep) {
       $('.circle').slice(stepNumber).removeClass('step-circle-colored').addClass('step-circle')
+      $('.circle-stepper-6').slice(stepNumber).removeClass('step-circle-colored').addClass('step-circle')
     }
 
     // colora la label dello step cliccato
     $('.label').css("color", "var(--gray-light)").eq(stepNumber -1).css("color", "var(--secondary)")
+    $('.label-stepper-6').css("color", "var(--gray-light)").eq(stepNumber -1).css("color", "var(--secondary)")
 
     // fade out corrente step
     $(".step-" + currentStep).addClass("animate__animated animate__fadeOut");
@@ -94,14 +96,14 @@ function displayStep(stepNumber) {
     -  inizializza la funzione updateProgressBar che definisce la lunghezza della progress bar desktop/mobile)
 */
 $(document).ready(function() {
-
+  $('.stepper-7').hide();
   // elimina dal dom tutti gli step, tranne lo step 1
   $('.form-container').find('.step').slice(1).hide();
 
   // totale step in base alla pagina
   let body =document.querySelector('body')
   if(body.classList.contains('register')){
-    totalStepNumber = 7
+    totalStepNumber = 6
     labelArray = labelArrayRegister
   }
   if(body.classList.contains('login')){
@@ -112,8 +114,8 @@ $(document).ready(function() {
   
   // bottone avanti event handler
   $(".next-step").click(function() {
-    console.log(this)
-    if (currentStep < totalStepNumber+1) {
+
+    if (currentStep <= totalStepNumber+1) {
       
       //////////////////////////////////////
       //// CHIAMA FUNZIONI VALIDAZIONE FORM
@@ -121,11 +123,12 @@ $(document).ready(function() {
       (async () => {
         const result = await eval(`validateStep${currentStep}`)(this)
         if (result == true) {
-            
           // colora la circonferenza dello step cliccato 
           $('.circle').eq(currentStep).removeClass('step-circle').addClass('step-circle-colored')
+          $('.circle-stepper-6').eq(currentStep).removeClass('step-circle').addClass('step-circle-colored')
           // colora la label cliccata
           $('.label').css("color", "var(--gray-light)").eq(currentStep).css("color", "var(--secondary)");
+          $('.label-stepper-6').css("color", "var(--gray-light)").eq(currentStep).css("color", "var(--secondary)");
           // fade out corrente step
           $(".step-" + currentStep).addClass("animate__animated animate__fadeOut");
           
@@ -148,13 +151,15 @@ $(document).ready(function() {
         }
       })()
     }
+  
+
     $(window).scrollTop(0);
   });
   
 
   // bottone indietro event handler
   $(".prev-step").click(function() {
-
+    
     if (currentStep > 1) {
       // decolora la circonferenza del corrente step
       $('.circle').eq(currentStep-1).removeClass('step-circle-colored').addClass('step-circle')
@@ -181,7 +186,7 @@ $(document).ready(function() {
   // definisce la lunghezza delle progress bar 
   updateProgressBar = function() {
     // desktop + mobile | definisce la lunghezza della barra
-    var progressPercentage = ((currentStep - 1) / totalStepNumber) * 100;
+    var progressPercentage = ((currentStep -1 ) / totalStepNumber) * 100;
     $(".progress-bar").css("width", progressPercentage + "%");
     
     // mobile | assegna la stringa alla label
@@ -233,4 +238,18 @@ $(".show_hide_password span").on('click', function(event) {
 
 
 
+
+// function SendRegistrazione(param){
+//   // console.log('dsfs')
+//   (async () => {
+//     const result = await eval(`validateStep${currentStep}`)(param)
+//     if (result == true) {
+//       // console.log('risolta')
+
+//     } else {
+//         console.log('respinta')
+//         return
+//     }
+//   })()
+// }
 

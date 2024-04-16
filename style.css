@@ -35,34 +35,39 @@ h5 {
 /// HOME PAGE 
 /////////////*/
 .hero{
-    background-image: linear-gradient(rgba(16, 29, 44, 0), rgba(16, 29, 44, 0)), url(media/1.jpg);
+    background-image: linear-gradient(rgba(16, 29, 44, 0), rgba(16, 29, 44, 0)), url(media/2.jpg);
     background-size:cover;
     background-position:center;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
 }
+.hero-container {
+    max-width: 600px;
+}
+.form-box{
+    background-color: #00000030;
+}
 .logo {
     padding-bottom: 20px;
 }
 .login-container{
     left: 50%;
-    /* top: 10%; */
+    top: 20%;
     position: absolute;
     transform: translate(-50%);
 }
-.login-box{
+.login-box {
     width: 40vw;
     padding: 4px;
-    clip-path: polygon(0 0, 100% 0%, 100% 100%,  0 95%);
-    background-color: var(--primary)
-}
-.login-box .form {
-    background-color:  rgb(242, 242, 242);
-    padding: 2rem;
-    clip-path: polygon(0 0, 100% 0%, 100% 100%,  0 95%);
+    background-color: rgb(242 242 242 / 75%);
+    border: 3px solid var(--primary);
 }
 
+.hero-backdrop{
+    height: 100%;
+    backdrop-filter: blur(7px);
+}
 
 /* TEXT COLOR */
 .card {

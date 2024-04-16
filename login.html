@@ -24,7 +24,9 @@
         <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <style>
-            
+            a{
+                text-decoration: none;
+            }
         </style>
 
             
@@ -89,7 +91,6 @@
                     </div>
 
                 </div>
-                
             </div>
         </nav>
 
@@ -652,7 +653,6 @@
                                     </div>
                                     <!-- <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div> -->
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -720,10 +720,10 @@
                                     Ci sono Partner/Clienti con Lettere di Manifestazione di lnteresse?
                                 </label>
                             </div>
-                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                            <a href="moduli-liste/lista_lettera-interesse.html" id="toListaLetteraInteresse" type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
                                 Manifestazioni di Interesse
                                 <i class="bi bi-plus-square"></i>
-                            </button>
+                            </a>
                         </div>
                         <!-- team di ricerca (profilazione base) -->
                         <div class="callout d-flex flex-column gap-3 py-3 ps-4">
@@ -976,10 +976,10 @@
                                     Risposta obbligatoria
                                 </div>
                             </div>
-                            <button type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
+                            <a href="moduli-liste/lista_team-ricerca.html" id="toListaTeamRicerca" type="button" class="align-self-start align-items-center btn-vrt-outline-primary btn-vrt-add d-flex gap-3">
                                     Team di Ricerca
                                 <i class="bi bi-plus-square"></i>
-                            </button>
+                            </a>
                         </div>
                         <!-- team operativo -->
                         <div class="callout d-flex flex-column gap-3 py-3 ps-4">
@@ -1164,7 +1164,6 @@
                     </div>
                 </form>
             </div>
-                
         </div>
 
         
@@ -1190,7 +1189,7 @@
                         resolve(true)                       
                     }
                     else {
-                        resolve(false)
+                        resolve(true)
                     }
                 })
             }
@@ -1314,8 +1313,18 @@
                     }
                 })
             }
+
             
-        </script>
+    
+            $('#toListaLetteraInteresse').click(()=>{
+                localStorage.setItem('currentStep',currentStep)
+            })
+            $('#toListaTeamRicerca').click(()=>{
+                localStorage.setItem('currentStep',currentStep)
+            })
+            
+            
+            </script>
 
         <!-- My script -->
         <script src="script.js"></script>

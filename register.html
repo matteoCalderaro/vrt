@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <!-- My style -->
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="validation.css">
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <!-- Bootstrap Bundle with Popper -->
@@ -23,8 +24,31 @@
         <!-- recaptcha -->
         <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     </head>
     <body class="register">
+        <!--MODALE ON PAGE LOAD-->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title red fs-5" id="exampleModalLabel">CONSIGLI PER LA COMPILAZIONE</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Non è possibile procedere all'inserimento di dati parziali in fase di accreditamento e si può salvare solo al termine della sezione. 
+                        Per gli enti privati viene chiesto di allegare anche la copia della carta d'identità del legale rappresentante, l'atto costitutivo, lo statuto, la visura, la composizione delle cariche sociali. 
+                        Si suggerisce di avere già pronti tutti gli allegati prima di procedere con l'accreditamento.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-vrt-outline-primary align-items-center d-flex gap-2 justify-content-center" data-bs-dismiss="modal" aria-label="Close">
+                            <span>HO CAPITO</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- NAVBAR -->
         <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
@@ -56,6 +80,7 @@
                 
             </div>
         </nav>
+        
         <!-- MODAL ALERT-->
         <div class="modal fade" id="modalAlert" aria-hidden="true" aria-labelledby="modalAlert" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -118,29 +143,6 @@
                             <input type="text" class="form-control" id="codFiscModEsistente" placeholder="MRDTT78E14A952N" disabled>
                         </div>
                     </div>
-                    <!-- password -->
-                    <!-- <div class="gap-4 gap-md-0 row">
-                        <div class="col-12 col-md-6">
-                            <div>
-                                <div class="input-group show_hide_password" id="password">
-                                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" required>
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="bi bi-eye-slash"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div>
-                                <div class="input-group show_hide_password" id="passwordConferma">
-                                    <input type="password" class="form-control" placeholder="Conferma password" aria-label="Username" aria-describedby="basic-addon1">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="bi bi-eye-slash"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <!-- recaptcha -->
                     <div class="g-recaptcha" data-sitekey="your_site_key"></div>                    
                 </div>
@@ -187,15 +189,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="d-flex flex-column gap-4 p-3">
-                    <!-- CONTENT -->
-                    <!-- select -->
-                    <!-- <select class="form-select" aria-label="Default select example">
-                        <option selected>Scegli tra queste aziende già presenti nel databse di FVRT</option>
-                        <option value="1">Agraxx srl</option>
-                        <option value="2">Azienda Agricola Toblino Tartufi</option>
-                        <option value="3">Baolfly srl Società Agricola - Società Benefit</option>
-                        <option value="4">Lagarina società agricola semplice</option>
-                    </select> -->
+                    
                     <p class="mb-0">Fornisci i dati indicati e la tua mail per tutte le comunicazioni</p>
                     <!-- email -->
                     <div>
@@ -216,31 +210,18 @@
                     <!-- codice fiscale -->
                     <div class="row gap-5">
                         <div class="col-12">
-                            <label for="codFiscModNuova" class="form-label">Codice fiscale</label>
-                            <input type="text" class="form-control" id="codFiscModNuova" placeholder="">
-                        </div>
-                    </div>
-                    <!-- password -->
-                    <div class="gap-4 gap-md-0 row">
-                        <div class="col-12 col-md-6">
-                            <div>
-                                <div class="input-group show_hide_password" id="password">
-                                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="bi bi-eye-slash"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div>
-                                <div class="input-group show_hide_password" id="passwordConferma">
-                                    <input type="password" class="form-control" placeholder="Conferma password" aria-label="Username" aria-describedby="basic-addon1">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="bi bi-eye-slash"></i>
-                                    </span>
-                                </div>
-                            </div>
+                            <label for="codiceFiscaleNuovaAzienda" class="form-label">Codice fiscale</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="codiceFiscaleNuovaAzienda" 
+                                    placeholder="" 
+                                    minlength="10"
+                                    maxlength="16"
+                                    required
+                                >
+                                <label class="lblCodiceFiscaleNuovaAzienda" style="font-size: 12.25px;"></label>
+                            
                         </div>
                     </div>
                     <!-- recaptcha -->
@@ -395,7 +376,7 @@
                         <div class="row gap-5 gap-md-0">
                             <div class="col-12 col-md-6">
                                 <label for="nomeStep1" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nomeStep1" value="" placeholder="" required>
+                                <input type="text" class="form-control" id="nomeStep1" value="" placeholder="">
                                 <div class="invalid-feedback">
                                     Scrivi un di nome
                                 </div>
@@ -405,37 +386,58 @@
                                 <input type="text" class="form-control" id="cognomeStep1" placeholder="">
                             </div>
                         </div>
+                        <!-- codice fiscale -->
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <label for="codiceFiscale" class="form-label">Codice fiscale</label>
-                                <input type="text" class="form-control" id="codiceFiscale" placeholder="">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="codiceFiscale" 
+                                    placeholder="" 
+                                    minlength="10"
+                                    maxlength="16"
+                                    required
+                                >
+                                <label class="lblCodiceFiscale" style="font-size: 12.25px;"></label>
                             </div>
                         </div>
+                        <!-- password -->
                         <div class="row">
                             <div class="col-12 col-md-6 mb-5">
                                 <div>
+                                    <label for="password" class="form-label">Password</label>
                                     <div class="input-group show_hide_password">
-                                        <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" id="password" required>
+                                        <input 
+                                            type="password" 
+                                            class="form-control" 
+                                            placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" 
+                                            id="password"  
+                                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
+                                            required
+                                            >
                                         <span class="input-group-text input-add-on-icon" id="basic-addon1">
                                             <i class="bi bi-eye-slash"></i>
                                         </span>
-                                        <div class="invalid-feedback">
-                                            Campo obbligatorio
-                                        </div>
                                         <label class="lblPassword" style="flex-basis: 100%;font-size: 12.25px;"></label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div>
+                                    <label for="passwordConferma" class="form-label">Conferma password</label>
                                     <div class="input-group show_hide_password">
-                                        <input type="password" class="form-control" placeholder="Conferma password" aria-label="Username" aria-describedby="basic-addon1" id="passwordConferma" required>
+                                        <input 
+                                            type="password" 
+                                            class="form-control" 
+                                            placeholder="Conferma password" 
+                                            aria-label="Username" aria-describedby="basic-addon1" 
+                                            id="passwordConferma" 
+                                            disabled
+                                        >
                                         <span class="input-group-text input-add-on-icon" id="basic-addon1">
                                             <i class="bi bi-eye-slash"></i>
                                         </span>
-                                        <div class="invalid-feedback">
-                                            Campo obbligatorio
-                                        </div>
                                         <label id="CheckPasswordMatch" style="flex-basis: 100%;font-size: 12.25px;"></label>
                                     </div>
                                 </div>
@@ -444,7 +446,7 @@
                     </div>
                     <!-- buttons -->
                     <div class="py-5">
-                        <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto">
+                        <button class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center ms-auto" onclick="testRegularExpression();checkInputLength()">
                             AVANTI
                             <i class="bi bi-arrow-right"></i>
                         </button>
@@ -631,7 +633,7 @@
                     </div>
                 </form>
                 <!-- STEP 5 -->
-                <form class="step step-5">
+                <form class="step step-5  needs-validation" novalidate>
                     <div class="content-container">
                         <!-- tag -->
                         <div class="d-flex">
@@ -664,21 +666,50 @@
                         <div class="row gap-5 gap-md-0">
                             <div class="col-12 col-md-6">
                                 <label for="emailRap" class="form-label">Email legale rappresentante</label>
-                                <input type="email" class="form-control" id="emailRap" placeholder="name@example.com">
+                                <input 
+                                    class="form-control" 
+                                    id="emailRap" 
+                                    placeholder="name@example.com"
+                                    pattern=".*[@].*[.].*"
+                                    required
+                                >
+                                <label class="labelEmailRap" style="font-size: 12.25px;"></label>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="emailRapConf" class="form-label">Conferma email legale rappresentante</label>
-                                <input type="email" class="form-control" id="emailRapConf" placeholder="name@example.com">
+                                <input 
+                                    class="form-control" 
+                                    id="emailRapConf" 
+                                    placeholder="name@example.com" 
+                                    disabled
+                                >
+                                <label id="CheckEmailMatch" style="flex-basis: 100%;font-size: 12.25px;"></label>
                             </div>
                         </div>
                         <div class="row gap-5 gap-md-0">
                             <div class="col-12 col-md-6">
                                 <label for="telRap" class="form-label">Telefono legale rappresentante</label>
-                                <input type="text" class="form-control" id="telRap" placeholder="">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="telRap" 
+                                    placeholder="" 
+                                    pattern="^\d{6,}$"
+                                    required
+                                >
+                                <label class="lblTelefono" style="font-size: 12.25px;"></label>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="cellRap" class="form-label">Cellulare legale rappresentante</label>
-                                <input type="text" class="form-control" id="cellRap" placeholder="">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="cellRap" 
+                                    placeholder="" 
+                                    pattern="^\d{6,}$"
+                                    required
+                                >
+                                <label class="lblCellulare" style="font-size: 12.25px;"></label>
                             </div>
                         </div>
                     </div>
@@ -691,7 +722,7 @@
                             </button>
                         </div>
                         <div>
-                            <button type="button" class="btn-vrt-primary  next-step align-items-center d-flex gap-2 justify-content-center">
+                            <button  class="btn-vrt-primary  next-step align-items-center d-flex gap-2 justify-content-center"  onclick="testRegularExpressionEmail(),testTelefono(),testCellulare()">
                                 AVANTI
                                 <i class="bi bi-arrow-right"></i>
                             </button>
@@ -980,100 +1011,217 @@
               </div>
             </div>
         </div>
+        <!-- <script>
+            // APRE MODALE AL CARICAMENTO
+            $(document).ready(function () {
+                $('#myModal').modal('show');
+            });
+        </script> -->
 
         <script>
-            //controllo conferma password
-            $(document).ready(function () {
-                $("#passwordConferma").keyup(checkPasswordMatch);
-            });
-            function checkPasswordMatch() {
-                var password = $("#password").val();
-                var confirmPassword = $("#passwordConferma").val();
-                if (password != confirmPassword)
-                    $("#CheckPasswordMatch").html("Le password non corrispondono").css('color', 'red');
-                else
-                    $("#CheckPasswordMatch").html("Le password corrispondono").css('color', 'green');
+            // check password against regular expression
+            $('#password').on('keyup', ()=>{
+                testRegularExpression()
+            })
+
+            function testRegularExpression(){
+               
+                var password = $('#password').val()
+                var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+                if(password){
+                    if (regex.test(password)) {
+                        $('.lblPassword').html('Password valida').css("color", "green");
+                        return true
+                    } else {
+                        $('.lblPassword').html('La password deve essere di almeno 8 caratteri e contenere almeno una lettera maiuscola, una minuscola, un numero e un simbolo').css("color", "red");
+                        return false
+                    }
+                } else 
+                    $('.lblPassword').html('La password è obbligatoria').css("color", "red")
+                    return false
             }
             
-            //controllo password
-            $('#password').on('keyup', function () {
-                console.log('fsdfsd')
-                var password = $(this).val();
-                var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@@#$%^&*()_+}{"':;?/>.<,])[A-Za-z\d!@@#$%^&*()_+}{":;?/>.<,]{8,}$/;
-                if (regex.test(password)) {
-                    $('.lblPassword').html('Password valida').css("color", "green");
-                } else {
-                    $('.lblPassword').html('La password deve essere di almeno 8 caratteri e contenere almeno una lettera maiuscola, una minuscola, un numero e un simbolo').css("color", "red");
-                }
-            });
-            
-            // controllo telefono
-            $('#telRap').on('keyup', function () {
-                var password = $(this).val();
-                var regex = /^\d{6,}$/;
-                if (regex.test(password) && $('#telRap').val()!='') {
-                    $('.lblTelefono').html('Telefono valido').css("color", "green");
-                } else {
-                    $('.lblTelefono').html('Il telefono deve contenere almeno 6 caratteri numerici').css("color", "red");
-                }
-            });
-            // controllo cellulare
-            $('#cellRap').on('keyup', function () {
-                var password = $(this).val();
-                var regex = /^\d{6,}$/;
-                if (regex.test(password) && $('#cellRap').val() != '') {
-                    $('.lblCellulare').html('Telefono valido').css("color", "green");
-                } else {
-                    $('.lblCellulare').html('Il telefono deve contenere almeno 6 caratteri numerici').css("color", "red");
-                }
-            });
-            
-            // controllo codice fiscale categoria
+           
+            // check password match
             $(document).ready(function () {
-                $('#codiceFiscale').keyup(checkInputLength);
-            });
-            
-            function checkInputLength() {
-            
+                $('#password, #passwordConferma').on('keyup',()=> checkPasswordMatch())
+            })
+
+            function checkPasswordMatch(){
+
+                if(testRegularExpression()){
+                    $('#passwordConferma').prop("disabled", false)
+
+                    if ($('#password').val() == $('#passwordConferma').val()) {
+
+                        $('#CheckPasswordMatch').html('Le password corrispondono').css('color', 'green');
+                        $('#passwordConferma').addClass('password-valid')
+                        $('#passwordConferma').removeClass('password-invalid')
+
+                    } else if($('#passwordConferma').val()) {
+
+                        $('#CheckPasswordMatch').html('Le password non corrispondono').css('color', 'red');
+                        $('#passwordConferma').addClass('password-invalid');
+                        $('#passwordConferma').removeClass('password-valid')
+                    }
+                    else {
+
+                        $('#CheckPasswordMatch').html('Controllo obbligatorio').css('color', 'red')
+                        $('#passwordConferma').removeClass('password-valid')
+                        $('#passwordConferma').addClass('password-invalid');
+                    }
+                } 
+                else {
+                    $('#passwordConferma').prop("disabled", true)
+                    $('#CheckPasswordMatch').html('')
+                }
+            }
+                        
+            // check codide fiscale
+            $('#codiceFiscale').on('keyup', ()=>{
+                checkInputLength()
+            })
+
+            function checkInputLength(){
                 var codiceFiscale = $('#codiceFiscale').val();
                 var lunghezza = codiceFiscale.length;
-                if (lunghezza >= 10 && lunghezza <= 16) {
-                    $('.lblCodiceFiscale').html('Codice fiscale valido').css("color", "green");
-                    return true
-                } else {
-                    $('.lblCodiceFiscale').html('Il codice fiscale deve essere compreso tra 10 e 16 caratteri').css("color", "red");
+                if(lunghezza>0){
+                    if (lunghezza >= 10 && lunghezza <= 16) {
+                        $('.lblCodiceFiscale').html('Codice fiscale valido').css("color", "green");
+                        return true
+                    } else {
+                        $('.lblCodiceFiscale').html('Il codice fiscale deve essere compreso tra 10 e 16 caratteri').css("color", "red");
+                        return false
+                    }
+                }
+                else{
+                    $('.lblCodiceFiscale').html('Campo obbligatorio').css("color", "red");
                     return false
                 }
-            }
+            }  
+                
+            
             // controllo codice fiscale nuova azienda
-            $(document).ready(function () {
-                $('#codiceFiscaleNuovaAzienda').keyup(checkInputLength2);
-            });
-            
-            function checkInputLength2() {
-            
+            $('#codiceFiscaleNuovaAzienda').on('keyup', ()=>{
+                checkInputLength2()
+            })
+
+            function checkInputLength2(){
                 var codiceFiscale = $('#codiceFiscaleNuovaAzienda').val();
                 var lunghezza = codiceFiscale.length;
-                if (lunghezza >= 10 && lunghezza <= 16) {
-                    $('.lblCodiceFiscaleNuovaAzienda').html('Codice fiscale valido').css("color", "green");
-                    return true
-                } else {
-                    $('.lblCodiceFiscaleNuovaAzienda').html('Il codice fiscale deve essere compreso tra 10 e 16 caratteri').css("color", "red");
+                if(lunghezza>0){
+                    if (lunghezza >= 10 && lunghezza <= 16) {
+                        $('.lblCodiceFiscaleNuovaAzienda').html('Codice fiscale valido').css("color", "green");
+                        return true
+                    } else {
+                        $('.lblCodiceFiscaleNuovaAzienda').html('Il codice fiscale deve essere compreso tra 10 e 16 caratteri').css("color", "red");
+                        return false
+                    }
+                }
+                else{
+                    $('.lblCodiceFiscaleNuovaAzienda').html('Campo obbligatorio').css("color", "red");
                     return false
                 }
+            } 
+            
+            // controllo telefono legale rappresentante
+            $('#telRap').on('keyup', ()=>{
+                testTelefono()
+            })
+            function testTelefono() {
+                var telefono = $('#telRap').val();
+                var regex = /^\d{6,}$/;
+                if (telefono) {
+                    if (regex.test(telefono)) {
+                        $('.lblTelefono').html('Telefono valido').css("color", "green");
+                        return true
+                    } else {
+                        $('.lblTelefono').html('Il telefono deve contenere almeno 6 caratteri numerici').css("color", "red");
+                        return false
+                    }
+                } else {
+                    $('.lblTelefono').html('Il telefono è obbligatorio').css("color", "red");
+                    return false
+                }                
+            };
+
+            // controllo cellulare legale rappresentante
+            $('#cellRap').on('keyup', ()=>{
+                testCellulare()
+            })
+            function testCellulare() {
+                var telefono = $('#cellRap').val();
+                var regex = /^\d{6,}$/;
+                if (telefono) {
+                    if (regex.test(telefono)) {
+                        $('.lblCellulare').html('Cellulare valido').css("color", "green");
+                        return true
+                    } else {
+                        $('.lblCellulare').html('Il cellulare deve contenere almeno 6 caratteri numerici').css("color", "red");
+                        return false
+                    }
+                } else {
+                    $('.lblCellulare').html('Il cellulare è obbligatorio').css("color", "red");
+                    return false
+                }                
+            };
+
+            // check email legale rappresentante against regular expression
+            $('#emailRap').on('keyup', ()=>{
+                testRegularExpressionEmail()
+            })
+
+            function testRegularExpressionEmail(){
+               console.log('merda')
+                var email = $('#emailRap').val()
+                var regex = /.*[@].*[.].*/;
+                if(email){
+                    if (regex.test(email)) {
+                        $('.labelEmailRap').html('Formato email valido').css("color", "green");
+                        return true
+                    } else {
+                        $('.labelEmailRap').html('Formato email non valido').css("color", "red");
+                        return false
+                    }
+                } else 
+                    $('.labelEmailRap').html('La email è obbligatoria').css("color", "red")
+                    return false
             }
             
-            //controllo email legale rappresentante
+           
+            // check email match
             $(document).ready(function () {
-                $("#emailRapConf").keyup(checkEmailMatch);
-            });
-            function checkEmailMatch() {
-                var password = $("#emailRap").val();
-                var confirmPassword = $("#emailRapConf").val();
-                if (password != confirmPassword)
-                    $("#CheckEmailMatch").html("Le email non corrispondono").css('color', 'red');
-                else
-                    $("#CheckEmailMatch").html("Le email corrispondono").css('color', 'green');
+                $('#emailRap, #emailRapConf').on('keyup',()=> checkEmailMatch())
+            })
+
+            function checkEmailMatch(){
+
+                if(testRegularExpressionEmail()){
+                    $('#emailRapConf').prop("disabled", false)
+
+                    if ($('#emailRap').val() == $('#emailRapConf').val()) {
+
+                        $('#CheckEmailMatch').html('Le email corrispondono').css('color', 'green');
+                        $('#emailRapConf').addClass('password-valid')
+                        $('#emailRapConf').removeClass('password-invalid')
+
+                    } else if($('#emailRapConf').val()) {
+
+                        $('#CheckEmailMatch').html('Le password non corrispondono').css('color', 'red');
+                        $('#emailRapConf').addClass('password-invalid');
+                        $('#emailRapConf').removeClass('password-valid')
+                    }
+                    else {
+
+                        $('#CheckEmailMatch').html('Controllo obbligatorio').css('color', 'red')
+                        $('#emailRapConf').removeClass('password-valid')
+                        $('#emailRapConf').addClass('password-invalid');
+                    }
+                } 
+                else {
+                    $('#emailRapConf').prop("disabled", true)
+                    $('#CheckEmailMatch').html('')
+                }
             }
         </script>
 
@@ -1081,10 +1229,7 @@
         <script src="script.js"></script>
 
         <script>
-            // valorizza il nome nella Modale Nuova Azienda
-            $("#nomeNuovaAzienda").change(function (e) {
-                $(this).val(e.target.value);
-            });
+          
             $('#CreaNuova').click(() => {
                 if($("#nomeNuovaAzienda").val()==''){
                     $("#error").html("Scrivi il nome dell'azienda prima di proseguire!");
@@ -1099,13 +1244,14 @@
         </script>
     
         <script>
-            let step2 = {}
+            
             // validazione step 1
             let validateStep1 =  () => {
-                
+                $('#password').addClass('is-invalid');
                 let form = document.querySelector('.step-1')
                 return new Promise((resolve, reject) => {
-                    if(form.checkValidity()){
+                    if(form.checkValidity() && $('#password').val() === $('#passwordConferma').val() && checkInputLength()){
+                  
                         if ($('#categoria').val() != 6) {
                             //// SE CATEGORIA ENTE/UNIVERSITA'
 
@@ -1198,11 +1344,11 @@
             let validateStep5 = () =>{
                 let form = document.querySelector('.step-5')
                 return new Promise((resolve, reject) => {
-                    if(form.checkValidity()){
+                    if(form.checkValidity() && $('#emailRap').val() == $('#emailRapConf').val()){
                         resolve(true)
                     }
                     else {
-                        resolve(true)
+                        resolve(false)
                     }
                 })
             }

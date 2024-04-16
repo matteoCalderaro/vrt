@@ -96,6 +96,23 @@ function displayStep(stepNumber) {
     -  inizializza la funzione updateProgressBar che definisce la lunghezza della progress bar desktop/mobile)
 */
 $(document).ready(function() {
+
+  // se presente il currentStep nel localstorage
+  if(localStorage.getItem('currentStep')){
+    currentStep = localStorage.getItem('currentStep')
+    $('.step').hide()
+    
+    setTimeout(()=>{
+      $(".step-" + currentStep).show()
+      // colora le circonferenze dello step cliccato e dei precendenti, colora la label corrente e aggiorna la porogress bar
+      $('.circle').slice(1,currentStep).removeClass('step-circle').addClass('step-circle-colored');
+      $('.label').css("color", "var(--gray-light)").eq(currentStep -1).css("color", "var(--secondary)")
+      updateProgressBar();
+      localStorage.removeItem('currentStep')
+    },10)
+  }
+ 
+  // elimina la versione estesa della progress bar 
   $('.stepper-7').hide();
   // elimina dal dom tutti gli step, tranne lo step 1
   $('.form-container').find('.step').slice(1).hide();

@@ -123,6 +123,14 @@
 
 
         <div class="main-container px-0 px-md-4 flex-column gap-5">
+
+            <!-- tag -->
+            <div class="d-flex">
+                <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
+                    <i class="bi bi-files"></i>
+                    <span>Video</span>
+                </div>
+            </div>
                         
             <div class="table-responsive" style="width: 100%;">
                 <table class="table table-hover align-middle">
@@ -177,16 +185,15 @@
             </svg>
         </div>
         
-        <script src="script.js"></script>
-
-
+        
+        
         <!-- DATE PICKER -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.css" />
         <script>
             var date_input = $('input[name="date"]'); //our date input has the name "date"
             var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-
+            
             var options = {
                 format: 'dd/mm/yyyy',
                 container: container,
@@ -197,6 +204,8 @@
             date_input.datepicker(options);
         </script>
        
+       <script src="script.js"></script>
+
     </body>
 </html>
 

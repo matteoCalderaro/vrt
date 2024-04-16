@@ -82,7 +82,7 @@
               <div class="modal-content">
 
                 <div class="modal-header">
-                  <h1 class="modal-title red fs-5" id="modalLabel">Nuova rendicontazione</h1>
+                  <h1 class="modal-title red fs-5" id="modalLabel">Nuova contabile</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -133,7 +133,6 @@
                             </div>
                         </div>
 
-
                         <div class="col-12 col-md-6">
                             <label for="dataVideo" class="form-label">Inserisci la data</label>
                             <input name="date" type="text" class="form-control" id="dataVideo" placeholder="gg/MM/yyyyy" required>
@@ -159,6 +158,13 @@
 
 
         <div class="main-container px-0 px-md-4 flex-column gap-5">
+
+            <div class="d-flex">
+                <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
+                    <i class="bi bi-files"></i>
+                    <span>Documenti contabili</span>
+                </div>
+            </div>
             
             <div class="table-responsive" style="width: 100%;">
                 <table class="table table-hover align-middle">
@@ -200,13 +206,10 @@
                         class="btn-vrt-primary align-items-center d-flex gap-3 justify-content-center ms-auto" 
                         data-bs-target="#modalRendicontazione" 
                         data-bs-toggle="modal">
-                            Nuova rendicontazione
+                            Carica contabile
                         <i class="bi bi-plus-square"></i>
                     </button>
                 </div>
-                <!-- <div>
-                    <button type="button" class="btn-vrt-outline-primary" data-bs-target="#modNuovaLabel" data-bs-toggle="modal">Cerca nel db</button>
-                </div> -->
             </div>
         </div>
 
@@ -217,16 +220,15 @@
             </svg>
         </div>
         
-        <script src="script.js"></script>
-       
-
+        
+        
         <!-- DATE PICKER -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.css" />
         <script>
-            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var date_input = $('input[name="date"]');
             var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-
+            
             var options = {
                 format: 'dd/mm/yyyy',
                 container: container,
@@ -237,6 +239,7 @@
             date_input.datepicker(options);
         </script>
 
+        <script src="script.js"></script>
 
     </body>
 </html>

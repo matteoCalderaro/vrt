@@ -44,7 +44,7 @@
 
             
     </head>
-    <body class="login">
+    <body>
     
         <!-- NAVBAR -->
         <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
@@ -69,18 +69,14 @@
                         <i class="bi bi-person fs-4"></i>
                         <span>testuser@binetwork.it</span>
                     </div>
-
                 </div>
-                
             </div>
         </nav>
         
         <!-- MODALE  -->
         <div class="modal fade" id="modalRendicontazione" aria-hidden="true" aria-labelledby="modalLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-lg">
-
               <div class="modal-content">
-
                 <div class="modal-header">
                   <h1 class="modal-title red fs-5" id="modalLabel">Nuova contabile</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -90,7 +86,7 @@
                     
                     <p class="mb-2">Tutti i campi sono obbligatori</p>
 
-                    <!-- fattura + bonifico -->
+                    <!-- fattura + data fattura  -->
                     <div class="row gap-4 gap-md-0">
                         <div class="col-12 col-md-6">
                             <label for="fattura" class="form-label">Allega copia della fattura</label>
@@ -103,18 +99,15 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
-                            <label for="bonifico" class="form-label">Allega copia del bonifico</label>
-                            <div class="input-group flex-grow-1">
-                                <input class="form-control" type="file" id="bonifico" aria-describedby="gannt" required>
-                                <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
-                                <div class="invalid-feedback">
-                                    Allegato obbligatorio
-                                </div>
+                            <label for="dataFattura" class="form-label">Inserisci la data della fattura</label>
+                            <input name="date" type="text" class="form-control" id="dataFattura" placeholder="gg/MM/yyyyy" required>
+                            <div class="invalid-feedback">
+                                Scelta obbligatoria
                             </div>
                         </div>
                     </div>
 
-                    <!-- importo + data -->
+                    <!-- importo + bonifico -->
                     <div class="row gap-4 gap-md-0  mb-md-4">
 
                         <div class="col-12 col-md-6">
@@ -132,33 +125,33 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-12 col-md-6">
-                            <label for="dataVideo" class="form-label">Inserisci la data</label>
-                            <input name="date" type="text" class="form-control" id="dataVideo" placeholder="gg/MM/yyyyy" required>
-                            <div class="invalid-feedback">
-                                Scelta obbligatoria
+                            <label for="bonifico" class="form-label">Allega copia del bonifico</label>
+                            <div class="input-group flex-grow-1">
+                                <input class="form-control" type="file" id="bonifico" aria-describedby="gannt" required>
+                                <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
+                                <div class="invalid-feedback">
+                                    Allegato obbligatorio
+                                </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="modal-footer">
-                        <!-- <button type="button" class="btn-vrt-outline-primary align-items-center d-flex gap-2 justify-content-center" data-bs-dismiss="modal" aria-label="Close">
-                            INDIETRO
-                        </button> -->
                         <button  class="btn-vrt-primary align-items-center d-flex gap-2 justify-content-center">
                             SALVA
                         </button>
                     </div>
-
                 </form>
               </div>
             </div>
         </div>
 
 
+        <!-- TABLE  -->
         <div class="main-container px-0 px-md-4 flex-column gap-5">
 
+            <!-- tag -->
             <div class="d-flex">
                 <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
                     <i class="bi bi-files"></i>
@@ -214,6 +207,7 @@
         </div>
 
         
+        <!-- ICONA SCROLL TO TOP -->
         <div class="scroll-icon-inner">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>

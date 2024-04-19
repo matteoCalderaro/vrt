@@ -15,7 +15,7 @@
         <!-- Animate.css -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <!-- My style -->
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style.css">
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <!-- Bootstrap Bundle with Popper -->
@@ -32,14 +32,6 @@
                 color:inherit;
                 text-decoration: none;
             }
-            .input-group-prepend .input-group-text{
-                border-top-right-radius: unset;
-                border-bottom-right-radius: unset;
-            }
-            .input-group-append .input-group-text{
-                border-top-left-radius: unset;
-                border-bottom-left-radius: unset;
-            }
         </style>
 
             
@@ -49,7 +41,7 @@
         <!-- NAVBAR -->
         <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
             <div class="container-fluid px-0">
-                <a class="navbar-brand me-0 me-md-5"  href="#"><img height="40" src="media/logo/logoVrt.png" alt="vrt-logo"></a>
+                <a class="navbar-brand me-0 me-md-5"  href="#"><img height="40" src="../media/logo/logoVrt.png" alt="vrt-logo"></a>
                 <span class="navbar-text red fw-semibold fs-5 d-md-none">
                     Valorizzazione Ricerca Trentina
                 </span>
@@ -62,7 +54,7 @@
                             <a class="nav-link" aria-current="page" href="./elenco.html">ELENCO</a>
                         </li> -->
                         <li class="nav-item mx-auto ">
-                            <a class="nav-link active" aria-current="page" href="./rendicontazioni.html">RENDICONTAZIONI</a>
+                            <a class="nav-link active" aria-current="page" href="./index.html">RENDICONTAZIONI</a>
                         </li>
                     </ul>
                     <div class="d-flex ms-auto align-items-center justify-content-center gap-2" role="search">
@@ -78,7 +70,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title red fs-5" id="modalLabel">Nuova contabile</h1>
+                  <h1 class="modal-title red fs-5" id="modalLabel">Nuovo video</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -86,57 +78,27 @@
                     
                     <p class="mb-2">Tutti i campi sono obbligatori</p>
 
-                    <!-- fattura + data fattura  -->
-                    <div class="row gap-4 gap-md-0">
+                    <!-- data e link del video -->
+                    <div class="row gap-4 gap-md-0 mb-md-4">
                         <div class="col-12 col-md-6">
-                            <label for="fattura" class="form-label">Allega copia della fattura</label>
-                            <div class="input-group flex-grow-1">
-                                <input class="form-control" type="file" id="fattura" aria-describedby="gannt" required>
-                                <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
-                                <div class="invalid-feedback">
-                                    Allegato obbligatorio
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="dataFattura" class="form-label">Inserisci la data della fattura</label>
-                            <input name="date" type="text" class="form-control" id="dataFattura" placeholder="gg/MM/yyyyy" required>
+                            <label for="dataVideo" class="form-label">Inserisci la data</label>
+                            <input name="date" type="text" class="form-control" id="dataVideo" placeholder="gg/MM/yyyyy" required>
                             <div class="invalid-feedback">
                                 Scelta obbligatoria
                             </div>
                         </div>
-                    </div>
-
-                    <!-- importo + bonifico -->
-                    <div class="row gap-4 gap-md-0  mb-md-4">
-
                         <div class="col-12 col-md-6">
-                            <label for="importo" class="form-label">Importo</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">$</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="importo" required>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">.00</span>
-                                </div>
+                            <label for="linkVideo" class="form-label">Inserisci il link al video</label>
+                            <div class="input-group">
+                                <span class="input-group-text " id="basic-addon3">https://</span>
+                                <input type="text" class="form-control input-add-on-icon" id="linkVideo" aria-describedby="basic-addon3 basic-addon4" required>
                                 <div class="invalid-feedback">
-                                    Campo obbligatorio
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="bonifico" class="form-label">Allega copia del bonifico</label>
-                            <div class="input-group flex-grow-1">
-                                <input class="form-control" type="file" id="bonifico" aria-describedby="gannt" required>
-                                <span class="input-group-text input-add-on-icon"><i class="bi bi-trash"></i></span>
-                                <div class="invalid-feedback">
-                                    Allegato obbligatorio
+                                    Scelta obbligatoria
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="modal-footer">
                         <button  class="btn-vrt-primary align-items-center d-flex gap-2 justify-content-center">
                             SALVA
@@ -155,19 +117,17 @@
             <div class="d-flex">
                 <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
                     <i class="bi bi-files"></i>
-                    <span>Documenti contabili</span>
+                    <span>Video</span>
                 </div>
             </div>
-            
+                        
             <div class="table-responsive" style="width: 100%;">
                 <table class="table table-hover align-middle">
                     <thead class="table-light">
                         <tr>
                             <th scope="col">Titolo del Progetto</th>
                             <th scope="col">Data</th>
-                            <th scope="col">Importo €</th>
-                            <th scope="col">Fattura</th>
-                            <th scope="col">Bonifico</th>
+                            <th scope="col">Video</th>
                             <th scope="col">Elimina</th>
                         </tr>
                     </thead>
@@ -175,10 +135,8 @@
                         <tr>
                             <td>Progetto 1</td>
                             <td>16/ott/2023 00:05</td>
-                            <td>10.000,00</td>
-                            <td><i class="bi bi-file-pdf  fs-3 ms-3"></i></td>
-                            <td><i class="bi bi-file-pdf  fs-3 ms-3"></i></td>
-                            <td><i class="bi bi-trash  fs-3 ms-3"></i></td>
+                            <td><i class="bi bi-camera-video  fs-3"></i></td>
+                            <td><i class="bi bi-trash  fs-3"></i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -199,7 +157,7 @@
                         class="btn-vrt-primary align-items-center d-flex gap-3 justify-content-center ms-auto" 
                         data-bs-target="#modalRendicontazione" 
                         data-bs-toggle="modal">
-                            Carica contabile
+                            Nuovo video
                         <i class="bi bi-plus-square"></i>
                     </button>
                 </div>
@@ -220,7 +178,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.css" />
         <script>
-            var date_input = $('input[name="date"]');
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
             var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
             
             var options = {
@@ -232,8 +190,8 @@
             };
             date_input.datepicker(options);
         </script>
-
-        <script src="script.js"></script>
+       
+       <script src="../script.js"></script>
 
     </body>
 </html>

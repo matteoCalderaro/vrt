@@ -65,6 +65,8 @@ let createRowCapitale = () => {
     let removeBtn = row.querySelector(".removeBtn")
     removeBtn.addEventListener('click', (e) => {
         e.target.closest('.row').remove()
+        $('#messageQuota').text('')
+        $('#messageCapitaleSociale').text('')
     })
 
     wrapperCapitaleSociale.prepend(row)
@@ -110,6 +112,7 @@ let createRowOrgano = () => {
             let removeBtn = row.querySelector(".removeBtn")
             removeBtn.addEventListener('click',(e)=>{
                 e.target.closest('.row').remove()
+                $('#messageOrganoDirettivo').text('')
             })
         
     wrapperOrganoDirettivo.prepend(row)
@@ -163,11 +166,11 @@ let checkDocumenti = () =>{
         somma = somma + Number(quotaPartecipazione)
     }
     for (let i = 0; i < rowsCapitale.length; i++) {
-        if(quotaPartecipazione > 100 ||quotaPartecipazione < 0 ){
+        if(quotaPartecipazione > 100 || quotaPartecipazione < 0 ){
             console.log('dfsdf')
-            $('#messageQuota').text('Valori per quota compresi tra 0 e 100')
+            $('#messageQuota').text('I valori per quota devono essere compresi tra 0 e 100')
             $('#messageCapitaleSociale').text('')
-
+            somma = 0
             return false
         }
         $('#messageQuota').text('')

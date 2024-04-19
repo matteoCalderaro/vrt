@@ -33,40 +33,65 @@ h5 {
 
 /*////////////////////
 /// HOME PAGE 
-/////////////*/
-.hero{
-    background-image: linear-gradient(rgba(16, 29, 44, 0), rgba(16, 29, 44, 0)), url(media/2.jpg);
-    background-size:cover;
-    background-position:center;
+//////////// */
+
+.hero {
+    background-image: linear-gradient(rgba(16, 29, 44, 0), rgba(16, 29, 44, 0)), url(./media/2.jpg);
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
 }
+
 .hero-container {
     max-width: 600px;
 }
-.form-box{
-    background-color: #00000030;
+
+.form-box {
+    background-color: #f9f9f9d1;
 }
+
 .logo {
     padding-bottom: 20px;
 }
-.login-container{
+
+.login-container {
     left: 50%;
     top: 20%;
     position: absolute;
     transform: translate(-50%);
 }
-.login-box {
-    width: 40vw;
-    padding: 4px;
-    background-color: rgb(242 242 242 / 75%);
-    border: 3px solid var(--primary);
+
+.hero-backdrop {
+    min-height: inherit;
+    backdrop-filter: blur(7px);
 }
 
-.hero-backdrop{
-    height: 100%;
-    backdrop-filter: blur(7px);
+.hero-backdrop .d-flex {
+    min-height: inherit;
+}
+
+@media (max-width: 1200px) {
+    .hero-container {
+        width: 60vw;
+    }
+}
+@media (max-width: 800px) {
+    .hero-container {
+        width: 100vw;
+    }
+}
+
+.login-box .form {
+    background-color: rgb(242, 242, 242);
+    padding: 2rem 4rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+}
+@media (max-width: 800px) {
+    .login-box .form {
+        padding: 2rem;
+    }
 }
 
 /* TEXT COLOR */
@@ -100,6 +125,7 @@ select { /* Microsoft Edge */
     background-color: var(--primary);
     font-weight: 500;
 }
+
 .tag.tag-outline {
     border-radius: 4px;
     border: 2px solid var(--primary);

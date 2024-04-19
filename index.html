@@ -23,130 +23,164 @@
         <!-- recaptcha -->
         <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        
-        <style>
-            a {
-               color:inherit;
-               text-decoration: none;
-           }
-       </style>
-
-            
     </head>
-    <body class="login">
-    
-        <!-- NAVBAR -->
-        <nav class="vrt-navbar navbar navbar-expand-md bg-body-tertiary">
-            <div class="container-fluid px-0">
-                <a class="navbar-brand me-0 me-md-5"  href="#"><img height="40" src="media/logo/logoVrt.png" alt="vrt-logo"></a>
-                <span class="navbar-text red fw-semibold fs-5 d-md-none">
-                    Valorizzazione Ricerca Trentina
-                </span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-4 mb-md-0">
-                        <!-- <li class="nav-item mx-auto">
-                            <a class="nav-link" aria-current="page" href="./elenco.html">ELENCO</a>
-                        </li> -->
-                        <li class="nav-item mx-auto ">
-                            <a class="nav-link active" aria-current="page" href="./rendicontazioni.html">RENDICONTAZIONI</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex ms-auto align-items-center justify-content-center gap-2" role="search">
-                        <i class="bi bi-person fs-4"></i>
-                        <span>testuser@binetwork.it</span>
+    <style>
+         .step-8 .form-control:valid,
+         .step-8 .form-control:invalid{
+            background-image: none;
+         }
+    </style>
+    <body class="register">
+
+        <div style="max-width: 800px;" class="mx-auto">
+
+            <form class="step step-8  needs-validation" novalidate>
+                <div class="d-flex flex-column gap-5">
+                    <!-- tag -->
+                    <div class="d-flex">
+                        <div class="tag align-items-center d-flex gap-2 px-3 py-1">
+                            <i class="bi bi-tag"></i>
+                            <span>DOCUMENTI</span>
+                        </div>
                     </div>
-
+                    <!-- content -->
+                    <div class="row gap-5 gap-md-0">
+                        <div class="col-12 col-md-6" id="wrapperAttoCostitutivo">
+                            <label for="attoCostitutivo" class="form-label">Atto Costitutivo</label>
+                            <input class="form-control" type="file" id="attoCostitutivo" accept=".pdf" multiple="false" required>
+                            <span class="file-size-label">Max 1 - *.pdf - max 20 MB</span>
+                            <div class="invalid-feedback">
+                                Allegato obbligatorio
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-end gap-3 gap-md-0">
+                        <label id="labelCapitaleSociale" class="col-12 mb-2">Composizione capitale sociale</label>
+                        <!-- wrapper capitale sociale-->
+                        <div class="wrapper" id="wrapperCapitaleSociale">
+                            <div class="row gap-3 gap-md-0">
+                                <div class="col-12 col-md-3">
+                                    <input type="text" class="form-control" id="nomeCapitaleSociale" placeholder="Nome">
+                                    <div class="invalid-feedback">
+                                        Campo obbligatorio
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <input type="text" class="form-control" id="cognomeCapitaleSociale" placeholder="Cognome">
+                                    <div class="invalid-feedback">
+                                        Campo obbligatorio
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="quotaPartecipazione" aria-label="Amount (to the nearest dollar)" placeholder="Quota partecipazione">
+                                        <span class="input-group-text input-add-on-icon">
+                                            <i class="bi bi-bank"></i>
+                                        </span>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="genereFemminileStep8">
+                                        <label class="form-check-label" for="genereFemminile">
+                                            Genere femminile
+                                        </label>
+                                    </div>
+                                    <button type="button" class="addBtn btn-vrt-primary" style="min-width: unset;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="messageQuota" class="text-danger"></div>
+                            <span id="messageCapitaleSociale" class="text-danger mt-n-3"></span>
+                        </div>
+                    </div>
+                    <div class="row align-items-end gap-3 gap-md-0">
+                        <label id="labelOrganoDirettivo" class="col-12 mb-2">Organo direttivo</label>
+                        <!-- wrapper organo direttivo -->
+                        <div class="wrapper" id="wrapperOrganoDirettivo">
+                            <div class="row gap-3 gap-md-0 mb-2">
+                                <div class="col-12 col-md-3">
+                                    <input type="text" class="form-control" id="nomeOrganoDirettivo" placeholder="Nome">
+                                    <div class="invalid-feedback">
+                                        Campo obbligatorio
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <input type="text" class="form-control" id="cognomeOrganoDirettivo" placeholder="Cognome">
+                                    <div class="invalid-feedback">
+                                        Campo obbligatorio
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="genereFemminileOrganoDirettivo">
+                                        <label class="form-check-label" for="genereFemminileOrganoDirettivo">
+                                            Genere femminile
+                                        </label>
+                                    </div>
+                                    <button type="button" class="addBtn btn-vrt-primary" style="min-width: unset;">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <span id="messageOrganoDirettivo" class="text-danger mt-n-3"></span>
+                        </div>
+                    </div>
                 </div>
-                
-            </div>
-        </nav>
-        
-        <!-- TABLE  -->
-        <div class="main-container px-0 px-md-4 flex-column gap-5">
-
-            <!-- tag -->
-            <div class="d-flex">
-                <div class="tag tag-outline align-items-center d-flex gap-2 px-3 py-1">
-                    <i class="bi bi-list"></i>
-                    <span>Rendicontazioni</span>
+                <!-- buttons -->
+                <div class="d-flex justify-content-between py-5">
+                    <div>
+                        <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
+                            <i class="bi bi-arrow-left"></i>
+                            INDIETRO
+                        </button>
+                    </div>
+                    <div>
+                        <button id="Salva" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center">
+                            SALVA
+                        </button>
+                    </div>
                 </div>
-            </div>
-                        
-            <div class="table-responsive" style="width: 100%;">
-                <table class="table table-hover align-middle">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Titolo Bando</th>
-                            <th scope="col">Titolo del Progetto</th>
-                            <th scope="col">Data Inizio</th>
-                            <th scope="col">Data Fine</th>
-                            <th scope="col">Video</th>
-                            <th scope="col">Rendicontazione</th>
-                            <th scope="col">Elimina</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <th scope="row">10</th>
-                            <td>11° Bando Fondazione VRT Science Impact 2023</td>
-                            <td>Progetto 1</td>
-                            <td>16/ott/2023 00:05</td>
-                            <td>16/ott/2023 00:05</td>
-                            <td>
-                                <a href="./rendicontazioni-video.html">
-                                    <i class="bi bi-camera-video fs-3 ms-1"></i>
-                                </a>
-                            </td>
-                            <td class=" text-center">
-                                <a href="./rendicontazioni-fattura.html">
-                                    <i class="bi bi-pencil-square  fs-3"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <i class="bi bi-trash  fs-3 ms-4"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10</th>
-                            <td>10° Bando Fondazione VRT Mountain Innovators</td>
-                            <td>Progetto 2</td>
-                            <td>16/ott/2023 00:05</td>
-                            <td>16/ott/2023 00:05</td>
-                            <td>
-                                <a href="./rendicontazioni-video.html">
-                                    <i class="bi bi-camera-video fs-3 ms-1"></i>
-                                </a>
-                            </td>
-                            <td class=" text-center">
-                                <a href="./rendicontazioni-fattura.html">
-                                    <i class="bi bi-pencil-square  fs-3"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <i class="bi bi-trash  fs-3 ms-4"></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            </form>
+            <div id="errori" class="fs-2"></div>
         </div>
 
-        
-        <!-- ICONA SCROLL TO TOP -->
-        <div class="scroll-icon-inner">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
-            </svg>
-        </div>
-        
 
+        <script>
+            
+            let validateStep8 = () =>{
+                let form = document.querySelector('.step-8')
+                if(form.checkValidity()){
+                    if(checkDocumenti()){
+                        $('#errori').text('')
+                        setTimeout(() => {
+                            $('#errori').text('REQUEST INVIATA').css('color','green')
+                        }, 200);
+                    }
+                    else {
+                        $('#errori').text('')
+                        setTimeout(() => {
+                            $('#errori').text('REQUEST NON INVIATA').css('color','red')
+                        }, 200);
+                    }
+                }
+                else {
+                    $('#errori').text('')
+                    setTimeout(() => {
+                        $('#errori').text('REQUEST NON INVIATA').css('color','red')
+                    }, 200);
+                    return false
+                }
+            }
+            
+        </script>
+        
+        <script src="script-documenti.js"></script>
         <!-- My script -->
-        <script src="script.js"></script>
-        
     </body>
 </html>
 

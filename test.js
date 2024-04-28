@@ -84,7 +84,7 @@ $(document).ready(function() {
             infoEmpty: 'Nessun elemento trovato',
             lengthMenu: 'Visualizza _MENU_ risultati per pagina',
             zeroRecords: 'Nessuna rendicontazione corrisponde alla ricerca',
-            search: 'Ricerca in tutte le colonne:'
+            search: 'Ricerca globale:'
         },
         scrollX: true,
         autoWidth: true,

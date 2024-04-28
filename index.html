@@ -6,494 +6,214 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
     <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- My style -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- coreui -->
-    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.0/dist/js/coreui.bundle.min.js" integrity="sha384-Wl6mLWl+C0OgKzQqXtoEXuTkm2RwXManFDTNyMRxPR5zh3DFIUIDhq7Fp1JCFm1V" crossorigin="anonymous"></script>
-    
+    <!-- data table css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.css" rel="stylesheet">
+ 
     <style>
+
         /* cancellare */
-        body{
+        body {
             background-color: #e8e8e8;
             font-size: 14px;
+            overflow-x: hidden;
+            padding: 20px;
         }
-        /* tenere */
-        .btn-underline {
-            border: unset;
-            border-bottom: 1px solid blue;
-            background: transparent;
-        }
-        .edit-bando, .btn,
-        .dropdown-menu, #myTable, input {
-            font-size: 14px !important;
+        *{
+            font-size: inherit;
         }
 
-        .sidebar-button {
-            width: 100%;
-            border: unset;
-            background-color: #d7d7d7;
-            border-radius: 5px !important;
-            color: rgb(50, 31, 219)
-        }
-
+        
+   
         table button {
             background-color: transparent;
             border: unset
         }
 
-        button.active {
-            background-color: rgb(255, 255, 255);
-            color: rgb(118, 129, 146)
+        /* Custom CSS to override paginator color */
+        .page-item.active .page-link {
+            background-color: #6c757d; /* Secondary color */
+            border-color: #6c757d; /* Secondary color */
+        }
+        .page-link {
+            color: #6c757d; /* Secondary color */
+        }
+        .page-link:hover {
+            color: #343a40; /* Hover color */
         }
 
-        .table td, th {
-            white-space: nowrap;
+        .highlight {
+            background-color: yellow;
         }
 
-        .dropdown {
-            display: none
+        .form-check-input[type="checkbox"] {
+            border: 1px solid #6c757d; /* Adjust border color as needed */
         }
 
-        .sidebar {
-            background-color: transparent
+        #myTable td:nth-child(2) {
+            min-width: 200px; /* Adjust the minimum width as needed */
         }
+        
+    </style>  
+    
+</head>
 
-        .dropdown button {
-            background-color: white
-        }
+<body>
+    
+    <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="d-flex flex-column gap-4 p-3">
+                <!-- titolo bando -->
+                <div>
+                    <label for="titoloBando" class="form-label">Titolo bando</label>
+                    <input type="text" class="form-control" id="titoloBando" disabled>
+                </div>
+                <!-- azienda/data inserimento -->
+                <div class="gap-4 gap-md-0 row">
+                    <div class="col-12 col-md-6">
+                        <label for="denominazioneAzienda" class="form-label">Azienda</label>
+                        <input type="text" class="form-control" id="denominazioneAzienda"disabled>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="dataInserimento" class="form-label">Data inserimento</label>
+                        <input type="text" class="form-control" id="dataInserimento" disabled>
+                    </div>
+                </div>
+                <!-- importo -->
+                <div class="gap-4 gap-md-0 row align-items-end">
+                    <div class="col-12 col-md-6">
+                        <label for="importo" class="form-label">Importo</label>
+                        <input type="text" class="form-control" id="importo"disabled>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="autorizzato">
+                            <label class="form-check-label" for="autorizzato"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
 
-        @media (max-width: 800px) {
-            .dropdown {
-                display: block
-            }
+                <button class="btn btn-secondary">
+                    SALVA
+                </button>
+            </div>
+          </div>
+        </div>
+    </div>
+ 
 
-            .sidebar {
-                display: none
-            }
-        }
+    <table id="myTable" class="table nowrap table-bordered" style="width: 100%;">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Bando</th>
+                <th scope="col">Progetto</th>
+                <th scope="col">Data</th>
+                <th scope="col">Azienda</th>  
+                <th scope="col">Importo</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Autorizzato</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
-        .tab-pane.table-container {
-            background-color: white
-        }
+       
 
-        .tag {
-            background-color: #d7d7d7;
-            width: fit-content
-        }
-        .input-sm{
-            font-size:14px;   
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
+    <script src="test.js"></script>
+    
+</body>
 
-    <script>
+<script>
+// Define a variable to store the row index
+var selectedRowIndex;
 
-    let validateStep1 = (th)=>{
-        return new Promise((resolve, reject) => {
-            resolve(true)
-        })
+// Triggered when a row's button is clicked
+$('#myTable').on('click', 'button', function () {
+    var row = $(this).closest('tr');
+    selectedRowIndex = row.index(); // Save the index of the clicked row
+    console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
+
+    var titoloBando = row.find('td').eq(1).text();
+    var denominazioneAzienda = row.find('td').eq(4).text();
+    var dataInserimento = row.find('td').eq(3).text();
+    var importo = row.find('td').eq(5).text();
+
+    $('#titoloBando').val(titoloBando);
+    $('#denominazioneAzienda').val(denominazioneAzienda);
+    $('#dataInserimento').val(dataInserimento);
+    $('#importo').val(importo);
+
+    // Update modal checkbox based on DataTable checkbox
+    var isChecked = row.find('input[type="checkbox"]').prop('checked');
+    $('#autorizzato').prop('checked', isChecked);
+
+    // Set label text based on checkbox state
+    if (isChecked) {
+        $('label[for="autorizzato"]').text('Approvato');
+    } else {
+        $('label[for="autorizzato"]').text('Non Approvato');
     }
 
-    $(document).ready(function() {
-        // nasconde il dettaglio azienda
-        $("#dettaglio-azienda").hide();
-
-        // click listener sull'icona 'occhio'
-        $('#lista-aziende tbody tr th').click(function() {
-            (async () => {
-                const result = await eval(`validateStep${1}`)(this)
-
-                if (result == true) {
-                    var dipartimento = $(this).siblings('#dipartimento').text()
-                    console.log(Boolean(dipartimento))
-                    if(dipartimento){
-                        // nel dettaglio azienda nasconde il bottone 'documenti' nel menu 
-                        $('.btnDocumenti').hide();
-                    }
-                    else {
-                        // nel dettaglio azienda visualizza il bottone 'documenti' nel menu 
-                        $('.btnDocumenti').show();
-                    }
-                    // nasconde la lista aziende
-                    $("#lista-aziende").hide();
-                    // visualizza il dettaglio azienda
-                    $("#dettaglio-azienda").show().addClass("animate__animated animate__fadeIn");
-
-                } else {
-                    console.log('respinta')
-                    return
-                }
-            })()
-
-            $(window).scrollTop(0);
-        });
-
-    // click listener bottone indietro nel dettaglio azienda
-    $(".prev-step").click(function() {
-        // nasconde il dettaglio azienda
-        $("#dettaglio-azienda").hide();
-        // visualizza la lista aziende
-        $("#lista-aziende").show().addClass("animate__animated animate__fadeIn");
-        location.reload();
-        $(window).scrollTop(0);
-    });
-
+    $('#myModal').modal("show");
 });
 
 
-    </script>
-</head>
 
-<body class="d-flex flex-grow-1 px-md-3 mt-4 edit-bando">
+// Attach click event listener to the "Salva" button in the modal
+$('#myModal .btn-secondary').on('click', function() {
+    var isChecked = $('#autorizzato').is(':checked');
+    
+    // Get the index of the selected row
+    var rowIndex = selectedRowIndex;
+    console.log('Selected Row Index:', rowIndex); // Add this line to check the selected row index
 
-    <div class="container-lg d-flex flex-column">
-        
-        <!-- LISTA AZIENDE -->
-        <div class="tab-pane table-container h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="lista-aziende">
-            <!-- tag -->
-            <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                <i class="bi bi-tags"></i>
-                <span>Aziende</span>
-            </div>
-            <!--table-->
-            <div class="table-responsive" style="width: 100%;">
-                <table class="table-list table-hover table align-middle table-bordered" id="myTable">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Ragione sociale</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Dipartimento</th>
-                            <th scope="col">Ente / Azienda</th>
-                            <th scope="col">PEC</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th><i class="bi bi-eye fs-5" style="cursor: pointer;"></i></th>
-                            <td>Dipartimento di Fisica</td>
-                            <td>Università di Trento</td>
-                            <td id="dipartimento">Dipartimento di Fisica</td>
-                            <td></td>
-                            <td>dipartimentoFisica@pec.com</td>
-                        </tr>
-                        <tr>
-                            <th><i class="bi bi-eye fs-5" style="cursor: pointer;"></i></th>
-                            <td>New Company</td>
-                            <td>Altro</td>
-                            <td id="dipartimento"></td>
-                            <td>New Company</td>
-                            <td>newCompany@pec.com</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-           
-        <!-- DETTAGLIO AZIENDA -->
-        <div class="tab-pane fade d-flex- flex-column flex-grow-1" id="dettaglio-azienda" role="tabpanel" aria-labelledby="dettaglio-azienda-tab" tabindex="0">
-            <!--dropdown menu-->
-            <div class="dropdown">
-                <button class="btn mb-3 btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Seleziona
-                </button>
-                <div class="dropdown-menu w-100">
-                    <ul class="nav flex-column">
-                        <li class="nav-item" role="presentation">
-                            <a class="dropdown-item active " id="progetto-tab" data-coreui-toggle="tab" data-coreui-target="#progetto" role="tab" aria-controls="progetto" aria-selected="true" onclick="refreshPage('progetto')">Categoria</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="dropdown-item" id="dettagli-tab" data-coreui-toggle="tab" data-coreui-target="#dettagli" role="tab" aria-controls="dettagli" aria-selected="false" onclick="refreshPage('dettagli')">Anagrafica</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="dropdown-item" id="beneficiario-tab" data-coreui-toggle="tab" data-coreui-target="#beneficiario" role="tab" aria-controls="beneficiario" aria-selected="false" onclick="refreshPage('beneficiario')">Sedi</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="dropdown-item" id="criterio-1-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-1" role="tab" aria-controls="criterio-1" aria-selected="false" onclick="refreshPage('criterio-1')">Legale rappresentante</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="dropdown-item" id="criterio-2-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-2" role="tab" aria-controls="criterio-2" aria-selected="false" onclick="refreshPage('criterio-2')">Dati specifici</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="dropdown-item" id="criterio-3-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-3" role="tab" aria-controls="criterio-3" aria-selected="false" onclick="refreshPage('criterio-3')">Banca</a>
-                        </li>
-                        <li class="nav-item btnDocumenti" role="presentation">
-                            <a class="dropdown-item" id="criterio-4-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-4" role="tab" aria-controls="criterio-4" aria-selected="false" onclick="refreshPage('criterio-4')">Documenti</a>
-                        </li>
-                        <li class="nav-item ms-auto me-3 my-2" role="button">
-                            <a class="prev-step text-decoration-none text-primary btn-underline"><i class="bi bi-arrow-left"></i>Tutte le aziende</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!--sidebar-->
-            <div class="d-flex h-100 gap-4 align-items-start">
-                <ul class="sidebar nav justify-content-center mb-2 flex-column flex-shrink-0 gap-2" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="sidebar-button active py-2 px-3 d-flex" id="progetto-tab" data-coreui-toggle="tab" data-coreui-target="#progetto" role="tab" aria-controls="progetto" aria-selected="true" onclick="refreshPage('progetto')">Categoria</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="dettagli-tab" data-coreui-toggle="tab" data-coreui-target="#dettagli" role="tab" aria-controls="dettagli" aria-selected="false" onclick="refreshPage('dettagli')">Anagrafica</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="beneficiario-tab" data-coreui-toggle="tab" data-coreui-target="#beneficiario" role="tab" aria-controls="beneficiario" aria-selected="false" onclick="refreshPage('beneficiario')">Sedi</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-1-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-1" role="tab" aria-controls="criterio-1" aria-selected="false" onclick="refreshPage('criterio-1')">Legale rappresentante</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-2-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-2" role="tab" aria-controls="criterio-2" aria-selected="false" onclick="refreshPage('criterio-2')">Dati specifici</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-3-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-3" role="tab" aria-controls="criterio-3" aria-selected="false" onclick="refreshPage('criterio-3')">Banca</button>
-                    </li>
-                    <li class="nav-item btnDocumenti" role="presentation">
-                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-4-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-4" role="tab" aria-controls="criterio-4" aria-selected="false" onclick="refreshPage('criterio-4')">Documenti</button>
-                    </li>
-                    <li class="nav-item mt-3 mx-auto" role="presentation">
-                        <button type="button" class="btn-underline prev-step d-flex align-items-center gap-1 p-0 text-primary"><i class="bi bi-arrow-left"></i><span>Tutte le aziende</span></button>
-                    </li>
-                </ul>
-                <!--tabs container-->
-                <div class="tab-content w-100 h-100" id="myTabContent">
-                    <!--CATEGORIA-->
-                    <div class="tab-pane table-container active h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="progetto" role="tabpanel" aria-labelledby="progetto-tab" tabindex="0">
-                        <!-- tag -->
-                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                            <i class="bi bi-tags"></i>
-                            <span>Categoria</span>
-                        </div>
-                        <!--content-->
-                        <div class="row gap-3 gap-lg-0 mb-3">
-                            <div class="col-12 col-lg-6">
-                                <label for="categoria" class="form-label">Categoria di appartenenza</label>
-                                <input class="form-control" id="categoria" value="Università di Trento" disabled>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for="dipartimento" class="form-label">Dipartimento</label>
-                                <input class="form-control" id="dipartimento" value="Dipartimento di Fisica" disabled>
-                            </div>
-                        </div>
-                        <div class="row gap-3 gap-lg-0 mb-3">
-                            <div class="col-12 col-lg-6">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input class="form-control" id="nome" value="Matteo" disabled>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for="cognome" class="form-label">Cognome</label>
-                                <input class="form-control" id="cognome" value="Calderaro" disabled>
-                            </div>
-                        </div>
-                        <div class="row gap-3 gap-lg-0 mb-3">
-                            <div class="col-12 col-lg-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input class="form-control" id="email" value="matteo.calderaro@unitn.it" disabled>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <label for="codiceFiscale" class="form-label">Codice fiscale</label>
-                                <input class="form-control" id="codiceFiscale" value="CLDMTT78E24A953N" disabled>
-                            </div>
-                        </div>
-                    </div>
-                    <!--ANAGRAFICA-->
-                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="dettagli" role="tabpanel" aria-labelledby="dettagli-tab" tabindex="0">
-                        <!-- tag -->
-                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                            <i class="bi bi-tags"></i>
-                            <span>Anagrafica</span>
-                        </div>
-                        <!--content-->
-                        <div class="mb-3">
-                            <label for="aziendaEsistente" class="form-label">Azienda già presente nel database</label>
-                            <input class="form-control" id="aziendaEsistente" disabled>
-                        </div>
-                        <div class="mb-3">
-                            <label for="aziendaNuova" class="form-label">Nuova azienda</label>
-                            <input class="form-control" id="aziendaNuova" disabled>
-                        </div>
-                    </div>
-                    <!--SEDI-->
-                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="beneficiario" role="tabpanel" aria-labelledby="beneficiario-tab" tabindex="0">
-                        <!-- tag -->
-                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                            <i class="bi bi-tags"></i>
-                            <span>Sedi</span>
-                        </div>
-                        <!--content-->
-                        <div class="row gap-3 gap-md-0 mb-3">
-                            <div class="col-12 col-md-4">
-                                <label for="tipoIndirizzo" class="form-label">Tipo indirizzo</label>
-                                <input class="form-control" id="tipoIndirizzo" disabled>
-                            </div>
-                            <div class="col-12 col-md-8">
-                                <label for="via" class="form-label">Via/Piazza/Loc./etc</label>
-                                <input class="form-control" id="via" disabled value="Via Sommarive">
-                            </div>
-                        </div>
-                        <div class="row gap-3 gap-md-0 mb-3">
-                            <div class="col-12 col-md-2">
-                                <label for="civico" class="form-label">Civico</label>
-                                <input class="form-control" id="civico" disabled value="14">
-                            </div>
-                            <div class="col-12 col-md-2">
-                                <label for="frazione" class="form-label">Frazione</label>
-                                <input class="form-control" id="frazione" disabled>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="cap" class="form-label">Cap</label>
-                                <input class="form-control" id="cap" disabled value="38123">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="comune" class="form-label">Comune</label>
-                                <input class="form-control" id="comune" disabled value="Trento">
-                            </div>
-                        </div>
-                        <div class="row gap-3 gap-md-0">
-                            <div class="col-12 col-md-4">
-                                <label for="provincia" class="form-label">Provincia</label>
-                                <input class="form-control" id="provincia" disabled value="Trento">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="regione" class="form-label">Regione</label>
-                                <input class="form-control" id="regione" disabled value="Trentino Alto Aidge">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="nazione" class="form-label">Nazione</label>
-                                <input class="form-control" id="nazione" disabled value="Italia">
-                            </div>
-                        </div>
-                    </div>
-                    <!--LEGALE RAPPRESENTANTE-->
-                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-1" role="tabpanel" aria-labelledby="criterio-1-tab" tabindex="0">
-                        <!-- tag -->
-                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                            <i class="bi bi-tags"></i>
-                            <span>Legale rappresentante</span>
-                        </div>
-                        <!--content-->
-                        <div class="row gap-3 gap-md-0 mb-3">
-                            <div class="col-12 col-md-4">
-                                <label for="titolo" class="form-label">Titolo</label>
-                                <input class="form-control" id="titolo" disabled value="Sig.">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="regione" class="form-label">Nome</label>
-                                <input class="form-control" id="regione" disabled value="Matteo">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="cognome" class="form-label">Cognome</label>
-                                <input class="form-control" id="cognome" disabled value="Calderaro">
-                            </div>
-                        </div>
-                        <div class="row gap-3 gap-md-0 mb-3">
-                            <div class="col-12 col-md-4">
-                                <label for="email" class="form-label">Email</label>
-                                <input class="form-control" id="email" disabled value="matteo@gmail.com">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="telefono" class="form-label">Telefono</label>
-                                <input class="form-control" id="telefono" disabled value="3407640156">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label for="cellulare" class="form-label">Cellulare</label>
-                                <input class="form-control" id="cellulare" disabled value="3407640156">
-                            </div>
-                        </div>
-                    </div>
-                    <!--DATI SPECIFICI-->
-                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-2" role="tabpanel" aria-labelledby="criterio-2-tab" tabindex="0">
-                        <!-- tag -->
-                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                            <i class="bi bi-tags"></i>
-                            <span>Dati specifici</span>
-                        </div>
-                        <!--content-->
-                        <div class="row gap-3 gap-md-0 mb-3">
-                            <div class="col-12 col-md-6">
-                                <label for="naturaGiuridica" class="form-label">Natura giuridica</label>
-                                <input class="form-control" id="naturaGiuridica" disabled value="Ente privato">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label for="formaGiuridica" class="form-label">Forma giuridica</label>
-                                <input class="form-control" id="formaGiuridica" disabled value="Associazione">
-                            </div>
-                        </div>
-                        <div class="row gap-3 gap-md-0 mb-3">
-                            <div class="col-12 col-md-6">
-                                <label for="cataCostituzione" class="form-label">Data costituzione</label>
-                                <input class="form-control" id="cataCostituzione" disabled value="01/01/2024">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label for="dataInizioAttivita" class="form-label">Data inizio attività</label>
-                                <input class="form-control" id="dataInizioAttivita" disabled value="01/01/2024">
-                            </div>
-                        </div>                        
-                    </div>
-                    <!--BANCA-->
-                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-3" role="tabpanel" aria-labelledby="criterio-3-tab" tabindex="0">
-                        <!-- tag -->
-                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                            <i class="bi bi-tags"></i>
-                            <span>Banca</span>
-                        </div>
-                        <!--content-->
-                        <!-- <div class="row gap-3 gap-md-0 mb-3">
-                            <div class="col-12 col-md-6">
-                                <label for="banca" class="form-label">Banca</label>
-                                <input class="form-control" id="banca" disabled value="Unicredit">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label for="agenzia" class="form-label">Agenzia</label>
-                                <input class="form-control" id="agenzia" disabled value="Agenzia Milano 2">
-                            </div>
-                        </div> -->
-                    </div>
-                    <!--DOCUMENTI-->
-                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-4" role="tabpanel" aria-labelledby="criterio-4-tab" tabindex="0">
-                        <!-- tag -->
-                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
-                            <i class="bi bi-tags"></i>
-                            <span>Documenti</span>
-                        </div>
-                        <!--table-->
-                        <!-- <div class="table-responsive" style="width: 100%;">
-                            <table class="table-list table table-hover align-middle" id="table-list7">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Titolo</th>
-                                        <th scope="col">Etichetta</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" id="idDomanda">idDomanda</th>
-                                        <td id="Domanda">Domanda</td>
-                                        <td>html</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-           
-        
-
-    </div>
-
-</body>
+    // Find the checkbox element within the selected row
+    var checkboxElement = $('#myTable tbody tr').eq(rowIndex).find('input[type="checkbox"]');
+    if (checkboxElement.length > 0) {
+        // Update the checkbox state
+        checkboxElement.prop('checked', isChecked);
+    } else {
+        console.error('Checkbox element not found in the row.');
+    }
+    $('#myModal').modal('hide');
+});
 
 
+
+
+
+
+
+// Update label text based on checkbox state
+$('#autorizzato').change(function () {
+    var isChecked = $(this).prop('checked');
+    if (isChecked) {
+        $('label[for="autorizzato"]').text('Approvato');
+    } else {
+        $('label[for="autorizzato"]').text('Non Approvato');
+    }
+});
+
+</script>
 
 

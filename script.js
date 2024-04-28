@@ -240,7 +240,6 @@ if(scrollIcon){
 ///////////////////////////////////
 //////// PASSWORD EYE
 $(".show_hide_password span").on('click', function(event) {
-  console.log('ciao')
     event.preventDefault();
     if($('.show_hide_password input').attr("type") == "text"){
         $('.show_hide_password input').attr('type', 'password');
@@ -252,21 +251,3 @@ $(".show_hide_password span").on('click', function(event) {
         $('.show_hide_password i').addClass( "bi-eye" );
     }
 });
-
-
-
-
-// function SendRegistrazione(param){
-//   // console.log('dsfs')
-//   (async () => {
-//     const result = await eval(`validateStep${currentStep}`)(param)
-//     if (result == true) {
-//       // console.log('risolta')
-
-//     } else {
-//         console.log('respinta')
-//         return
-//     }
-//   })()
-// }
-

@@ -1,0 +1,805 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRT - progress</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- My style -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- coreui -->
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.0/dist/js/coreui.bundle.min.js" integrity="sha384-Wl6mLWl+C0OgKzQqXtoEXuTkm2RwXManFDTNyMRxPR5zh3DFIUIDhq7Fp1JCFm1V" crossorigin="anonymous"></script>
+
+    <style>
+        /* cancellare */
+        body {
+            background-color: #e8e8e8;
+            font-size: 14px;
+        }
+        /* tenere */
+        .btn-underline {
+            border: unset;
+            border-bottom: 1px solid blue;
+            background: transparent;
+        }
+        .edit-bando, .btn,
+        .dropdown-menu, .myTable, input {
+            font-size: 14px !important;
+            margin-bottom: 0;
+        }
+
+        .sidebar-button {
+            width: 100%;
+            border: unset;
+            background-color: #d7d7d7;
+            border-radius: 5px !important;
+            color: rgb(50, 31, 219)
+        }
+
+        table button {
+            background-color: transparent;
+            border: unset
+        }
+
+        button.active {
+            background-color: rgb(255, 255, 255);
+            color: rgb(118, 129, 146)
+        }
+
+        .table td, th {
+            white-space: nowrap;
+        }
+
+        .dropdown {
+            display: none
+        }
+
+        .sidebar {
+            background-color: transparent
+        }
+
+        .dropdown button {
+            background-color: white
+        }
+
+        @media (max-width: 800px) {
+            .dropdown {
+                display: block
+            }
+
+            .sidebar {
+                display: none
+            }
+        }
+
+        .tab-pane.table-container {
+            background-color: white
+        }
+
+        .tag {
+            background-color: #d7d7d7;
+            width: fit-content
+        }
+
+        .input-sm{
+            font-size:14px;   
+        }
+
+        /* bottone download documenti */
+        .input-group-append a{
+            height: -webkit-fill-available;
+            border-top-left-radius:0;
+            border-bottom-left-radius:0
+        }
+    </style>    
+
+    <script>
+
+        let ente  = {
+            // CATEGORIA
+            categoria: 'Università di Trento',
+            dipartimento : 'Dipartimento di Fisica',
+            nome: 'Mario',
+            cognome: 'Rossi',
+            email:'mario@gmail.com',
+            codiceFiscale:'AV61578E14A953N',
+            // SEDI
+            tipoIndirizzo:'', //da definire
+            indirizzo :'Via Sommarive',
+            civico:'14',
+            frazione: '',
+            cap:'38123',
+            comune:'Trento',
+            provincia:'Trento',
+            regione:'Trentino Alto Adige',
+            nazione:'Italia',
+            // LEGALE RAPPRESENTANTE
+            titolo: 'Avv.',
+            nomeLegale :'Mario',
+            cognomeLegale:'Rossi',
+            emailLegale:'mario@gmail.com',
+            telefonoLegale: '333998435',
+            cellulareLegale: '333998435',
+            // DATI SPECIFICI
+            naturaGiuridica:'Ente Pubblico',
+            formaGiuridica:'Università',
+            dataCostituzione:'01/01/2020',
+            dataInizioAttivita:'01/02/2020',
+            // BANCA
+            banca: 'Unicredit',
+            agenzia:'Milano 2',
+            iban:'IT60X0542811101000000000000'
+        }
+
+        let azienda = {
+            // CATEGORIA
+            categoria: '',
+            dipartimento: '',
+            nome: 'Matteo',
+            cognome: 'Calderaro',
+            email:'matteo@gmail.com',
+            codiceFiscale:'CLDMTT78E14A953N',
+            // SEDI
+            tipoIndirizzo:'', //da definire
+            indirizzo :'Via delle Busatte',
+            civico:'32',
+            frazione: '',
+            cap:'38069',
+            comune:'Nago-Torbole',
+            provincia:'Trento',
+            regione:'Trentino Alto Adige',
+            nazione:'Italia',
+            // LEGALE RAPPRESENTANTE
+            titolo: 'Sig.',
+            nomeLegale :'Matteo',
+            cognomeLegale:'Calderaro',
+            emailLegale:'matteo@gmail.com',
+            telefonoLegale: '3407649157',
+            cellulareLegale: '3407649157',
+            // DATI SPECIFICI
+            naturaGiuridica:'Ente Privato',
+            formaGiuridica:'Azienda',
+            dataCostituzione:'01/01/2024',
+            dataInizioAttivita:'01/02/2024',
+            // BANCA
+            banca: 'Cassa rurale',
+            agenzia:'Arco',
+            iban:'IT60X0542811101000000123456',
+            // DOCUMENTI
+            attoCostitutivo: 'logo.pdf',
+            statuto: 'logo.pdf',
+            bilancio: 'logo.pdf',
+            visura: 'logo.pdf',
+            documento: 'logo.pdf',
+            caricheSociali: 'logo.pdf'
+        }   
+    
+        let data  = {}
+        let validateStep1 = (th)=>{
+            return new Promise((resolve, reject) => {
+                resolve(true)
+            })
+        }
+
+        $(document).ready(function() {
+        // nasconde il dettaglio azienda
+        $("#dettaglio-azienda").hide();
+
+        // click listener sull'icona 'occhio'
+        $('#lista-aziende tbody tr th').click(function() {
+            (async () => {
+                const result = await eval(`validateStep${1}`)(this)
+
+                if (result == true) {
+                    var dipartimento = $(this).siblings('#dipartimentoLista').text()
+                    console.log(Boolean(dipartimento))
+                    if(dipartimento){
+                        // nel dettaglio azienda nasconde il bottone 'documenti' nel menu 
+                        $('.btnDocumenti').hide();
+                        data = ente
+                        setValues()
+                        console.log(data)
+                    }
+                    else {
+                        data = azienda
+                        setValues()
+                        console.log(data)
+                        // nel dettaglio azienda visualizza il bottone 'documenti' nel menu 
+                        $('.btnDocumenti').show();
+                    }
+                    // nasconde la lista aziende
+                    $("#lista-aziende").hide();
+                    // visualizza il dettaglio azienda
+                    $("#dettaglio-azienda").show().addClass("animate__animated animate__fadeIn");
+
+                } else {
+                   
+                    console.log('respinta')
+                    return
+                }
+            })()
+
+            $(window).scrollTop(0);
+        });
+
+        // click listener bottone indietro nel dettaglio azienda
+        $(".prev-step").click(function() {
+            // nasconde il dettaglio azienda
+            $("#dettaglio-azienda").hide();
+            // visualizza la lista aziende
+            $("#lista-aziende").show().addClass("animate__animated animate__fadeIn");
+            location.reload();
+            $(window).scrollTop(0);
+        });
+
+});
+
+    </script>
+</head>
+
+<body class="d-flex flex-grow-1 px-md-3 mt-4 edit-bando">
+
+    <div class="container-lg d-flex flex-column">
+        
+        <!-- LISTA AZIENDE -->
+        <div class="tab-pane table-container h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="lista-aziende">
+            <!-- tag -->
+            <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                <i class="bi bi-tags"></i>
+                <span>Aziende</span>
+            </div>
+            <!--table-->
+            <div class="table-responsive" style="width: 100%;">
+                <table class="table-list table-hover table align-middle table-bordered myTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ragione sociale</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Dipartimento</th>
+                            <th scope="col">Ente / Azienda</th>
+                            <th scope="col">PEC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><i class="bi bi-eye fs-5" style="cursor: pointer;"></i></th>
+                            <td>Dipartimento di Fisica</td>
+                            <td>Università di Trento</td>
+                            <td id="dipartimentoLista">Dipartimento di Fisica</td>
+                            <td></td>
+                            <td>dipartimentoFisica@pec.com</td>
+                        </tr>
+                        <tr>
+                            <th><i class="bi bi-eye fs-5" style="cursor: pointer;"></i></th>
+                            <td>New Company</td>
+                            <td>Altro</td>
+                            <td id="dipartimentoLista"></td>
+                            <td>New Company</td>
+                            <td>newCompany@pec.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+           
+        <!-- DETTAGLIO AZIENDA -->
+        <div class="tab-pane fade d-flex- flex-column flex-grow-1" id="dettaglio-azienda" role="tabpanel" aria-labelledby="dettaglio-azienda-tab" tabindex="0">
+            <!--dropdown menu-->
+            <div class="dropdown">
+                <button class="btn mb-3 btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Seleziona
+                </button>
+                <div class="dropdown-menu w-100">
+                    <ul class="nav flex-column">
+                        <li class="nav-item" role="presentation">
+                            <a class="dropdown-item active " id="progetto-tab" data-coreui-toggle="tab" data-coreui-target="#progetto" role="tab" aria-controls="progetto" aria-selected="true" onclick="refreshPage('progetto')">Categoria</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="dropdown-item" id="dettagli-tab" data-coreui-toggle="tab" data-coreui-target="#dettagli" role="tab" aria-controls="dettagli" aria-selected="false" onclick="refreshPage('dettagli')">Anagrafica</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="dropdown-item" id="beneficiario-tab" data-coreui-toggle="tab" data-coreui-target="#beneficiario" role="tab" aria-controls="beneficiario" aria-selected="false" onclick="refreshPage('beneficiario')">Sedi</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="dropdown-item" id="criterio-1-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-1" role="tab" aria-controls="criterio-1" aria-selected="false" onclick="refreshPage('criterio-1')">Legale rappresentante</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="dropdown-item" id="criterio-2-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-2" role="tab" aria-controls="criterio-2" aria-selected="false" onclick="refreshPage('criterio-2')">Dati specifici</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="dropdown-item" id="criterio-3-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-3" role="tab" aria-controls="criterio-3" aria-selected="false" onclick="refreshPage('criterio-3')">Banca</a>
+                        </li>
+                        <li class="nav-item btnDocumenti" role="presentation">
+                            <a class="dropdown-item" id="criterio-4-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-4" role="tab" aria-controls="criterio-4" aria-selected="false" onclick="refreshPage('criterio-4')">Documenti</a>
+                        </li>
+                        <li class="nav-item ms-auto me-3 my-2" role="button">
+                            <a class="prev-step text-decoration-none text-primary btn-underline"><i class="bi bi-arrow-left"></i>Tutte le aziende</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--sidebar-->
+            <div class="d-flex h-100 gap-4 align-items-start">
+                <ul class="sidebar nav justify-content-center mb-2 flex-column flex-shrink-0 gap-2" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button type="button" class="sidebar-button active py-2 px-3 d-flex" id="progetto-tab" data-coreui-toggle="tab" data-coreui-target="#progetto" role="tab" aria-controls="progetto" aria-selected="true" onclick="refreshPage('progetto')">Categoria</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="dettagli-tab" data-coreui-toggle="tab" data-coreui-target="#dettagli" role="tab" aria-controls="dettagli" aria-selected="false" onclick="refreshPage('dettagli')">Anagrafica</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="beneficiario-tab" data-coreui-toggle="tab" data-coreui-target="#beneficiario" role="tab" aria-controls="beneficiario" aria-selected="false" onclick="refreshPage('beneficiario')">Sedi</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-1-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-1" role="tab" aria-controls="criterio-1" aria-selected="false" onclick="refreshPage('criterio-1')">Legale rappresentante</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-2-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-2" role="tab" aria-controls="criterio-2" aria-selected="false" onclick="refreshPage('criterio-2')">Dati specifici</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-3-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-3" role="tab" aria-controls="criterio-3" aria-selected="false" onclick="refreshPage('criterio-3')">Banca</button>
+                    </li>
+                    <li class="nav-item btnDocumenti" role="presentation">
+                        <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-4-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-4" role="tab" aria-controls="criterio-4" aria-selected="false" onclick="refreshPage('criterio-4')">Documenti</button>
+                    </li>
+                    <li class="nav-item mt-3 mx-auto" role="presentation">
+                        <button type="button" class="btn-underline prev-step d-flex align-items-center gap-1 p-0 text-primary"><i class="bi bi-arrow-left"></i><span>Tutte le aziende</span></button>
+                    </li>
+                </ul>
+                <!--tabs container-->
+                <div class="tab-content w-100 h-100" id="myTabContent">
+                    <!--CATEGORIA-->
+                    <div class="tab-pane table-container active h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="progetto" role="tabpanel" aria-labelledby="progetto-tab" tabindex="0">
+                        <!-- tag -->
+                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                            <i class="bi bi-tags"></i>
+                            <span>Categoria</span>
+                        </div>
+                        <!--content-->
+                        <div class="row gap-3 gap-lg-0 mb-3">
+                            <div class="col-12 col-lg-6">
+                                <label for="categoria" class="form-label">Categoria di appartenenza</label>
+                                <input class="form-control" id="categoria" disabled>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="dipartimento" class="form-label">Dipartimento</label>
+                                <input class="form-control" id="dipartimento" disabled>
+                            </div>
+                        </div>
+                        <div class="row gap-3 gap-lg-0 mb-3">
+                            <div class="col-12 col-lg-6">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input class="form-control" id="nome" disabled>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="cognome" class="form-label">Cognome</label>
+                                <input class="form-control" id="cognome" disabled>
+                            </div>
+                        </div>
+                        <div class="row gap-3 gap-lg-0 mb-3">
+                            <div class="col-12 col-lg-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input class="form-control" id="email" disabled>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="codiceFiscale" class="form-label">Codice fiscale</label>
+                                <input class="form-control" id="codiceFiscale" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ANAGRAFICA-->
+                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="dettagli" role="tabpanel" aria-labelledby="dettagli-tab" tabindex="0">
+                        <!-- tag -->
+                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                            <i class="bi bi-tags"></i>
+                            <span>Anagrafica</span>
+                        </div>
+                        <!--content-->
+                        <div class="mb-3">
+                            <label for="aziendaEsistente" class="form-label">Azienda già presente nel database</label>
+                            <input class="form-control" id="aziendaEsistente" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="aziendaNuova" class="form-label">Nuova azienda</label>
+                            <input class="form-control" id="aziendaNuova" disabled>
+                        </div>
+                    </div>
+                    <!--SEDI-->
+                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="beneficiario" role="tabpanel" aria-labelledby="beneficiario-tab" tabindex="0">
+                        <!-- tag -->
+                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                            <i class="bi bi-tags"></i>
+                            <span>Sedi</span>
+                        </div>
+                        <!--content-->
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-4">
+                                <label for="tipoIndirizzo" class="form-label">Tipo indirizzo</label>
+                                <input class="form-control" id="tipoIndirizzo" disabled>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <label for="indirizzo" class="form-label">Via/Piazza/Loc./etc</label>
+                                <input class="form-control" id="indirizzo" disabled>
+                            </div>
+                        </div>
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-2">
+                                <label for="civico" class="form-label">Civico</label>
+                                <input class="form-control" id="civico" disabled>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <label for="frazione" class="form-label">Frazione</label>
+                                <input class="form-control" id="frazione" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="cap" class="form-label">Cap</label>
+                                <input class="form-control" id="cap" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="comune" class="form-label">Comune</label>
+                                <input class="form-control" id="comune" disabled>
+                            </div>
+                        </div>
+                        <div class="row gap-3 gap-md-0">
+                            <div class="col-12 col-md-4">
+                                <label for="provincia" class="form-label">Provincia</label>
+                                <input class="form-control" id="provincia" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="regione" class="form-label">Regione</label>
+                                <input class="form-control" id="regione" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="nazione" class="form-label">Nazione</label>
+                                <input class="form-control" id="nazione" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <!--LEGALE RAPPRESENTANTE-->
+                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-1" role="tabpanel" aria-labelledby="criterio-1-tab" tabindex="0">
+                        <!-- tag -->
+                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                            <i class="bi bi-tags"></i>
+                            <span>Legale rappresentante</span>
+                        </div>
+                        <!--content-->
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-4">
+                                <label for="titolo" class="form-label">Titolo</label>
+                                <input class="form-control" id="titolo" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="nomeLegale" class="form-label">Nome</label>
+                                <input class="form-control" id="nomeLegale" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="cognomeLegale" class="form-label">Legale</label>
+                                <input class="form-control" id="cognomeLegale" disabled>
+                            </div>
+                        </div>
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-4">
+                                <label for="emailLegale" class="form-label">Email</label>
+                                <input class="form-control" id="emailLegale" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="telefonoLegale" class="form-label">Telefono</label>
+                                <input class="form-control" id="telefonoLegale" disabled>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="cellulareLegale" class="form-label">Cellulare</label>
+                                <input class="form-control" id="cellulareLegale" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <!--DATI SPECIFICI-->
+                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-2" role="tabpanel" aria-labelledby="criterio-2-tab" tabindex="0">
+                        <!-- tag -->
+                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                            <i class="bi bi-tags"></i>
+                            <span>Dati specifici</span>
+                        </div>
+                        <!--content-->
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-6">
+                                <label for="naturaGiuridica" class="form-label">Natura giuridica</label>
+                                <input class="form-control" id="naturaGiuridica" disabled>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="formaGiuridica" class="form-label">Forma giuridica</label>
+                                <input class="form-control" id="formaGiuridica" disabled>
+                            </div>
+                        </div>
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-6">
+                                <label for="dataCostituzione" class="form-label">Data costituzione</label>
+                                <input class="form-control" id="dataCostituzione" disabled>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="dataInizioAttivita" class="form-label">Data inizio attività</label>
+                                <input class="form-control" id="dataInizioAttivita" disabled>
+                            </div>
+                        </div>                        
+                    </div>
+                    <!--BANCA-->
+                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-3" role="tabpanel" aria-labelledby="criterio-3-tab" tabindex="0">
+                        <!-- tag -->
+                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                            <i class="bi bi-tags"></i>
+                            <span>Banca</span>
+                        </div>
+                        <!--content-->
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-6">
+                                <label for="banca" class="form-label">Banca</label>
+                                <input class="form-control" id="banca" disabled>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="agenzia" class="form-label">Agenzia</label>
+                                <input class="form-control" id="agenzia" disabled>
+                            </div>
+                        </div>
+                        <div class="row gap-3 gap-md-0 mb-4">
+                            <div class="col-12 col-md-6">
+                                <label for="intestatario" class="form-label">Intestatario</label>
+                                <input class="form-control" id="intestatario" disabled>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="iban" class="form-label">IBAN</label>
+                                <input class="form-control" id="iban" disabled>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="italiano" disabled>
+                                <label class="form-check-label" for="italiano">
+                                    Non italiano
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="utilizzato" checked disabled>
+                                <label class="form-check-label" for="utilizzato">
+                                    Attivo/Utilizzato
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--DOCUMENTI-->
+                    <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-4" role="tabpanel" aria-labelledby="criterio-4-tab" tabindex="0">
+                        <!-- tag -->
+                        <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                            <i class="bi bi-tags"></i>
+                            <span>Documenti</span>
+                        </div>
+                        <!-- atto costitutivo + statuto -->
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-6">
+                                <div>
+                                    <label for="attoCostitutivo" class="form-label">Atto costitutivo</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="attoCostitutivo" disabled>
+                                        <div class="input-group-append d-flex">
+                                            <a class="btn btn-outline-secondary d-flex align-items-center" id="downloadAttoCostitutivo">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div>
+                                    <label for="statuto" class="form-label">Statuto</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="statuto" disabled>
+                                        <div class="input-group-append d-flex">
+                                            <a class="btn btn-outline-secondary d-flex align-items-center" id="downloadStatuto">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- bilancio + visura -->
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-6">
+                                <div>
+                                    <label for="bilancio" class="form-label">Ultimo bilancio depositato</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="bilancio" disabled>
+                                        <div class="input-group-append d-flex">
+                                            <a class="btn btn-outline-secondary d-flex align-items-center" id="downloadBilancio">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div>
+                                    <label for="visura" class="form-label">Visura camerale</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="visura" disabled>
+                                        <div class="input-group-append d-flex">
+                                            <a class="btn btn-outline-secondary d-flex align-items-center"  id="downloadVisura">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- documento + cariche sociali -->
+                        <div class="row gap-3 gap-md-0 mb-3">
+                            <div class="col-12 col-md-6">
+                                <div>
+                                    <label for="documento" class="form-label">Documento d'identità legale rappresentante</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="documento" disabled>
+                                        <div class="input-group-append d-flex">
+                                            <a class="btn btn-outline-secondary d-flex align-items-center" id="downloadDocumento">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div>
+                                    <label for="caricheSociali" class="form-label">Elenco cariche sociali</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="caricheSociali" disabled>
+                                        <div class="input-group-append d-flex">
+                                            <a class="btn btn-outline-secondary d-flex align-items-center"  id="downloadCaricheSociali">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CAPITALE SOCIALE -->
+                        <div class="table-responsive my-5" style="width: 100%;">
+                            <label for="capitaleSociale" class="form-label">Composizione capitale sociale</label>
+                            <table class="table-list table-hover table align-middle table-bordered myTable" id="capitaleSociale">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Cognome</th>
+                                        <th scope="col">Quota partecipazione</th>
+                                        <th scope="col">Genere femminile</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Matteo</td>
+                                        <td>Bianchi</td>
+                                        <td>51%</td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maria</td>
+                                        <td>Rossi</td>
+                                        <td>49%</td>
+                                        <td>SI</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ORGANO DIRETTIVO -->
+                        <div class="table-responsive" style="width: 100%;">
+                            <label for="capitaleSociale" class="form-label">Organo direttivo</label>
+                            <table class="table-list table-hover table align-middle table-bordered myTable" id="capitaleSociale">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Cognome</th>
+                                        <th scope="col">Genere femminile</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Matteo</td>
+                                        <td>Bianchi</td>
+                                        <td>NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maria</td>
+                                        <td>Rossi</td>
+                                        <td>SI</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>           
+    </div>
+    <script>
+
+    let setValues = () =>{
+            // CATEGORIA
+            $('#categoria').val(data.categoria)
+            $('#dipartimento').val(data.dipartimento)
+            $('#nome').val(data.nome)
+            $('#cognome').val(data.cognome)
+            $('#email').val(data.email)
+            $('#codiceFiscale').val(data.codiceFiscale)
+
+            // SEDI
+            $('#tipoIndirizzo').val(data.tipoIndirizzo)
+            $('#indirizzo').val(data.indirizzo)
+            $('#civico').val(data.civico)
+            $('#cap').val(data.cap)
+            $('#comune').val(data.comune)
+            $('#provincia').val(data.provincia)
+            $('#regione').val(data.regione)
+            $('#nazione').val(data.nazione)
+
+            // LEGALE RAPPRESENTANTE
+            $('#titolo').val(data.titolo)
+            $('#nomeLegale').val(data.nomeLegale)
+            $('#cognomeLegale').val(data.cognomeLegale)
+            $('#emailLegale').val(data.emailLegale)
+            $('#telefonoLegale').val(data.telefonoLegale)
+            $('#cellulareLegale').val(data.cellulareLegale)
+
+            // DATI SPECIFICI
+            $('#naturaGiuridica').val(data.naturaGiuridica)
+            $('#formaGiuridica').val(data.formaGiuridica)
+            $('#dataCostituzione').val(data.dataCostituzione)
+            $('#dataInizioAttivita').val(data.dataInizioAttivita)
+
+            // BANCA
+            $('#banca').val(data.banca)
+            $('#agenzia').val(data.agenzia)
+            $('#intestatario').val(data.dipartimento) // differenziare
+            $('#iban').val(data.iban)
+
+            // DOCUMENTI
+
+            let localhost = 'http://127.0.0.1:5500/media'
+
+            $('#attoCostitutivo').val(data.attoCostitutivo);
+            $('#downloadAttoCostitutivo').attr({target: '_blank', href  : `${localhost}/${attoCostitutivo.value}`});
+
+            $('#statuto').val(data.statuto);
+            $('#downloadStatuto').attr({target: '_blank', href  : `${localhost}/${statuto.value}`});
+
+            $('#bilancio').val(data.bilancio);
+            $('#downloadBilancio').attr({target: '_blank', href  : `${localhost}/${statuto.value}`});
+
+            $('#visura').val(data.visura);
+            $('#downloadVisura').attr({target: '_blank', href  : `${localhost}/${statuto.value}`});
+
+            $('#documento').val(data.visura);
+            $('#downloadDocumento').attr({target: '_blank', href  : `${localhost}/${documento.value}`});
+
+            $('#caricheSociali').val(data.visura);
+            $('#downloadCaricheSociali').attr({target: '_blank', href  : `${localhost}/${caricheSociali.value}`});         
+        }
+
+
+    </script>
+</body>
+
+
+
+

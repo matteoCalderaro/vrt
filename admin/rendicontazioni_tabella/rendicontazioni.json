@@ -8,7 +8,8 @@
         "dataInserimento": "2023-03-16",
         "denominazioneAzienda": "Cirruto srl",
         "importo": "10000",
-        "email": "antonino@gmail.com"
+        "email": "antonino@gmail.com",
+        "autorizzato": true
     },
     {
         "id": 1,
@@ -19,7 +20,8 @@
         "dataInserimento": "2024-03-09",
         "denominazioneAzienda": "Centro Digital Society",
         "importo": "7000",
-        "email": "alessia@gmail.com"
+        "email": "alessia@gmail.com",
+        "autorizzato": false
     },
     {
         "id": 2,
@@ -30,7 +32,8 @@
         "dataInserimento": "2023-03-29",
         "denominazioneAzienda": "Cirruto srl",
         "importo": "8000",
-        "email": "antonino@gmail.com"
+        "email": "antonino@gmail.com",
+        "autorizzato": true
     },
     {
         "id": 3,
@@ -41,7 +44,8 @@
         "dataInserimento": "2024-03-03",
         "denominazioneAzienda": "Fondazione Edmund Mach",
         "importo": "5000",
-        "email": "alessia@gmail.com"
+        "email": "alessia@gmail.com",
+        "autorizzato": false
     },
     {
         "id": 4,
@@ -52,7 +56,8 @@
         "dataInserimento": "2023-03-22",
         "denominazioneAzienda": "Matteo srl",
         "importo": "10000",
-        "email": "matteo@gmail.com"
+        "email": "matteo@gmail.com",
+        "autorizzato": true
     },
     {
         "id": 5,
@@ -63,7 +68,8 @@
         "dataInserimento": "2023-03-07",
         "denominazioneAzienda": "Matteo srl",
         "importo": "15000",
-        "email": "matteo@gmail.com"
+        "email": "matteo@gmail.com",
+        "autorizzato": false
     },
     {
         "id": 6,
@@ -74,7 +80,8 @@
         "dataInserimento": "2023-02-23",
         "denominazioneAzienda": "Fondazione Edmund Mach",
         "importo": "7000",
-        "email": "alessia@gmail.com"
+        "email": "alessia@gmail.com",
+        "autorizzato": false
     },
     {
         "id": 7,
@@ -85,7 +92,8 @@
         "dataInserimento": "2023-01-05",
         "denominazioneAzienda": "BiNetwork srl",
         "importo": "12000",
-        "email": "davide@gmail.com"
+        "email": "davide@gmail.com",
+        "autorizzato": false
     },
     {
         "id": 8,
@@ -96,7 +104,8 @@
         "dataInserimento": "2024-02-07",
         "denominazioneAzienda": "BiNetwork srl",
         "importo": "13000",
-        "email": "davide@gmail.com"
+        "email": "davide@gmail.com",
+        "autorizzato": true
     },
     {
         "id": 9,
@@ -107,7 +116,8 @@
         "dataInserimento": "2023-02-02",
         "denominazioneAzienda": "Fondazione Edmund Mach",
         "importo": "12000",
-        "email": "alessia@gmail.com"
+        "email": "alessia@gmail.com",
+        "autorizzato": false
     },
     {
         "id": 10,
@@ -118,7 +128,8 @@
         "dataInserimento": "2023-02-17",
         "denominazioneAzienda": "BiNetwork srl",
         "importo": "14000",
-        "email": "davide@gmail.com"
+        "email": "davide@gmail.com",
+        "autorizzato": true
     },
     {
         "id": 11,
@@ -129,7 +140,8 @@
         "dataInserimento": "2023-03-29",
         "denominazioneAzienda": "BiNetwork srl",
         "importo": "10000",
-        "email": "davide@gmail.com"
+        "email": "davide@gmail.com",
+        "autorizzato": false
     },
     {
         "id": 12,
@@ -140,6 +152,7 @@
         "dataInserimento": "2023-04-01",
         "denominazioneAzienda": "BiNetwork srl",
         "importo": "15000",
-        "email": "davide@gmail.com"
+        "email": "davide@gmail.com",
+        "autorizzato": true
     }
 ]

@@ -47,7 +47,7 @@
                     <div class="row gap-5 gap-md-0">
                         <div class="col-12 col-md-6" id="wrapperAttoCostitutivo">
                             <label for="attoCostitutivo" class="form-label">Atto Costitutivo</label>
-                            <input class="form-control" type="file" id="attoCostitutivo" accept=".pdf" multiple="false" required>
+                            <input class="form-control" type="file" accept="application/pdf" id="attoCostitutivo" multiple="false" required>
                             <span class="file-size-label">Max 1 - *.pdf - max 20 MB</span>
                             <div class="invalid-feedback">
                                 Allegato obbligatorio
@@ -147,6 +147,38 @@
             </form>
             <div id="errori" class="fs-2"></div>
         </div>
+
+            <script>
+                  $(document).ready(function() {
+        var fileInputIds = ['attoCostitutivo', 'statuto', 'ultimoBilancio', 'visuraCamerale', 'caricheSociali1', 'documentoFronte', 'documentoRetro'];
+
+        fileInputIds.forEach(function(id) {
+            $('#' + id).change(function(event) {
+                var file = event.target.files[0];
+                var maxSize = 20 * 1024 * 1024; // 20 MB in bytes
+                var allowedTypes = ['application/pdf'];
+
+                if (file && file.size > maxSize) {
+                    displayErrorModal('File size exceeds 20 MB.');
+                    $('#' + id).val(''); // Reset the file input
+                    return;
+                }
+
+                if (file && !allowedTypes.includes(file.type)) {
+                    displayErrorModal('Please select a PDF file.');
+                    $('#' + id).val(''); // Reset the file input
+                    return;
+                }
+            });
+        });
+
+        function displayErrorModal(message) {
+            $('#error').text(message);
+            $('#modalAlert').modal('show');
+        }
+    });
+            </script>
+        
 
 
         <script>

@@ -7,7 +7,7 @@
         "cognomeUtente": "Cirruto",
         "dataInserimento": "2023-03-16",
         "denominazioneAzienda": "Cirruto srl",
-        "importo": "10000",
+        "linkVideo": "https://example.com/video1.mp4",
         "email": "antonino@gmail.com"
     },
     {
@@ -18,7 +18,7 @@
         "cognomeUtente": "Girardi",
         "dataInserimento": "2024-03-09",
         "denominazioneAzienda": "Centro Digital Society",
-        "importo": "7000",
+        "linkVideo": "https://example.com/video2.mp4",
         "email": "alessia@gmail.com"
     },
     {
@@ -29,7 +29,7 @@
         "cognomeUtente": "Cirruto",
         "dataInserimento": "2023-03-29",
         "denominazioneAzienda": "Cirruto srl",
-        "importo": "8000",
+        "linkVideo": "https://example.com/video3.mp4",
         "email": "antonino@gmail.com"
     },
     {
@@ -40,7 +40,7 @@
         "cognomeUtente": "Girardi",
         "dataInserimento": "2024-03-03",
         "denominazioneAzienda": "Fondazione Edmund Mach",
-        "importo": "5000",
+        "linkVideo": "https://example.com/video4.mp4",
         "email": "alessia@gmail.com"
     },
     {
@@ -51,7 +51,7 @@
         "cognomeUtente": "Calderaro",
         "dataInserimento": "2023-03-22",
         "denominazioneAzienda": "Matteo srl",
-        "importo": "10000",
+        "linkVideo": "https://example.com/video5.mp4",
         "email": "matteo@gmail.com"
     },
     {
@@ -62,7 +62,7 @@
         "cognomeUtente": "Calderaro",
         "dataInserimento": "2023-03-07",
         "denominazioneAzienda": "Matteo srl",
-        "importo": "15000",
+        "linkVideo": "https://example.com/video6.mp4",
         "email": "matteo@gmail.com"
     },
     {
@@ -73,7 +73,7 @@
         "cognomeUtente": "Girardi",
         "dataInserimento": "2023-02-23",
         "denominazioneAzienda": "Fondazione Edmund Mach",
-        "importo": "7000",
+        "linkVideo": "https://example.com/video7.mp4",
         "email": "alessia@gmail.com"
     },
     {
@@ -84,7 +84,7 @@
         "cognomeUtente": "Massari",
         "dataInserimento": "2023-01-05",
         "denominazioneAzienda": "BiNetwork srl",
-        "importo": "12000",
+        "linkVideo": "https://example.com/video8.mp4",
         "email": "davide@gmail.com"
     },
     {
@@ -95,7 +95,7 @@
         "cognomeUtente": "Massari",
         "dataInserimento": "2024-02-07",
         "denominazioneAzienda": "BiNetwork srl",
-        "importo": "13000",
+        "linkVideo": "https://example.com/video9.mp4",
         "email": "davide@gmail.com"
     },
     {
@@ -106,7 +106,7 @@
         "cognomeUtente": "Girardi",
         "dataInserimento": "2023-02-02",
         "denominazioneAzienda": "Fondazione Edmund Mach",
-        "importo": "12000",
+        "linkVideo": "https://example.com/video10.mp4",
         "email": "alessia@gmail.com"
     },
     {
@@ -117,7 +117,7 @@
         "cognomeUtente": "Massari",
         "dataInserimento": "2023-02-17",
         "denominazioneAzienda": "BiNetwork srl",
-        "importo": "14000",
+        "linkVideo": "https://example.com/video11.mp4",
         "email": "davide@gmail.com"
     },
     {
@@ -128,7 +128,7 @@
         "cognomeUtente": "Massari",
         "dataInserimento": "2023-03-29",
         "denominazioneAzienda": "BiNetwork srl",
-        "importo": "10000",
+        "linkVideo": "https://example.com/video12.mp4",
         "email": "davide@gmail.com"
     },
     {
@@ -139,7 +139,7 @@
         "cognomeUtente": "Massari",
         "dataInserimento": "2023-04-01",
         "denominazioneAzienda": "BiNetwork srl",
-        "importo": "15000",
+        "linkVideo": "https://example.com/video13.mp4",
         "email": "davide@gmail.com"
     }
 ]

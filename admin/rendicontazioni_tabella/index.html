@@ -60,56 +60,11 @@
             min-width: 200px; /* Adjust the minimum width as needed */
         }
         
-        #myTable_wrapper{
-            margin-bottom: 70px !important;
-        }
-        
     </style>  
     
 </head>
 
 <body>
-    <div class="modal fade" id="myModalVideo" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione Video</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="d-flex flex-column gap-4 p-3">
-                    <!-- titolo bando -->
-                    <div>
-                        <label for="titoloBandoVideo" class="form-label">Titolo bando</label>
-                        <input type="text" class="form-control" id="titoloBandoVideo" disabled>
-                    </div>
-                    <!-- azienda/data inserimento -->
-                    <div class="gap-4 gap-md-0 row">
-                        <div class="col-12 col-md-6">
-                            <label for="denominazioneAziendaVideo" class="form-label">Azienda</label>
-                            <input type="text" class="form-control" id="denominazioneAziendaVideo" disabled>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="dataInserimentoVideo" class="form-label">Data inserimento</label>
-                            <input type="text" class="form-control" id="dataInserimentoVideo" disabled>
-                        </div>
-                    </div>
-                    <!-- linkVideo -->
-                    <div class="gap-4 gap-md-0 row align-items-end">
-                        <div class="col-12 col-md-6">
-                            <label for="linkVideo" class="form-label">Link Video</label>
-                            <input type="text" class="form-control" id="linkVideo" disabled>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
-                </div>
-            </div>
-        </div>
-    </div>
     
     <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -142,12 +97,19 @@
                         <input type="text" class="form-control" id="importo"disabled>
                     </div>
                     <div class="col-12 col-md-6">
-                        
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="autorizzato">
+                            <label class="form-check-label" for="autorizzato"></label>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
+
+                <button class="btn btn-secondary">
+                    SALVA
+                </button>
             </div>
           </div>
         </div>
@@ -166,85 +128,92 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Cognome</th>
                 <th scope="col">Email</th>
+                <th scope="col">Autorizzato</th>
             </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
 
-    <table id="myTableVideo" class="table nowrap table-bordered" style="width: 100%;">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">Bando</th>
-                <th scope="col">Progetto</th>
-                <th scope="col">Data</th>
-                <th scope="col">Azienda</th>  
-                <th scope="col">Link Video</th> <!-- Changed column header -->
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col">Email</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    
        
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
-    <script src="rendicontazioni.js"></script>
-    <script src="video.js"></script>
+    <script src="test.js"></script>
     
 </body>
 
 <script>
-    $('#myTable').on('click', 'button', function () {
-        var row = $(this).closest('tr');
-        selectedRowIndex = row.index(); // Save the index of the clicked row
-        console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
+// Define a variable to store the row index
+var selectedRowIndex;
 
-        var titoloBando = row.find('td').eq(1).text();
-        var denominazioneAzienda = row.find('td').eq(4).text();
-        var dataInserimento = row.find('td').eq(3).text();
-        var importo = row.find('td').eq(5).text();
+// Triggered when a row's button is clicked
+$('#myTable').on('click', 'button', function () {
+    var row = $(this).closest('tr');
+    selectedRowIndex = row.index(); // Save the index of the clicked row
+    console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
 
-        $('#titoloBando').val(titoloBando);
-        $('#denominazioneAzienda').val(denominazioneAzienda);
-        $('#dataInserimento').val(dataInserimento);
-        $('#importo').val(importo);
+    var titoloBando = row.find('td').eq(1).text();
+    var denominazioneAzienda = row.find('td').eq(4).text();
+    var dataInserimento = row.find('td').eq(3).text();
+    var importo = row.find('td').eq(5).text();
 
-        $('#myModal').modal("show");
-    });
-    $('#myModal .btn-secondary').on('click', function() {
-        $('#myModal').modal('hide');
-    });
+    $('#titoloBando').val(titoloBando);
+    $('#denominazioneAzienda').val(denominazioneAzienda);
+    $('#dataInserimento').val(dataInserimento);
+    $('#importo').val(importo);
 
-    $('#myTableVideo').on('click', 'button', function () {
-        var row = $(this).closest('tr');
-        selectedRowIndex = row.index(); // Save the index of the clicked row
-        console.log("Selected Row Index (Video):", selectedRowIndex); // Add this line for debugging
+    // Update modal checkbox based on DataTable checkbox
+    var isChecked = row.find('input[type="checkbox"]').prop('checked');
+    $('#autorizzato').prop('checked', isChecked);
 
-        var titoloBando = row.find('td').eq(1).text();
-        var denominazioneAzienda = row.find('td').eq(4).text();
-        var dataInserimento = row.find('td').eq(3).text();
-        var linkVideo = row.find('td').eq(5).text();
+    // Set label text based on checkbox state
+    if (isChecked) {
+        $('label[for="autorizzato"]').text('Autorizzato');
+    } else {
+        $('label[for="autorizzato"]').text('Non autorizzato');
+    }
 
-        $('#titoloBandoVideo').val(titoloBando);
-        $('#denominazioneAziendaVideo').val(denominazioneAzienda);
-        $('#dataInserimentoVideo').val(dataInserimento);
-        $('#linkVideo').val(linkVideo);
+    $('#myModal').modal("show");
+});
 
-        $('#myModalVideo').modal("show");
-    });
 
-    // Function to handle the modalVideo button click
-    $('#myModalVideo .btn-secondary').on('click', function() {
-        $('#myModalVideo').modal('hide');
-    });    
 
+// Attach click event listener to the "Salva" button in the modal
+$('#myModal .btn-secondary').on('click', function() {
+    var isChecked = $('#autorizzato').is(':checked');
     
+    // Get the index of the selected row
+    var rowIndex = selectedRowIndex;
+    console.log('Selected Row Index:', rowIndex); // Add this line to check the selected row index
+
+    // Find the checkbox element within the selected row
+    var checkboxElement = $('#myTable tbody tr').eq(rowIndex).find('input[type="checkbox"]');
+    if (checkboxElement.length > 0) {
+        // Update the checkbox state
+        checkboxElement.prop('checked', isChecked);
+    } else {
+        console.error('Checkbox element not found in the row.');
+    }
+    $('#myModal').modal('hide');
+});
+
+
+
+
+
+
+
+// Update label text based on checkbox state
+$('#autorizzato').change(function () {
+    var isChecked = $(this).prop('checked');
+    if (isChecked) {
+        $('label[for="autorizzato"]').text('Autorizzato');
+    } else {
+        $('label[for="autorizzato"]').text('Non autorizzato');
+    }
+});
+
 </script>
 
 

@@ -875,10 +875,17 @@
                         </div>
                         <!-- content -->
                         <div class="row gap-5 gap-md-0">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-6" id="wrapperAttoCostitutivo">
                                 <label for="attoCostitutivo" class="form-label">Atto Costitutivo</label>
-                                <input class="form-control" type="file" id="attoCostitutivo" multiple required>
-                                <span class="small-label">Max 5 - Tutti i file (*.*) - max 20 MB</span>
+                                <input class="form-control" type="file" id="attoCostitutivo" accept=".pdf" multiple="false" required>
+                                <span class="file-size-label">Max 1 - *.pdf - max 20 MB</span>
+                                <div class="invalid-feedback">
+                                    Allegato obbligatorio
+                                </div>
+                                <div id="AttoCostitutivo_filename" class="" style="display:none;">
+                                    <span id="AttoCostitutivoText"></span>
+                                    <i id="delete_AttoCostitutivoIcon" class="bi bi-trash"></i>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="statuto" class="form-label">Statuto</label>
@@ -1425,7 +1432,38 @@
             
         </script>
             
-        
+        <script>
+            // UPLOAD SOLO PDF (step-8 - documenti)
+            $(document).ready(function() {
+                var fileInputIds = ['attoCostitutivo', 'statuto', 'ultimoBilancio', 'visuraCamerale', 'caricheSociali1', 'documentoFronte', 'documentoRetro'];
+
+                fileInputIds.forEach(function(id) {
+                    $('#' + id).change(function(event) {
+                        var file = event.target.files[0];
+                        var maxSize = 20 * 1024 * 1024; // 20 MB in bytes
+                        var allowedTypes = ['application/pdf'];
+
+                        if (file && file.size > maxSize) {
+                            displayErrorModal('Selezionare un file di dimensione inferiore a 20 MB');
+                            $('#' + id).val(''); // Reset the file input
+                            return;
+                        }
+
+                        if (file && !allowedTypes.includes(file.type)) {
+                            displayErrorModal('Selezionare un file di formato PDF');
+                            $('#' + id).val(''); // Reset the file input
+                            return;
+                        }
+                    });
+                });
+
+                function displayErrorModal(message) {
+                    $('#error').text(message);
+                    $('#modalAlert').modal('show');
+                }
+            });
+        </script>
+
     </body>
 </html>
 

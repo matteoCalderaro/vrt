@@ -1,218 +1,534 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>VRT - progress</title>
-        <!-- google fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
-        <!-- Bootstrap icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <!-- Animate.css -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <!-- My style -->
-        <link rel="stylesheet" href="../style.css">
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <!-- recaptcha -->
-        <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    </head>
-    <style>
-         .step-8 .form-control:valid,
-         .step-8 .form-control:invalid{
-            background-image: none;
-         }
-    </style>
-    <body class="register">
-
-        <div style="max-width: 800px;" class="mx-auto">
-
-            <form class="step step-8  needs-validation" novalidate>
-                <div class="d-flex flex-column gap-5">
-                    <!-- tag -->
-                    <div class="d-flex">
-                        <div class="tag align-items-center d-flex gap-2 px-3 py-1">
-                            <i class="bi bi-tag"></i>
-                            <span>DOCUMENTI</span>
-                        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRT - progress</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- My style -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- recaptcha -->
+    <!-- link alla doc: https://developers.google.com/recaptcha/docs/display?hl=it -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<style>
+    .step-8 .form-control:valid,
+    .step-8 .form-control:invalid{
+        background-image: none;
+    }
+    .btn-pulisciCampi{
+        background-color: transparent;
+        border: unset;
+        border-bottom: 1px solid currentColor;
+    }
+    .btn-pulisciCampi:hover,
+    .btn-pulisciCampi:active {
+        color: var(--primary);
+        padding-bottom: 2px;
+        transition: all 0.3s;
+    }
+</style>
+<body class="register">
+    
+    <div style="max-width: 800px;" class="mx-auto">
+        
+        <form class="step step-8  needs-validation" novalidate>
+            <div class="d-flex flex-column gap-5">
+                <!-- tag -->
+                <div class="d-flex">
+                    <div class="tag align-items-center d-flex gap-2 px-3 py-1">
+                        <i class="bi bi-tag"></i>
+                        <span>DOCUMENTI</span>
                     </div>
-                    <!-- content -->
-                    <div class="row gap-5 gap-md-0">
-                        <div class="col-12 col-md-6" id="wrapperAttoCostitutivo">
-                            <label for="attoCostitutivo" class="form-label">Atto Costitutivo</label>
-                            <input class="form-control" type="file" accept="application/pdf" id="attoCostitutivo" multiple="false" required>
-                            <span class="file-size-label">Max 1 - *.pdf - max 20 MB</span>
-                            <div class="invalid-feedback">
-                                Allegato obbligatorio
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-end gap-3 gap-md-0">
-                        <label id="labelCapitaleSociale" class="col-12 mb-2">Composizione capitale sociale</label>
-                        <!-- WRAPPER CAPITALE SOCIALE-->
-                        <div class="wrapper" id="wrapperCapitaleSociale">
-                            <div class="row gap-3 gap-md-0">
-                                <div class="col-12 col-md-3">
-                                    <input type="text" class="form-control" id="nomeCapitaleSociale" placeholder="Nome">
-                                    <div class="invalid-feedback">
-                                        Campo obbligatorio
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <input type="text" class="form-control" id="cognomeCapitaleSociale" placeholder="Cognome">
-                                    <div class="invalid-feedback">
-                                        Campo obbligatorio
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" id="quotaPartecipazione" aria-label="Amount (to the nearest dollar)" placeholder="Quota partecipazione">
-                                        <span class="input-group-text input-add-on-icon">
-                                            <i class="bi bi-bank"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="genereFemminileStep8">
-                                        <label class="form-check-label" for="genereFemminile">
-                                            Genere femminile
-                                        </label>
-                                    </div>
-                                    <button type="button" class="addBtn btn-vrt-primary" style="min-width: unset;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="messageQuota" class="text-danger"></div>
-                            <span id="messageCapitaleSociale" class="text-danger mt-n-3"></span>
-                        </div>
-                    </div>
-                    <div class="row align-items-end gap-3 gap-md-0">
-                        <label id="labelOrganoDirettivo" class="col-12 mb-2">Organo direttivo</label>
-                        <!-- WRAPPER ORGANO DIRETTIVO -->
-                        <div class="wrapper" id="wrapperOrganoDirettivo">
-                            <div class="row gap-3 gap-md-0 mb-2">
-                                <div class="col-12 col-md-3">
-                                    <input type="text" class="form-control" id="nomeOrganoDirettivo" placeholder="Nome">
-                                    <div class="invalid-feedback">
-                                        Campo obbligatorio
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <input type="text" class="form-control" id="cognomeOrganoDirettivo" placeholder="Cognome">
-                                    <div class="invalid-feedback">
-                                        Campo obbligatorio
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="genereFemminileOrganoDirettivo">
-                                        <label class="form-check-label" for="genereFemminileOrganoDirettivo">
-                                            Genere femminile
-                                        </label>
-                                    </div>
-                                    <button type="button" class="addBtn btn-vrt-primary" style="min-width: unset;">
-                                        <i class="bi bi-plus-lg"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <span id="messageOrganoDirettivo" class="text-danger mt-n-3"></span>
+                </div>
+                <!-- content -->
+                <div class="row gap-5 gap-md-0">
+                    <div class="col-12 col-md-6" id="wrapperAttoCostitutivo">
+                        <label for="attoCostitutivo" class="form-label">Atto Costitutivo</label>
+                        <input class="form-control" type="file" accept="application/pdf" id="attoCostitutivo" multiple="false" required>
+                        <span class="file-size-label">Max 1 - *.pdf - max 20 MB</span>
+                        <div class="invalid-feedback">
+                            Allegato obbligatorio
                         </div>
                     </div>
                 </div>
-                <!-- buttons -->
-                <div class="d-flex justify-content-between py-5">
-                    <div>
-                        <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
-                            <i class="bi bi-arrow-left"></i>
-                            INDIETRO
-                        </button>
-                    </div>
-                    <div>
-                        <button id="Salva" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center">
-                            SALVA
-                        </button>
+                <div class="row align-items-end gap-3 gap-md-0">
+                    <label id="labelCapitaleSociale" class="col-12 mb-2">Composizione capitale sociale</label>
+                    <!-- WRAPPER CAPITALE SOCIALE-->
+                    <div class="wrapper" id="wrapperCapitaleSociale">
+                        <div class="row gap-3 gap-md-0">
+                            <div class="col-12 col-md-3">
+                                <input type="text" class="form-control" id="nomeCapitaleSociale" placeholder="Nome">
+                                <div class="invalid-feedback">
+                                    Campo obbligatorio
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <input type="text" class="form-control" id="cognomeCapitaleSociale" placeholder="Cognome">
+                                <div class="invalid-feedback">
+                                    Campo obbligatorio
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="quotaPartecipazione" aria-label="Amount (to the nearest dollar)" placeholder="Quota partecipazione">
+                                    <span class="input-group-text input-add-on-icon">
+                                        <i class="bi bi-bank"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="genereFemminileStep8">
+                                    <label class="form-check-label" for="genereFemminile">
+                                        Genere femminile
+                                    </label>
+                                </div>
+                                <button type="button" class="addBtn btn-vrt-primary" style="min-width: unset;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="messageQuota" class="text-danger"></div>
+                        <span id="messageCapitaleSociale" class="text-danger mt-n-3"></span>
                     </div>
                 </div>
-            </form>
-            <div id="errori" class="fs-2"></div>
-        </div>
+                <div class="row align-items-end gap-3 gap-md-0">
+                    <label id="labelOrganoDirettivo" class="col-12 mb-2">Organo direttivo</label>
+                    <!-- WRAPPER ORGANO DIRETTIVO -->
+                    <div class="wrapper" id="wrapperOrganoDirettivo">
+                        <div class="row gap-3 gap-md-0 mb-2">
+                            <div class="col-12 col-md-3">
+                                <input type="text" class="form-control" id="nomeOrganoDirettivo" placeholder="Nome">
+                                <div class="invalid-feedback">
+                                    Campo obbligatorio
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <input type="text" class="form-control" id="cognomeOrganoDirettivo" placeholder="Cognome">
+                                <div class="invalid-feedback">
+                                    Campo obbligatorio
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="genereFemminileOrganoDirettivo">
+                                    <label class="form-check-label" for="genereFemminileOrganoDirettivo">
+                                        Genere femminile
+                                    </label>
+                                </div>
+                                <button type="button" class="addBtn btn-vrt-primary" style="min-width: unset;">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <span id="messageOrganoDirettivo" class="text-danger mt-n-3"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- buttons -->
+            <div class="d-flex justify-content-between py-5">
+                <div>
+                    <button type="button" class="btn-vrt-outline-primary  prev-step align-items-center d-flex gap-2 justify-content-center">
+                        <i class="bi bi-arrow-left"></i>
+                        INDIETRO
+                    </button>
+                </div>
+                <button type="button" id="btnPulisciCampi" class="btn-pulisciCampi">Pulisci i campi</button>
+                <div>
+                    <button id="Salva" class="btn-vrt-primary next-step align-items-center d-flex gap-2 justify-content-center">
+                        SALVA
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div id="errori" class="fs-2"></div>
+    </div>
+    
+    <script>
 
-            <script>
-                  $(document).ready(function() {
-        var fileInputIds = ['attoCostitutivo', 'statuto', 'ultimoBilancio', 'visuraCamerale', 'caricheSociali1', 'documentoFronte', 'documentoRetro'];
-
-        fileInputIds.forEach(function(id) {
-            $('#' + id).change(function(event) {
-                var file = event.target.files[0];
-                var maxSize = 20 * 1024 * 1024; // 20 MB in bytes
-                var allowedTypes = ['application/pdf'];
-
-                if (file && file.size > maxSize) {
-                    displayErrorModal('File size exceeds 20 MB.');
-                    $('#' + id).val(''); // Reset the file input
-                    return;
-                }
-
-                if (file && !allowedTypes.includes(file.type)) {
-                    displayErrorModal('Please select a PDF file.');
-                    $('#' + id).val(''); // Reset the file input
-                    return;
+        $(document).ready(function() {
+            $.ajax({
+                url: './documenti.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    data.capitale.forEach(function(item, index) {
+                        var nomeCapitaleSociale = item.nomeCapitaleSociale;
+                        var cognomeCapitaleSociale = item.cognomeCapitaleSociale;
+                        var quotaPartecipazione = item.quotaPartecipazione;
+                        var genereFemminileStep8 = item.genereFemminileStep8;
+                        if (index === 0) {
+                            $('#nomeCapitaleSociale').val(nomeCapitaleSociale);
+                            $('#cognomeCapitaleSociale').val(cognomeCapitaleSociale);
+                            $('#quotaPartecipazione').val(quotaPartecipazione);
+                            $('#genereFemminileStep8').prop('checked', genereFemminileStep8);
+                        } else {
+                            createRowCapitale();
+                            setTimeout(() => {
+                                var newRowCapitale = $('#wrapperCapitaleSociale .row').eq(index -1); 
+                                newRowCapitale.find('#nomeCapitaleSociale').val(nomeCapitaleSociale);
+                                newRowCapitale.find('#cognomeCapitaleSociale').val(cognomeCapitaleSociale);
+                                newRowCapitale.find('#quotaPartecipazione').val(quotaPartecipazione);
+                                newRowCapitale.find('#genereFemminileStep8').prop('checked', genereFemminileStep8);
+                            }, 100);
+                        }
+                    });
+                    
+                    data.organo.forEach(function(item, index) {
+                        var nomeOrganoDirettivo = item.nomeOrganoDirettivo;
+                        var cognomeOrganoDirettivo = item.cognomeOrganoDirettivo;
+                        var genereFemminileOrganoDirettivo = item.genereFemminileOrganoDirettivo;
+                        if (index === 0) {
+                            $('#nomeOrganoDirettivo').val(nomeOrganoDirettivo);
+                            $('#cognomeOrganoDirettivo').val(cognomeOrganoDirettivo);
+                            $('#genereFemminileOrganoDirettivo').prop('checked', genereFemminileOrganoDirettivo);
+                        } else {
+                            createRowOrgano();
+                            setTimeout(() => {
+                                var newRowOrgano = $('#wrapperOrganoDirettivo .row').eq(index -1);
+                                newRowOrgano.find('#nomeOrganoDirettivo').val(nomeOrganoDirettivo);
+                                newRowOrgano.find('#cognomeOrganoDirettivo').val(cognomeOrganoDirettivo);
+                                newRowOrgano.find('#genereFemminileOrgano').prop('checked', genereFemminileOrganoDirettivo);
+                            }, 100);
+                        }
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error fetching data:', textStatus, errorThrown);
                 }
             });
         });
 
-        function displayErrorModal(message) {
-            $('#error').text(message);
-            $('#modalAlert').modal('show');
-        }
-    });
-            </script>
-        
+
+        $('#btnPulisciCampi').click(function(){
+            setTimeout(function() {
+                // tutti gli input esclusi i figli di #wrapperCapitaleSociale e #wrapperOrganoDirettivo
+                $('input').not('#wrapperCapitaleSociale input').not('#wrapperOrganoDirettivo input').val('');
+
+                // input figli di #wrapperCapitaleSociale
+                $('#wrapperCapitaleSociale input').val('');
+                $('#wrapperCapitaleSociale input[type="checkbox"]').prop('checked', false);
+
+                // input figli di #wrapperOrganoDirettivo
+                $('#wrapperOrganoDirettivo input').val('');
+                $('#wrapperOrganoDirettivo input[type="checkbox"]').prop('checked', false);
+            }, 100);
+        });
 
 
-        <script>
+
+    </script>
+    
+    <script>
+        (() => {
+            'use strict'
             
-            let validateStep8 = () =>{
-                let form = document.querySelector('.step-8')
-                if(form.checkValidity()){
-                    if(checkDocumenti()){
-                        $('#errori').text('')
-                        setTimeout(() => {
-                            $('#errori').text('REQUEST INVIATA').css('color','green')
-                        }, 200);
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+            
+            //Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()||form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
                     }
-                    else {
-                        $('#errori').text('')
-                        setTimeout(() => {
-                            $('#errori').text('REQUEST NON INVIATA').css('color','red')
-                        }, 200);
+                    
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+        /////////////////////////////
+        // CAPITALE SOCIALE
+        /////////////////////////
+        let capitaleSociale = []
+        let wrapperCapitaleSociale = document.querySelector("#wrapperCapitaleSociale")
+        let createRowCapitale = () => {
+            let row = document.createElement("div")
+            row.classList.add("row")
+            row.classList.add("gap-3")
+            row.classList.add("gap-md-0")
+            row.classList.add("mb-3")
+            row.innerHTML = `
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" id="nomeCapitaleSociale" placeholder="Nome" >
+                <div class="invalid-feedback">
+                    Campo obbligatorio
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" id="cognomeCapitaleSociale" placeholder="Cognome" >
+                <div class="invalid-feedback">
+                    Campo obbligatorio
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="input-group">
+                    <input type="number" class="form-control" id="quotaPartecipazione" aria-label="Amount (to the nearest dollar)" placeholder="Quota partecipazione">
+                    <span class="input-group-text input-add-on-icon">
+                        <i class="bi bi-bank"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 d-flex justify-content-between align-items-center align-self-start">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="genereFemminileStep8">
+                    <label class="form-check-label" for="genereFemminile">
+                        Genere femminile
+                    </label>
+                </div>
+                <button type="button" class="removeBtn btn-vrt-outline-primary-icon">
+                    <i class="bi bi-dash-lg"></i>
+                </button>
+            </div>
+            `
+            
+            let removeBtn = row.querySelector(".removeBtn")
+            removeBtn.addEventListener('click', (e) => {
+                e.target.closest('.row').remove()
+                $('#messageQuota').text('')
+                $('#messageCapitaleSociale').text('')
+            })
+            
+            wrapperCapitaleSociale.prepend(row)
+        }
+        
+        /////////////////////////////
+        // ORGANO DIRETTIVO
+        /////////////////////////
+        let organoDirettivo = []
+        let wrapperOrganoDirettivo = document.querySelector("#wrapperOrganoDirettivo")
+        let createRowOrgano = () => {
+            let row = document.createElement("div")
+            row.classList.add("row")
+            row.classList.add("gap-3")
+            row.classList.add("gap-md-0")
+            row.classList.add("mb-3")
+            row.innerHTML = `
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" id="nomeOrganoDirettivo" placeholder="Nome">
+                <div class="invalid-feedback">
+                    Campo obbligatorio
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="text" class="form-control" id="cognomeOrganoDirettivo" placeholder="Cognome">
+                <div class="invalid-feedback">
+                    Campo obbligatorio
+                </div>
+            </div>
+            <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="genereFemminileOrgano">
+                    <label class="form-check-label" for="genereFemminileOrgano">
+                        Genere femminile
+                    </label>
+                </div>
+                <button type="button" class="removeBtn btn-vrt-outline-primary-icon">
+                    <i class="bi bi-dash-lg"></i>
+                </button>
+            </div>
+            `
+            
+            let removeBtn = row.querySelector(".removeBtn")
+            removeBtn.addEventListener('click',(e)=>{
+                e.target.closest('.row').remove()
+                $('#messageOrganoDirettivo').text('')
+            })
+            
+            wrapperOrganoDirettivo.prepend(row)
+        }
+        
+        
+        
+        
+        let addButtons = document.querySelectorAll(".addBtn")
+        addButtons.forEach((addBtn) => {
+            addBtn.addEventListener('click', (e) => {
+                if (e.target.closest('.wrapper').getAttribute('id') === 'wrapperCapitaleSociale') {
+                    createRowCapitale()
+                }
+                else {
+                    createRowOrgano()
+                }
+                
+            })
+        })
+        
+        
+        let somma = 0
+        let campiVuoti = 0
+        let nomeCapitaleSociale
+        let cognomeCapitaleSociale
+        let quotaPartecipazione
+        let nomeOrganoDirettivo
+        let cognomeOrganoDirettivo
+        let campiVuotiOrganoDirettivo = 0
+        
+        
+        let saveBtn = document.querySelector("#Salva")
+        saveBtn.addEventListener('click', () => {
+            validateStep8()
+        })
+        
+        let checkDocumenti = () =>{
+            // CAPITALE SOCIALE
+            let rowsCapitale = wrapperCapitaleSociale.querySelectorAll('.row')
+            
+            for (let i = 0; i < rowsCapitale.length; i++) {
+                
+                const element = rowsCapitale[i];
+                nomeCapitaleSociale = element.querySelector('#nomeCapitaleSociale').value
+                cognomeCapitaleSociale = element.querySelector('#cognomeCapitaleSociale').value
+                quotaPartecipazione = element.querySelector('#quotaPartecipazione').value
+                if(!nomeCapitaleSociale || !cognomeCapitaleSociale || !quotaPartecipazione){
+                    campiVuoti++
+                }
+                somma = somma + Number(quotaPartecipazione)
+            }
+            for (let i = 0; i < rowsCapitale.length; i++) {
+                if(quotaPartecipazione > 100 || quotaPartecipazione < 0 ){
+                    console.log('dfsdf')
+                    $('#messageQuota').text('I valori per quota devono essere compresi tra 0 e 100')
+                    $('#messageCapitaleSociale').text('')
+                    somma = 0
+                    return false
+                }
+                $('#messageQuota').text('')
+                
+                if( ( (!nomeCapitaleSociale || !cognomeCapitaleSociale || !quotaPartecipazione) && somma == 100) ||
+                (( nomeCapitaleSociale || cognomeCapitaleSociale || quotaPartecipazione) && somma != 100) || (campiVuoti && somma ==100)){
+                    $('#messageCapitaleSociale').text('La somma delle quote è diversa da 100 oppure alcuni campi sono incompleti')
+                    console.log('somma',somma)
+                    somma = 0
+                    campiVuoti = 0
+                    return false
+                }
+                $('#messageCapitaleSociale').text('')
+            }
+            
+            somma = 0
+            
+            // ORGANO DIRETTIVO
+            let rowsOrgano = wrapperOrganoDirettivo.querySelectorAll('.row')
+            
+            for (let i = 0; i < rowsOrgano.length; i++) {
+                const element = rowsOrgano[i];
+                nomeOrganoDirettivo = element.querySelector('#nomeOrganoDirettivo').value
+                cognomeOrganoDirettivo = element.querySelector('#cognomeOrganoDirettivo').value
+                if(!nomeOrganoDirettivo || !cognomeOrganoDirettivo){
+                    campiVuotiOrganoDirettivo++
+                }
+            }
+            console.log('campi vuoti',campiVuotiOrganoDirettivo)
+            for (let i = 0; i < rowsOrgano.length; i++) {
+                if(
+                (nomeOrganoDirettivo && !cognomeOrganoDirettivo) || 
+                (!nomeOrganoDirettivo && cognomeOrganoDirettivo) || 
+                (nomeOrganoDirettivo && cognomeOrganoDirettivo && campiVuotiOrganoDirettivo) 
+                
+                )
+                {
+                    $('#messageOrganoDirettivo').text('I campi sono incompleti')
+                    console.log('Alcuni campi sono incompleti')
+                    console.log(campiVuotiOrganoDirettivo)
+                    campiVuotiOrganoDirettivo = 0
+                    return false
+                }
+            } 
+            $('#messageOrganoDirettivo').text('')
+            
+            campiVuotiOrganoDirettivo = 0
+            return true
+        }
+        
+        
+        
+        
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            var fileInputIds = ['attoCostitutivo', 'statuto', 'ultimoBilancio', 'visuraCamerale', 'caricheSociali1', 'documentoFronte', 'documentoRetro'];
+            
+            fileInputIds.forEach(function(id) {
+                $('#' + id).change(function(event) {
+                    var file = event.target.files[0];
+                    var maxSize = 20 * 1024 * 1024; // 20 MB in bytes
+                    var allowedTypes = ['application/pdf'];
+                    
+                    if (file && file.size > maxSize) {
+                        displayErrorAlert('File size exceeds 20 MB.');
+                        $('#' + id).val(''); // Reset the file input
+                        return;
                     }
+                    
+                    if (file && !allowedTypes.includes(file.type)) {
+                        displayErrorAlert('Please select a PDF file.');
+                        $('#' + id).val(''); // Reset the file input
+                        return;
+                    }
+                });
+            });
+            
+            function displayErrorAlert(message) {
+                alert(message);
+            }
+        });
+        
+    </script>
+    
+    
+    
+    <script>
+        
+        let validateStep8 = () =>{
+            let form = document.querySelector('.step-8')
+            if(form.checkValidity()){
+                if(checkDocumenti()){
+                    $('#errori').text('')
+                    setTimeout(() => {
+                        $('#errori').text('REQUEST INVIATA').css('color','green')
+                    }, 200);
                 }
                 else {
                     $('#errori').text('')
                     setTimeout(() => {
                         $('#errori').text('REQUEST NON INVIATA').css('color','red')
                     }, 200);
-                    return false
                 }
             }
-            
-        </script>
+            else {
+                $('#errori').text('')
+                setTimeout(() => {
+                    $('#errori').text('REQUEST NON INVIATA').css('color','red')
+                }, 200);
+                return false
+            }
+        }
         
-        <script src="script-documenti.js"></script>
-        <!-- My script -->
-    </body>
+    </script>
+    
+    <!-- <script src="script-documenti.js"></script> -->
+    <!-- My script -->
+</body>
 </html>
 
 

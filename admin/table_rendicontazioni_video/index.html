@@ -1,0 +1,247 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRT - progress</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- data table css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.css" rel="stylesheet">
+ 
+    <style>
+
+        /* cancellare */
+        *{
+            font-size: inherit;
+        }
+        body {
+            background-color: #e8e8e8;
+            font-size: 14px;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        /* eye icon */
+        table button {
+            background-color: transparent;
+            border: unset
+        }
+        /* custom CSS to override paginator style */
+        .page-item.active .page-link {
+            background-color: #6c757d; /* Secondary color */
+            border-color: #6c757d; /* Secondary color */
+        }
+        .page-link {
+            color: #6c757d; /* Secondary color */
+        }
+        .page-link:hover {
+            color: #343a40; /* Hover color */
+        }
+        /* highlighter */
+        .highlight {
+            background-color: yellow;
+        }
+        /* checkboxes border */
+        .form-check-input[type="checkbox"] {
+            border: 1px solid #6c757d; /* Adjust border color as needed */
+        }
+        /* first column width */
+        #myTable td:nth-child(2) {
+            min-width: 200px; /* Adjust the minimum width as needed */
+        }
+        /* margin between the tables */
+        #myTable_wrapper{
+            margin-bottom: 70px !important;
+        }
+        
+    </style> 
+    
+</head>
+
+<body>
+    <div class="modal fade" id="myModalVideo" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione Video</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-column gap-4 p-3">
+                    <!-- titolo bando -->
+                    <div>
+                        <label for="titoloBandoVideo" class="form-label">Titolo bando</label>
+                        <input type="text" class="form-control" id="titoloBandoVideo" disabled>
+                    </div>
+                    <!-- azienda/data inserimento -->
+                    <div class="gap-4 gap-md-0 row">
+                        <div class="col-12 col-md-6">
+                            <label for="denominazioneAziendaVideo" class="form-label">Azienda</label>
+                            <input type="text" class="form-control" id="denominazioneAziendaVideo" disabled>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="dataInserimentoVideo" class="form-label">Data inserimento</label>
+                            <input type="text" class="form-control" id="dataInserimentoVideo" disabled>
+                        </div>
+                    </div>
+                    <!-- linkVideo -->
+                    <div class="gap-4 gap-md-0 row align-items-end">
+                        <div class="col-12 col-md-6">
+                            <label for="linkVideo" class="form-label">Link Video</label>
+                            <input type="text" class="form-control" id="linkVideo" disabled>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="d-flex flex-column gap-4 p-3">
+                <!-- titolo bando -->
+                <div>
+                    <label for="titoloBando" class="form-label">Titolo bando</label>
+                    <input type="text" class="form-control" id="titoloBando" disabled>
+                </div>
+                <!-- azienda/data inserimento -->
+                <div class="gap-4 gap-md-0 row">
+                    <div class="col-12 col-md-6">
+                        <label for="denominazioneAzienda" class="form-label">Azienda</label>
+                        <input type="text" class="form-control" id="denominazioneAzienda"disabled>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="dataInserimento" class="form-label">Data inserimento</label>
+                        <input type="text" class="form-control" id="dataInserimento" disabled>
+                    </div>
+                </div>
+                <!-- importo -->
+                <div class="gap-4 gap-md-0 row align-items-end">
+                    <div class="col-12 col-md-6">
+                        <label for="importo" class="form-label">Importo</label>
+                        <input type="text" class="form-control" id="importo"disabled>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
+            </div>
+          </div>
+        </div>
+    </div>
+ 
+
+    <table id="myTable" class="table nowrap table-bordered" style="width: 100%;">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Bando</th>
+                <th scope="col">Progetto</th>
+                <th scope="col">Data</th>
+                <th scope="col">Azienda</th>  
+                <th scope="col">Importo</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <table id="myTableVideo" class="table nowrap table-bordered" style="width: 100%;">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Bando</th>
+                <th scope="col">Progetto</th>
+                <th scope="col">Data</th>
+                <th scope="col">Azienda</th>  
+                <th scope="col">Link Video</th> <!-- Changed column header -->
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+       
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
+    <script src="rendicontazioni.js"></script>
+    <script src="video.js"></script>
+    
+</body>
+
+<script>
+    $('#myTable').on('click', 'button', function () {
+        var row = $(this).closest('tr');
+        selectedRowIndex = row.index(); // Save the index of the clicked row
+        console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
+
+        var titoloBando = row.find('td').eq(1).text();
+        var denominazioneAzienda = row.find('td').eq(4).text();
+        var dataInserimento = row.find('td').eq(3).text();
+        var importo = row.find('td').eq(5).text();
+
+        $('#titoloBando').val(titoloBando);
+        $('#denominazioneAzienda').val(denominazioneAzienda);
+        $('#dataInserimento').val(dataInserimento);
+        $('#importo').val(importo);
+
+        $('#myModal').modal("show");
+    });
+    $('#myModal .btn-secondary').on('click', function() {
+        $('#myModal').modal('hide');
+    });
+
+    $('#myTableVideo').on('click', 'button', function () {
+        var row = $(this).closest('tr');
+        selectedRowIndex = row.index(); // Save the index of the clicked row
+        console.log("Selected Row Index (Video):", selectedRowIndex); // Add this line for debugging
+
+        var titoloBando = row.find('td').eq(1).text();
+        var denominazioneAzienda = row.find('td').eq(4).text();
+        var dataInserimento = row.find('td').eq(3).text();
+        var linkVideo = row.find('td').eq(5).text();
+
+        $('#titoloBandoVideo').val(titoloBando);
+        $('#denominazioneAziendaVideo').val(denominazioneAzienda);
+        $('#dataInserimentoVideo').val(dataInserimento);
+        $('#linkVideo').val(linkVideo);
+
+        $('#myModalVideo').modal("show");
+    });
+
+    // Function to handle the modalVideo button click
+    $('#myModalVideo .btn-secondary').on('click', function() {
+        $('#myModalVideo').modal('hide');
+    });    
+
+    
+</script>
+
+

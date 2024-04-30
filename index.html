@@ -19,24 +19,21 @@
     <style>
 
         /* cancellare */
-        body {
-            background-color: #e8e8e8;
-            font-size: 14px;
-            overflow-x: hidden;
-            padding: 20px;
-        }
         *{
             font-size: inherit;
         }
-
-        
-   
+        body {
+            background-color: #e8e8e8;
+            font-size: 14px;
+            /* overflow-x: hidden; */
+            padding: 20px;
+        }
+        /* eye icon */
         table button {
             background-color: transparent;
             border: unset
         }
-
-        /* Custom CSS to override paginator color */
+        /* custom CSS to override paginator style */
         .page-item.active .page-link {
             background-color: #6c757d; /* Secondary color */
             border-color: #6c757d; /* Secondary color */
@@ -47,69 +44,38 @@
         .page-link:hover {
             color: #343a40; /* Hover color */
         }
-
+        /* highlighter */
         .highlight {
             background-color: yellow;
         }
-
+        /* checkboxes border */
         .form-check-input[type="checkbox"] {
             border: 1px solid #6c757d; /* Adjust border color as needed */
         }
-
+        /* first column width */
         #myTable td:nth-child(2) {
             min-width: 200px; /* Adjust the minimum width as needed */
         }
-        
+        /* margin between the tables */
         #myTable_wrapper{
             margin-bottom: 70px !important;
         }
-        
+        .dt-control {
+            position: relative;
+        }
+        .dt-control:before {
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            left: 20px;
+        }
+       
+                        
     </style>  
     
 </head>
 
 <body>
-    <div class="modal fade" id="myModalVideo" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione Video</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="d-flex flex-column gap-4 p-3">
-                    <!-- titolo bando -->
-                    <div>
-                        <label for="titoloBandoVideo" class="form-label">Titolo bando</label>
-                        <input type="text" class="form-control" id="titoloBandoVideo" disabled>
-                    </div>
-                    <!-- azienda/data inserimento -->
-                    <div class="gap-4 gap-md-0 row">
-                        <div class="col-12 col-md-6">
-                            <label for="denominazioneAziendaVideo" class="form-label">Azienda</label>
-                            <input type="text" class="form-control" id="denominazioneAziendaVideo" disabled>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="dataInserimentoVideo" class="form-label">Data inserimento</label>
-                            <input type="text" class="form-control" id="dataInserimentoVideo" disabled>
-                        </div>
-                    </div>
-                    <!-- linkVideo -->
-                    <div class="gap-4 gap-md-0 row align-items-end">
-                        <div class="col-12 col-md-6">
-                            <label for="linkVideo" class="form-label">Link Video</label>
-                            <input type="text" class="form-control" id="linkVideo" disabled>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
-                </div>
-            </div>
-        </div>
-    </div>
     
     <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -152,44 +118,71 @@
           </div>
         </div>
     </div>
- 
 
-    <table id="myTable" class="table nowrap table-bordered" style="width: 100%;">
-        <thead>
+
+    <table id="example" class="table table-bordered" style="width:100%">
+        <thead class="table-secondary">
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Bando</th>
-                <th scope="col">Progetto</th>
-                <th scope="col">Data</th>
-                <th scope="col">Azienda</th>  
-                <th scope="col">Importo</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col">Email</th>
+                <th></th> <!-- Empty column for the control -->
+                <th>Criterio</th>
+                <th>Titolo</th>
+                <th>Input al Responsabile Progetto</th>
+                <!-- <th>Risposta Responsabile Progetto</th> -->
+                <th>Punteggio</th>
+                <th>Media</th>
+                <th>Prompt di Valutazione</th>
+                <!-- <th>Risposta OpenAI</th> -->
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td class="dt-control"></td> 
+                <td class="fw-bold">Criterio 1</td>
+                <td>Allineamento con i Temi del Bando</td>
+                <td>Assicurati che il tuo progetto sia strettamente allineato con l'ambito del bando che hai selezionato:  *{{Ambito di Applicazione}}*.
+                    Dettaglia come vi sia aderenza all'ambito e quale sia il contributo specifico del tuo progetti all'area tematica che hai indicato.</td>
+                <!-- <td>No so cosa scrivere</td> -->
+                <td class="fw-bold">50</td>
+                <td class="fw-bold">20</td>
+                <td>Esamina la risposta del proponente.
+                    Per valutarne l'adeguatezza, considera i seguenti criteri:
+                    1. Specificità: Determina se la risposta fornisce dettagli concreti che dimostrano l'allineamento del progetto con l'ambito del bando selezionato.
+                    2. Contributo: Valuta in che modo la risposta espone il contributo distintivo del progetto all'area tematica scelta.
+                    3. Differenziazione: Assicurati che la risposta non si limiti a ripetere gli elementi dell'input iniziale, ma offra piuttosto una visione unica e un'interpretazione personale del tema del bando.</td>
+                <!-- <td>20</td> -->
+            </tr>
+            <tr>
+                <td class="dt-control"></td> 
+                <td class="fw-bold">Criterio 2</td>
+                <td>Titolo 2</td>
+                <td>Input al Responsabile Progetto 2</td>
+                <td class="fw-bold">40</td>
+                <td class="fw-bold">10</td>
+                <td>Prompt di Valutazione 2</td>
+            </tr>
+            <tr>
+                <td class="dt-control"></td> 
+                <td class="fw-bold">Criterio 3</td>
+                <td>Titolo 3</td>
+                <td>Input al Responsabile Progetto 3</td>
+                <td class="fw-bold">50</td>
+                <td class="fw-bold">20</td>
+                <td>Prompt di Valutazione 3</td>
+            </tr>
+            <tr>
+                <td class="dt-control"></td> 
+                <td class="fw-bold">Criterio 4</td>
+                <td>Titolo 3</td>
+                <td>Input al Responsabile Progetto 4</td>
+                <td class="fw-bold">50</td>
+                <td class="fw-bold">20</td>
+                <td>Prompt di Valutazione 4</td>
+            </tr>
         </tbody>
     </table>
 
-    <table id="myTableVideo" class="table nowrap table-bordered" style="width: 100%;">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">Bando</th>
-                <th scope="col">Progetto</th>
-                <th scope="col">Data</th>
-                <th scope="col">Azienda</th>  
-                <th scope="col">Link Video</th> <!-- Changed column header -->
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col">Email</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    
+
+
        
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -200,49 +193,64 @@
 </body>
 
 <script>
-    $('#myTable').on('click', 'button', function () {
-        var row = $(this).closest('tr');
-        selectedRowIndex = row.index(); // Save the index of the clicked row
-        console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
+    let column1Content = `<p style="font-weight:600">Risposta Responsabile Progetto<p>
+         <p>La diagnosi precoce dei tumori è la chiave per un loro trattamento efficace. Disporre di strumenti che consentano, già in questa fase, di predire l'efficacia o meno di uno specifico trattamento permette di utilizzare fin da subito terapie personalizzate. La tecnologia analitica che abbiamo sviluppato si inserisce esattamente in questo contesto. Sfruttando caratteristiche fisiche e molecolari di frammenti circolanti di DNA tumorale, è stata già testata su un'ampia coorte di pazienti con tumore genitourinario in fase metastatica, dimostrando un incremento significativo della sensibilità nel rilevare segnale tumorale nel sangue. Questo apre la possibilità al monitoraggio in tempo reale dei pazienti e della loro risposta al trattamento anche in fasi iniziali di malattia tumorale. La scalabilità sarà misurata nell'ambito del tumore al seno in fase precoce, tramite la caratterizzazione molecolare di campioni di sangue. A 6 mesi di validazione, ci aspettiamo di aver qualificato il segnale tumorale - da un'aliquota di sangue - di almeno il 50% dei campioni altrimenti non valutabili.</p>`
 
-        var titoloBando = row.find('td').eq(1).text();
-        var denominazioneAzienda = row.find('td').eq(4).text();
-        var dataInserimento = row.find('td').eq(3).text();
-        var importo = row.find('td').eq(5).text();
-
-        $('#titoloBando').val(titoloBando);
-        $('#denominazioneAzienda').val(denominazioneAzienda);
-        $('#dataInserimento').val(dataInserimento);
-        $('#importo').val(importo);
-
-        $('#myModal').modal("show");
-    });
-    $('#myModal .btn-secondary').on('click', function() {
-        $('#myModal').modal('hide');
-    });
-
-    $('#myTableVideo').on('click', 'button', function () {
-        var row = $(this).closest('tr');
-        selectedRowIndex = row.index(); // Save the index of the clicked row
-        console.log("Selected Row Index (Video):", selectedRowIndex); // Add this line for debugging
-
-        var titoloBando = row.find('td').eq(1).text();
-        var denominazioneAzienda = row.find('td').eq(4).text();
-        var dataInserimento = row.find('td').eq(3).text();
-        var linkVideo = row.find('td').eq(5).text();
-
-        $('#titoloBandoVideo').val(titoloBando);
-        $('#denominazioneAziendaVideo').val(denominazioneAzienda);
-        $('#dataInserimentoVideo').val(dataInserimento);
-        $('#linkVideo').val(linkVideo);
-
-        $('#myModalVideo').modal("show");
+    let column2Content = `<p style="font-weight:600">Risposta OpenAI</p>
+    <p>La risposta fornisce informazioni dettagliate sull'innovazione proposta, che consiste in una tecnologia analitica per il monitoraggio del tumore al seno tramite un prelievo di sangue. Viene spiegato come la tecnologia sfrutti frammenti circolanti di DNA tumorale per predire l'efficacia dei trattamenti e permettere terapie personalizzate. Inoltre, viene menzionato che la tecnologia è stata già testata su pazienti con tumore genitourinario in fase metastatica, dimostrando un aumento significativo della sensibilità nel rilevare segnali tumorali nel sangue. Tuttavia, la risposta non fornisce una chiara definizione dell'obiettivo misurabile da raggiungere entro 6 mesi né 
+    una metrica di misurazione specifica. Inoltre, non viene esplicitata la caratteristica disruptive della tecnologia, sebbene si faccia riferimento alla sua unicità e creatività. Nel complesso, la risposta fornisce informazioni pertinenti ma può essere migliorata nella chiarezza e misurabilità dell'obiettivo e nella descrizione della caratteristica disruptive del progetto</p>`
+    
+    $(document).ready(function() {
+   
+    // Initialize DataTable for #example table
+    $('#example').DataTable({
+        columnDefs: [
+            { width: '50px', targets: 0 }, // Adjust the width and target the first column
+            { 
+                targets: [1], // Target the second column (index 1)
+                render: function(data, type, row, meta) {
+                    if (type === 'display') {
+                        // Apply CSS style to prevent wrapping
+                        return '<p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + data + '</p>';
+                    } else {
+                        return data;
+                    }
+                }
+            }
+        ],
+        searching: false, // Disable search feature
+        paging: false, // Disable pagination
+        info: false, // Disable info display
+        ordering: false // Disable sorting
+        // You can add more options here to customize further
     });
 
-    // Function to handle the modalVideo button click
-    $('#myModalVideo .btn-secondary').on('click', function() {
-        $('#myModalVideo').modal('hide');
-    });    
+    // Attach click event listener to dt-control cells
+    $('#example').on('click', 'td.dt-control', function () {
+        let tr = $(this).closest('tr');
+        let row = $('#example').DataTable().row(tr);
+
+        if (row.child.isShown()) {
+            // This row is already open - close it
+            row.child.hide();
+        } else {
+            // Open this row with manually specified content
+            row.child(format(column1Content, column2Content)).show();
+        }
+    });
+
+    function format(column1Content, column2Content) {
+    // `column1Content` and `column2Content` are the contents for the two columns
+    return (
+        '<div class="row">' +
+        '<div class="col-md-6">' + column1Content + '</div>' +
+        '<div class="col-md-6">' + column2Content + '</div>' +
+        '</div>'
+    );
+}
+});
+
+
 
     
 </script>

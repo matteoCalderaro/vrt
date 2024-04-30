@@ -1,0 +1,43 @@
+
+{ 
+    "capitale" : [
+        {
+            "nomeCapitaleSociale": "11° Science Impact 2023",
+            "cognomeCapitaleSociale": "Progetto F",
+            "quotaPartecipazione": 10,
+            "genereFemminileStep8" : true
+        },
+        {
+        
+            "nomeCapitaleSociale": "ciao",
+            "cognomeCapitaleSociale": "ciao",
+            "quotaPartecipazione": 10,
+            "genereFemminileStep8" : false
+        }
+        
+    ],
+
+    "organo": [
+        {
+            "nomeOrganoDirettivo": "Matteo",
+            "cognomeOrganoDirettivo": "Calderaro",
+            "genereFemminileOrganoDirettivo" : true
+        },
+        {
+            "nomeOrganoDirettivo": "Maria",
+            "cognomeOrganoDirettivo": "Bianchi",
+            "genereFemminileOrganoDirettivo" : true
+        },
+        {
+            "nomeOrganoDirettivo": "VIctor",
+            "cognomeOrganoDirettivo": "Velasquez",
+            "genereFemminileOrganoDirettivo" : false
+        }
+    ]
+
+}
+
+
+
+
+

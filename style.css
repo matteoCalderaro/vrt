@@ -339,23 +339,23 @@ select { /* Internet Explorer 10-11 */
     border-radius: 5px;
 }
 
-    .btn-vrt-outline-primary:hover {
-        background-color: var(--gray-light);
-    }
+.btn-vrt-outline-primary:hover {
+    background-color: var(--gray-light);
+}
 
-    .btn-vrt-outline-primary:disabled {
-        background-color: var(--gray-light);
-        opacity: 0.65;
-    }
+.btn-vrt-outline-primary:disabled {
+    background-color: var(--gray-light);
+    opacity: 0.65;
+}
 /* BTN-VRT-OUTLINE-PRIMARY interfacce caricamento */
 .btn-vrt-add {
     color: var(--primary);
 }
 
-    .btn-vrt-add i {
-        color: var(--primary);
-        font-size: 19px;
-    }
+.btn-vrt-add i {
+    color: var(--primary);
+    font-size: 19px;
+}
 
 /* BTN-VRT-OUTLINE-PRIMARY */
 /* usato nella register per aggiunta organo direttivo */

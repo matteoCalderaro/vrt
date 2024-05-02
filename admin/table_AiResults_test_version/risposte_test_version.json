@@ -1,0 +1,33 @@
+[
+    {
+      "criterio": 1,
+      "titolo": "Title 1",
+      "punteggio": 10
+    },
+    {
+      "criterio": 1,
+      "titolo": "Title 2",
+      "punteggio": 20
+    },
+    {
+      "criterio": 1,
+      "titolo": "Title 3",
+      "punteggio": 30
+    },
+    {
+        "criterio": 2,
+        "titolo": "Title 1",
+        "punteggio": 10
+    },
+    {
+        "criterio": 2,
+        "titolo": "Title 2",
+        "punteggio": 20
+    },
+    {
+        "criterio": 2,
+        "titolo": "Title 3",
+        "punteggio": 30
+    }
+  ]
+  

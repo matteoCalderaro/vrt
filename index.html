@@ -69,186 +69,235 @@
             position: absolute;
             left: 20px;
         }
-       
+
+
+
+        #example tbody tr[data-has-rowspan] td:nth-child(6),
+        #example tbody tr[data-has-rowspan] td:nth-child(7),
+        #example tbody tr[data-has-rowspan] td:nth-child(11),
+        #example tbody tr[data-has-rowspan] td:nth-child(13) {
+            text-align: center; 
+            vertical-align: middle;
+            font-weight: bold;
+            background-color: #f5f7c7;
+        }
+
+        #example tbody tr td:first-child {
+            font-weight: bold;
+            white-space: nowrap;
+        }
                         
     </style>  
     
 </head>
 
 <body>
-    
-    <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="d-flex flex-column gap-4 p-3">
-                <!-- titolo bando -->
-                <div>
-                    <label for="titoloBando" class="form-label">Titolo bando</label>
-                    <input type="text" class="form-control" id="titoloBando" disabled>
-                </div>
-                <!-- azienda/data inserimento -->
-                <div class="gap-4 gap-md-0 row">
-                    <div class="col-12 col-md-6">
-                        <label for="denominazioneAzienda" class="form-label">Azienda</label>
-                        <input type="text" class="form-control" id="denominazioneAzienda"disabled>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="dataInserimento" class="form-label">Data inserimento</label>
-                        <input type="text" class="form-control" id="dataInserimento" disabled>
-                    </div>
-                </div>
-                <!-- importo -->
-                <div class="gap-4 gap-md-0 row align-items-end">
-                    <div class="col-12 col-md-6">
-                        <label for="importo" class="form-label">Importo</label>
-                        <input type="text" class="form-control" id="importo"disabled>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
-            </div>
-          </div>
-        </div>
-    </div>
-
 
     <table id="example" class="table table-bordered" style="width:100%">
         <thead class="table-secondary">
             <tr>
-                <th></th> <!-- Empty column for the control -->
                 <th>Criterio</th>
                 <th>Titolo</th>
                 <th>Input al Responsabile Progetto</th>
-                <!-- <th>Risposta Responsabile Progetto</th> -->
-                <th>Punteggio</th>
-                <th>Media</th>
-                <th>Prompt di Valutazione</th>
-                <!-- <th>Risposta OpenAI</th> -->
+                <th>Risposta Responsabile Progetto</th>
+                <th class="text-center">Punteggio</th>
+                <th>Media1</th>
+                <th>Media con univocità testi</th>
+                <th>Prompt</th>
+                <th>Risposta OpenAi</th>
+                <th>Punteggio 1 analista</th>
+                <th>Media2</th>
+                <th>Punteggio 2 analista</th>
+                <th>Media3</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td class="dt-control"></td> 
-                <td class="fw-bold">Criterio 1</td>
-                <td>Allineamento con i Temi del Bando</td>
-                <td>Assicurati che il tuo progetto sia strettamente allineato con l'ambito del bando che hai selezionato:  *{{Ambito di Applicazione}}*.
-                    Dettaglia come vi sia aderenza all'ambito e quale sia il contributo specifico del tuo progetti all'area tematica che hai indicato.</td>
-                <!-- <td>No so cosa scrivere</td> -->
-                <td class="fw-bold">50</td>
-                <td class="fw-bold">20</td>
-                <td>Esamina la risposta del proponente.
-                    Per valutarne l'adeguatezza, considera i seguenti criteri:
-                    1. Specificità: Determina se la risposta fornisce dettagli concreti che dimostrano l'allineamento del progetto con l'ambito del bando selezionato.
-                    2. Contributo: Valuta in che modo la risposta espone il contributo distintivo del progetto all'area tematica scelta.
-                    3. Differenziazione: Assicurati che la risposta non si limiti a ripetere gli elementi dell'input iniziale, ma offra piuttosto una visione unica e un'interpretazione personale del tema del bando.</td>
-                <!-- <td>20</td> -->
-            </tr>
-            <tr>
-                <td class="dt-control"></td> 
-                <td class="fw-bold">Criterio 2</td>
-                <td>Titolo 2</td>
-                <td>Input al Responsabile Progetto 2</td>
-                <td class="fw-bold">40</td>
-                <td class="fw-bold">10</td>
-                <td>Prompt di Valutazione 2</td>
-            </tr>
-            <tr>
-                <td class="dt-control"></td> 
-                <td class="fw-bold">Criterio 3</td>
-                <td>Titolo 3</td>
-                <td>Input al Responsabile Progetto 3</td>
-                <td class="fw-bold">50</td>
-                <td class="fw-bold">20</td>
-                <td>Prompt di Valutazione 3</td>
-            </tr>
-            <tr>
-                <td class="dt-control"></td> 
-                <td class="fw-bold">Criterio 4</td>
-                <td>Titolo 3</td>
-                <td>Input al Responsabile Progetto 4</td>
-                <td class="fw-bold">50</td>
-                <td class="fw-bold">20</td>
-                <td>Prompt di Valutazione 4</td>
-            </tr>
+        <tbody>   
         </tbody>
     </table>
 
-
-
-       
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
-    <script src="rendicontazioni.js"></script>
-    <script src="video.js"></script>
     
 </body>
 
 <script>
-    let column1Content = `<p style="font-weight:600">Risposta Responsabile Progetto<p>
-         <p>La diagnosi precoce dei tumori è la chiave per un loro trattamento efficace. Disporre di strumenti che consentano, già in questa fase, di predire l'efficacia o meno di uno specifico trattamento permette di utilizzare fin da subito terapie personalizzate. La tecnologia analitica che abbiamo sviluppato si inserisce esattamente in questo contesto. Sfruttando caratteristiche fisiche e molecolari di frammenti circolanti di DNA tumorale, è stata già testata su un'ampia coorte di pazienti con tumore genitourinario in fase metastatica, dimostrando un incremento significativo della sensibilità nel rilevare segnale tumorale nel sangue. Questo apre la possibilità al monitoraggio in tempo reale dei pazienti e della loro risposta al trattamento anche in fasi iniziali di malattia tumorale. La scalabilità sarà misurata nell'ambito del tumore al seno in fase precoce, tramite la caratterizzazione molecolare di campioni di sangue. A 6 mesi di validazione, ci aspettiamo di aver qualificato il segnale tumorale - da un'aliquota di sangue - di almeno il 50% dei campioni altrimenti non valutabili.</p>`
 
-    let column2Content = `<p style="font-weight:600">Risposta OpenAI</p>
-    <p>La risposta fornisce informazioni dettagliate sull'innovazione proposta, che consiste in una tecnologia analitica per il monitoraggio del tumore al seno tramite un prelievo di sangue. Viene spiegato come la tecnologia sfrutti frammenti circolanti di DNA tumorale per predire l'efficacia dei trattamenti e permettere terapie personalizzate. Inoltre, viene menzionato che la tecnologia è stata già testata su pazienti con tumore genitourinario in fase metastatica, dimostrando un aumento significativo della sensibilità nel rilevare segnali tumorali nel sangue. Tuttavia, la risposta non fornisce una chiara definizione dell'obiettivo misurabile da raggiungere entro 6 mesi né 
-    una metrica di misurazione specifica. Inoltre, non viene esplicitata la caratteristica disruptive della tecnologia, sebbene si faccia riferimento alla sua unicità e creatività. Nel complesso, la risposta fornisce informazioni pertinenti ma può essere migliorata nella chiarezza e misurabilità dell'obiettivo e nella descrizione della caratteristica disruptive del progetto</p>`
-    
-    $(document).ready(function() {
-   
-    // Initialize DataTable for #example table
-    $('#example').DataTable({
-        columnDefs: [
-            { width: '50px', targets: 0 }, // Adjust the width and target the first column
-            { 
-                targets: [1], // Target the second column (index 1)
-                render: function(data, type, row, meta) {
-                    if (type === 'display') {
-                        // Apply CSS style to prevent wrapping
-                        return '<p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + data + '</p>';
-                    } else {
-                        return data;
-                    }
-                }
+$(document).ready(function() {
+    var previousCriterio = null; 
+    var previousCriterioColors = {};
+    var minBrightness = 180; // Minimum brightness threshold (0-255)
+    var minContrastRatio = 4.5; // Minimum contrast ratio threshold
+
+    var columns = [
+        {
+            data: 'criterio',
+    render: function(data, type, row) {
+        if (type === 'display') {
+            // Concatenate criterio and extra if extra is present
+            var displayData = 'Criterio ' + data;
+            if (row.extra) {
+                displayData += ' (Extra)';
             }
-        ],
-        searching: false, // Disable search feature
-        paging: false, // Disable pagination
-        info: false, // Disable info display
-        ordering: false // Disable sorting
-        // You can add more options here to customize further
+            return displayData;
+        }
+        return data;
+    },
+    orderable: false
+        },
+        { data: 'titolo', orderable: false },
+        { data: 'input', orderable: false },
+        { data: 'risposta', orderable: false },
+        { data: 'punteggio', orderable: false },
+        {
+            data: 'media1',
+            createdCell: createCellWithRowspanLogic('media1')
+        },
+        {
+            data: 'mediaTesti',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('mediaTesti')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 50);
+            }
+        },
+        { data: 'prompt', orderable: false },
+        { data: 'rispostaOpenAi', orderable: false },
+        { data: 'punteggio1Analista', orderable: false },
+        {
+            data: 'media2',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('media2')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 70);
+            }
+        },
+        { data: 'punteggio2Analista', orderable: false },
+        {
+            data: 'media3',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('media3')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 90); 
+            }
+        },
+    ];
+
+    // Initialize the DataTable without data
+    var table = $('#example').DataTable({
+        columns: columns,
+        scrollX: true,
+        searching: false,
+        paging: false,
+        info: false,
+        ordering: false,
+        rowCallback: function(row, data, index) {
+            // Generate or retrieve color for the current criterio
+            var color = previousCriterioColors[data.criterio];
+            if (!color) {
+                color = generateBrightColor();
+                previousCriterioColors[data.criterio] = color;
+            }
+            // Apply color to the first <td> of the current row
+            $(row).find('td:first-child').css('background-color', color);
+            if ($(row).find('td[rowspan]').length > 0) {
+                $(row).attr('data-has-rowspan', true);
+            }
+
+        },
+        columnDefs: [
+        { targets: [4, 9, 11], className: 'text-center align-middle' } // Target the 5th, 10th, and 12th columns and apply text-center class
+]
     });
 
-    // Attach click event listener to dt-control cells
-    $('#example').on('click', 'td.dt-control', function () {
-        let tr = $(this).closest('tr');
-        let row = $('#example').DataTable().row(tr);
+    // Fetch data from AJAX and update DataTable
+    $.ajax({
+        url: './risposte.json',
+        dataType: 'json',
+        success: function(data) {
+            console.log('Data received from AJAX request:', data);
+            table.clear().rows.add(data);
 
-        if (row.child.isShown()) {
-            // This row is already open - close it
-            row.child.hide();
-        } else {
-            // Open this row with manually specified content
-            row.child(format(column1Content, column2Content)).show();
+            table.draw(false);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
         }
     });
 
-    function format(column1Content, column2Content) {
-    // `column1Content` and `column2Content` are the contents for the two columns
-    return (
-        '<div class="row">' +
-        '<div class="col-md-6">' + column1Content + '</div>' +
-        '<div class="col-md-6">' + column2Content + '</div>' +
-        '</div>'
-    );
-}
+    // Function to create a cell with rowspan logic
+    function createCellWithRowspanLogic(propertyName) {
+        return function(cell, cellData, rowData, rowIndex, colIndex) {
+            console.log('Creating cell for property:', propertyName);
+            if (previousCriterio !== rowData.criterio) {
+                previousCriterio = rowData.criterio;
+                var totalRows = getTotalRows(rowData.criterio, propertyName);
+                cell.setAttribute('rowspan', totalRows);
+            } else {
+                cell.remove();
+            }
+        };
+    }
+
+    // Function to calculate totalRows based on criterio value and property name
+    function getTotalRows(criterio, propertyName) {
+        var totalRows = 0;
+        $('#example').DataTable().rows().data().each(function(rowData) {
+            if (rowData.criterio === criterio && rowData[propertyName] !== undefined) {
+                totalRows++;
+            }
+        });
+        return totalRows;
+    }
+
+        // Function to generate a bright random color
+        function generateBrightColor() {
+        var color;
+        do {
+            color = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate random color
+            // Calculate brightness (https://www.w3.org/TR/AERT/#color-contrast)
+            var brightness = (
+                parseInt(color.substr(1, 2), 16) * 299 +
+                parseInt(color.substr(3, 2), 16) * 587 +
+                parseInt(color.substr(5, 2), 16) * 114
+            ) / 1000;
+        } while (brightness < minBrightness); // Repeat until brightness meets threshold
+        return color;
+    }
+
+    // Function to check contrast ratio between color and previously generated colors
+    function checkContrast(color) {
+        var contrastSufficient = true;
+        $.each(previousCriterioColors, function(key, value) {
+            var contrast = calculateContrast(color, value);
+            if (contrast < minContrastRatio) {
+                contrastSufficient = false;
+                return false; // Break out of the loop
+            }
+        });
+        return contrastSufficient;
+    }
+
+    // Function to calculate contrast ratio between two colors
+    function calculateContrast(color1, color2) {
+        var brightness1 = (
+            parseInt(color1.substr(1, 2), 16) * 299 +
+            parseInt(color1.substr(3, 2), 16) * 587 +
+            parseInt(color1.substr(5, 2), 16) * 114
+        ) / 1000;
+        var brightness2 = (
+            parseInt(color2.substr(1, 2), 16) * 299 +
+            parseInt(color2.substr(3, 2), 16) * 587 +
+            parseInt(color2.substr(5, 2), 16) * 114
+        ) / 1000;
+        var contrast = Math.abs(brightness1 - brightness2);
+        return contrast;
+    }
 });
+
+
+
+
+
 
 
 

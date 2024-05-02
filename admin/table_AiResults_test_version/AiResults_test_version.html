@@ -1,0 +1,192 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRT - progress</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- data table css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.css" rel="stylesheet">
+ 
+    <style>
+
+        /* cancellare */
+        *{
+            font-size: inherit;
+        }
+        body {
+            background-color: #e8e8e8;
+            font-size: 14px;
+            /* overflow-x: hidden; */
+            padding: 20px;
+        }
+        /* eye icon */
+        table button {
+            background-color: transparent;
+            border: unset
+        }
+        /* custom CSS to override paginator style */
+        .page-item.active .page-link {
+            background-color: #6c757d; /* Secondary color */
+            border-color: #6c757d; /* Secondary color */
+        }
+        .page-link {
+            color: #6c757d; /* Secondary color */
+        }
+        .page-link:hover {
+            color: #343a40; /* Hover color */
+        }
+        /* highlighter */
+        .highlight {
+            background-color: yellow;
+        }
+        /* checkboxes border */
+        .form-check-input[type="checkbox"] {
+            border: 1px solid #6c757d; /* Adjust border color as needed */
+        }
+        /* first column width */
+        #myTable td:nth-child(2) {
+            min-width: 200px; /* Adjust the minimum width as needed */
+        }
+        /* margin between the tables */
+        #myTable_wrapper{
+            margin-bottom: 70px !important;
+        }
+        .dt-control {
+            position: relative;
+        }
+        .dt-control:before {
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            left: 20px;
+        }
+       
+                        
+    </style>  
+    
+</head>
+
+<body>
+
+    <table id="example" class="table table-bordered" style="width:100%">
+        <thead class="table-secondary">
+            <tr>
+                <th  style="min-width: 50px;">Criterio</th>
+                <th>Titolo</th>
+
+                <th>Punteggio</th>
+                <th style="min-width: 50px;">Media1</th>
+      
+
+            </tr>
+        </thead>
+        <tbody>   
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
+    
+</body>
+
+<script>
+
+$(document).ready(function() {
+    var previousCriterio = null; // Variable to store the previous criterio value
+
+    // Define the column configurations
+    var columns = [
+        {
+            data: 'criterio',
+            render: function(data, type, row) {
+                if (type === 'display') {
+                    return 'Criterio ' + data;
+                }
+                return data;
+            },
+            orderable: false
+        },
+        { data: 'titolo', orderable: false },
+        { data: 'punteggio', orderable: false },
+        {
+           
+            createdCell: createCellWithRowspanLogic()
+        },
+    ];
+
+    // Initialize the DataTable without data
+    var table = $('#example').DataTable({
+        columns: columns,
+        scrollX: true,
+        searching: false,
+        paging: false,
+        info: false,
+        ordering: false
+    });
+
+    // Fetch data from AJAX and update DataTable
+    $.ajax({
+        url: './risposte_test_version.json',
+        dataType: 'json',
+        success: function(data) {
+            console.log('Data received from AJAX request:', data);
+            table.clear().rows.add(data);
+
+            // Re-draw the table after creating rowspan logic for media and media2
+            table.draw(false);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+
+
+function createCellWithRowspanLogic() {
+    return function(cell, cellData, rowData, rowIndex, colIndex) {
+        console.log('Creating cell');
+        var totalRows = getTotalRows(rowData.criterio);
+        if (previousCriterio !== rowData.criterio) {
+            previousCriterio = rowData.criterio;
+            cell.setAttribute('rowspan', totalRows);
+        } else {
+            // If rowspan attribute already exists, remove it
+            if (!cell.hasAttribute('rowspan')) {
+                cell.remove();
+            }
+        }
+    };
+}
+
+    // Function to calculate totalRows based on criterio value and property name
+function getTotalRows(criterio, propertyName) {
+    var totalRows = 0;
+    $('#example').DataTable().rows().data().each(function(rowData) {
+        if (rowData.criterio === criterio && (!propertyName || propertyName in rowData)) {
+            totalRows++;
+        }
+    });
+    return totalRows;
+}
+
+});
+
+
+
+
+
+
+
+
+    
+</script>
+
+

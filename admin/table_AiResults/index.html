@@ -141,7 +141,7 @@ $(document).ready(function() {
     var previousCriterio = null; 
     var previousCriterioColors = {};
     var minBrightness = 180; // Minimum brightness threshold (0-255)
-    var minContrastRatio = 7; // Minimum contrast ratio threshold
+    var minContrastRatio = 10; // Minimum contrast ratio threshold
 
     var columns = [
         {
@@ -226,7 +226,7 @@ $(document).ready(function() {
                 targets: [4, 9, 11],
                 createdCell: function(td, cellData, rowData, row, col) {
                 // Add classes to <td> elements only
-                $(td).addClass('text-center align-middle editable icon-container position-relative');
+                $(td).addClass('text-center align-middle editable icon-container position-relative').css('cursor', 'pointer');
             }
             }
         ]

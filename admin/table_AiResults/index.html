@@ -60,16 +60,6 @@
         #myTable_wrapper{
             margin-bottom: 70px !important;
         }
-        .dt-control {
-            position: relative;
-        }
-        .dt-control:before {
-            top: 50%;
-            transform: translateY(-50%);
-            position: absolute;
-            left: 20px;
-        }
-
 
 
         #example tbody tr[data-has-rowspan] td:nth-child(6),
@@ -80,13 +70,38 @@
             vertical-align: middle;
             font-weight: bold;
             background-color: #f5f7c7;
+
         }
 
         #example tbody tr td:first-child {
             font-weight: bold;
             white-space: nowrap;
         }
-                        
+
+        /* .icon-container {
+            position: relative;
+        }
+
+        .icon-container .icon {
+            position: absolute;
+            top: -2;
+            right: -2;
+            color: red;
+            font-size: 13px;
+            transform: rotate(45deg);
+        } */
+        .icon-container::after {
+            content: '';
+            border-style: solid;
+            border-width: 0 5px 5px 5px; /* Adjust the size of the triangle as needed */
+            border-color: transparent transparent red transparent; /* Adjust the color of the triangle */
+            position: absolute;
+            top: -1;
+            right: -3;
+            transform: rotate(45deg);
+        }
+       
+                                
     </style>  
     
 </head>
@@ -117,8 +132,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
-    
-</body>
+
+
 
 <script>
 
@@ -131,13 +146,13 @@ $(document).ready(function() {
     var columns = [
         {
             data: 'criterio',
-    render: function(data, type, row) {
-        if (type === 'display') {
+            render: function(data, type, row) {
+            if (type === 'display') {
             // Concatenate criterio and extra if extra is present
-            var displayData = 'Criterio ' + data;
-            if (row.extra) {
-                displayData += ' (Extra)';
-            }
+                var displayData = 'Criterio ' + data;
+                if (row.extra) {
+                    displayData += ' (Extra)';
+                }
             return displayData;
         }
         return data;
@@ -205,8 +220,16 @@ $(document).ready(function() {
 
         },
         columnDefs: [
-        { targets: [4, 9, 11], className: 'text-center align-middle' } // Target the 5th, 10th, and 12th columns and apply text-center class
-]
+            { targets: [4, 9, 11], width: '50px' },
+            { targets: [5, 6, 10, 12], width: '80px'  },
+            {
+                targets: [4, 9, 11],
+                createdCell: function(td, cellData, rowData, row, col) {
+                // Add classes to <td> elements only
+                $(td).addClass('text-center align-middle editable icon-container position-relative');
+            }
+            }
+        ]
     });
 
     // Fetch data from AJAX and update DataTable
@@ -249,8 +272,12 @@ $(document).ready(function() {
         return totalRows;
     }
 
-        // Function to generate a bright random color
-        function generateBrightColor() {
+
+
+   
+
+    // Function to generate a bright random color
+    function generateBrightColor() {
         var color;
         do {
             color = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate random color
@@ -292,8 +319,42 @@ $(document).ready(function() {
         var contrast = Math.abs(brightness1 - brightness2);
         return contrast;
     }
+    
+    $('#example').on('click', 'td.editable', function(event) {
+    event.stopPropagation(); // Prevent event propagation
+    
+    var cell = $(this);
+    var originalContent = cell.text().trim(); // Trim any leading/trailing spaces
+    cell.attr('contenteditable', true);
+    cell.css('cursor', 'pointer'); // Add cursor pointer
+
+    cell.focus();
+    
+    // Save changes when focus is lost
+    cell.on('blur', function() {
+        var newContent = cell.text().trim(); // Get the new content
+        console.log('Original content:', originalContent);
+        console.log('New content:', newContent);
+        // Check if the new content is a valid number
+        if (/^\d+(\.\d+)?$/.test(newContent)) {
+            if (newContent !== originalContent) {
+                // Update DataTable cell value only if newContent is different from originalContent
+                var row = cell.closest('tr');
+                var cellIndex = cell.index();
+                row.find('td:eq(' + cellIndex + ')').text(newContent); // Update the cell content
+            }
+        } else {
+            // If the new content is not a valid number, revert to the original content
+            cell.text(originalContent);
+        }
+        cell.removeAttr('contenteditable');
+    });
 });
 
+
+
+
+});
 
 
 
@@ -305,3 +366,4 @@ $(document).ready(function() {
 </script>
 
 
+</body>

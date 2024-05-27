@@ -1,0 +1,370 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRT - progress</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- data table css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.css" rel="stylesheet">
+ 
+    <style>
+
+        /* cancellare */
+        *{
+            font-size: inherit;
+        }
+        body {
+            background-color: #e8e8e8;
+            font-size: 14px;
+            /* overflow-x: hidden; */
+            padding: 20px;
+        }
+        /* eye icon */
+        table button {
+            background-color: transparent;
+            border: unset
+        }
+        /* custom CSS to override paginator style */
+        .page-item.active .page-link {
+            background-color: #6c757d; /* Secondary color */
+            border-color: #6c757d; /* Secondary color */
+        }
+        .page-link {
+            color: #6c757d; /* Secondary color */
+        }
+        .page-link:hover {
+            color: #343a40; /* Hover color */
+        }
+        /* highlighter */
+        .highlight {
+            background-color: yellow;
+        }
+        /* checkboxes border */
+        .form-check-input[type="checkbox"] {
+            border: 1px solid #6c757d; /* Adjust border color as needed */
+        }
+        /* first column width */
+        #myTable td:nth-child(2) {
+            min-width: 200px; /* Adjust the minimum width as needed */
+        }
+        /* margin between the tables */
+        #myTable_wrapper{
+            margin-bottom: 70px !important;
+        }
+
+
+        #example tbody tr[data-has-rowspan] td:nth-child(6),
+        #example tbody tr[data-has-rowspan] td:nth-child(7),
+        #example tbody tr[data-has-rowspan] td:nth-child(11),
+        #example tbody tr[data-has-rowspan] td:nth-child(13) {
+            text-align: center; 
+            vertical-align: middle;
+            font-weight: bold;
+            background-color: #f5f7c7;
+
+        }
+
+        #example tbody tr td:first-child {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* .icon-container {
+            position: relative;
+        }
+
+        .icon-container .icon {
+            position: absolute;
+            top: -2;
+            right: -2;
+            color: red;
+            font-size: 13px;
+            transform: rotate(45deg);
+        } */
+        .icon-container::after {
+            content: '';
+            border-style: solid;
+            border-width: 0 5px 5px 5px; /* Adjust the size of the triangle as needed */
+            border-color: transparent transparent red transparent; /* Adjust the color of the triangle */
+            position: absolute;
+            top: -1;
+            right: -3;
+            transform: rotate(45deg);
+        }
+       
+                                
+    </style>  
+    
+</head>
+
+<body>
+
+    <table id="example" class="table table-bordered" style="width:100%">
+        <thead class="table-secondary">
+            <tr>
+                <th>Criterio</th>
+                <th>Titolo</th>
+                <th>Input al Responsabile Progetto</th>
+                <th>Risposta Responsabile Progetto</th>
+                <th class="text-center">Punteggio</th>
+                <th>Media1</th>
+                <th>Media con univocità testi</th>
+                <th>Prompt</th>
+                <th>Risposta OpenAi</th>
+                <th>Punteggio 1 analista</th>
+                <th>Media2</th>
+                <th>Punteggio 2 analista</th>
+                <th>Media3</th>
+            </tr>
+        </thead>
+        <tbody>   
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
+
+
+
+<script>
+
+$(document).ready(function() {
+    var previousCriterio = null; 
+    var previousCriterioColors = {};
+    var minBrightness = 180; // Minimum brightness threshold (0-255)
+    var minContrastRatio = 10; // Minimum contrast ratio threshold
+
+    var columns = [
+        {
+            data: 'criterio',
+            render: function(data, type, row) {
+            if (type === 'display') {
+            // Concatenate criterio and extra if extra is present
+                var displayData = 'Criterio ' + data;
+                if (row.extra) {
+                    displayData += ' (Extra)';
+                }
+            return displayData;
+        }
+        return data;
+    },
+    orderable: false
+        },
+        { data: 'titolo', orderable: false },
+        { data: 'input', orderable: false },
+        { data: 'risposta', orderable: false },
+        { data: 'punteggio', orderable: false },
+        {
+            data: 'media1',
+            createdCell: createCellWithRowspanLogic('media1')
+        },
+        {
+            data: 'mediaTesti',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('mediaTesti')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 50);
+            }
+        },
+        { data: 'prompt', orderable: false },
+        { data: 'rispostaOpenAi', orderable: false },
+        { data: 'punteggio1Analista', orderable: false },
+        {
+            data: 'media2',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('media2')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 70);
+            }
+        },
+        { data: 'punteggio2Analista', orderable: false },
+        {
+            data: 'media3',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('media3')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 90); 
+            }
+        },
+    ];
+
+    // Initialize the DataTable without data
+    var table = $('#example').DataTable({
+        columns: columns,
+        scrollX: true,
+        searching: false,
+        paging: false,
+        info: false,
+        ordering: false,
+        rowCallback: function(row, data, index) {
+            // Generate or retrieve color for the current criterio
+            var color = previousCriterioColors[data.criterio];
+            if (!color) {
+                color = generateBrightColor();
+                previousCriterioColors[data.criterio] = color;
+            }
+            // Apply color to the first <td> of the current row
+            $(row).find('td:first-child').css('background-color', color);
+            if ($(row).find('td[rowspan]').length > 0) {
+                $(row).attr('data-has-rowspan', true);
+            }
+
+        },
+        columnDefs: [
+            { targets: [4, 9, 11], width: '50px' },
+            { targets: [5, 6, 10, 12], width: '80px'  },
+            {
+                targets: [ 9, 11],
+                createdCell: function(td, cellData, rowData, row, col) {
+                // Add classes to <td> elements only
+                $(td).addClass('text-center align-middle editable icon-container position-relative').css('cursor', 'pointer');
+            }
+            }
+        ]
+    });
+
+    // Fetch data from AJAX and update DataTable
+    $.ajax({
+        url: './risposte.json',
+        dataType: 'json',
+        success: function(data) {
+            console.log('Data received from AJAX request:', data);
+            table.clear().rows.add(data);
+
+            table.draw(false);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+
+    // Function to create a cell with rowspan logic
+    function createCellWithRowspanLogic(propertyName) {
+        return function(cell, cellData, rowData, rowIndex, colIndex) {
+            console.log('Creating cell for property:', propertyName);
+            if (previousCriterio !== rowData.criterio) {
+                previousCriterio = rowData.criterio;
+                var totalRows = getTotalRows(rowData.criterio, propertyName);
+                cell.setAttribute('rowspan', totalRows);
+            } else {
+                cell.remove();
+            }
+        };
+    }
+
+    // Function to calculate totalRows based on criterio value and property name
+    function getTotalRows(criterio, propertyName) {
+        var totalRows = 0;
+        $('#example').DataTable().rows().data().each(function(rowData) {
+            if (rowData.criterio === criterio && rowData[propertyName] !== undefined) {
+                totalRows++;
+            }
+        });
+        return totalRows;
+    }
+
+
+
+   
+
+    // Function to generate a bright random color
+    function generateBrightColor() {
+        var color;
+        do {
+            color = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate random color
+            // Calculate brightness (https://www.w3.org/TR/AERT/#color-contrast)
+            var brightness = (
+                parseInt(color.substr(1, 2), 16) * 299 +
+                parseInt(color.substr(3, 2), 16) * 587 +
+                parseInt(color.substr(5, 2), 16) * 114
+            ) / 1000;
+        } while (brightness < minBrightness); // Repeat until brightness meets threshold
+        return color;
+    }
+
+    // Function to check contrast ratio between color and previously generated colors
+    function checkContrast(color) {
+        var contrastSufficient = true;
+        $.each(previousCriterioColors, function(key, value) {
+            var contrast = calculateContrast(color, value);
+            if (contrast < minContrastRatio) {
+                contrastSufficient = false;
+                return false; // Break out of the loop
+            }
+        });
+        return contrastSufficient;
+    }
+
+    // Function to calculate contrast ratio between two colors
+    function calculateContrast(color1, color2) {
+        var brightness1 = (
+            parseInt(color1.substr(1, 2), 16) * 299 +
+            parseInt(color1.substr(3, 2), 16) * 587 +
+            parseInt(color1.substr(5, 2), 16) * 114
+        ) / 1000;
+        var brightness2 = (
+            parseInt(color2.substr(1, 2), 16) * 299 +
+            parseInt(color2.substr(3, 2), 16) * 587 +
+            parseInt(color2.substr(5, 2), 16) * 114
+        ) / 1000;
+        var contrast = Math.abs(brightness1 - brightness2);
+        return contrast;
+    }
+    
+    $('#example').on('click', 'td.editable', function(event) {
+    event.stopPropagation(); // Prevent event propagation
+    
+    var cell = $(this);
+    var originalContent = cell.text().trim(); // Trim any leading/trailing spaces
+    cell.attr('contenteditable', true);
+    cell.css('cursor', 'pointer'); // Add cursor pointer
+
+    cell.focus();
+    
+    // Save changes when focus is lost
+    cell.on('blur', function() {
+        var newContent = cell.text().trim(); // Get the new content
+        console.log('Original content:', originalContent);
+        console.log('New content:', newContent);
+        // Check if the new content is a valid number
+        if (/^\d+(\.\d+)?$/.test(newContent)) {
+            if (newContent !== originalContent) {
+                // Update DataTable cell value only if newContent is different from originalContent
+                var row = cell.closest('tr');
+                var cellIndex = cell.index();
+                row.find('td:eq(' + cellIndex + ')').text(newContent); // Update the cell content
+            }
+        } else {
+            // If the new content is not a valid number, revert to the original content
+            cell.text(originalContent);
+        }
+        cell.removeAttr('contenteditable');
+    });
+});
+
+
+
+
+});
+
+
+
+
+
+
+
+    
+</script>
+
+
+</body>

@@ -1,0 +1,518 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRT - progress</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- data table css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.css" rel="stylesheet">
+
+
+    <link rel="icon" type="image/png" href="/favicon.ico"/>
+
+
+    <style>
+
+        *{
+            font-size: inherit;
+        }
+        body {
+            background-color: #775757;
+            font-size: 14px;
+            /* overflow-x: hidden; */
+            padding: 20px;
+        }
+
+        /* colonna CRITERIO */
+        #example td:first-child {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* colonna TITOLO */
+        #example td:nth-child(2) {
+            min-width: 200px;
+        }
+
+        /* colonna PUNTEGGIO */
+        #example td:nth-child(5) {
+            text-align: center;
+        }
+
+        /* tutte le colonne con le medie */
+        #example tbody tr[data-has-rowspan] td:nth-child(6),
+        #example tbody tr[data-has-rowspan] td:nth-child(7),
+        #example tbody tr[data-has-rowspan] td:nth-child(11),
+        #example tbody tr[data-has-rowspan] td:nth-child(13) {
+            text-align: center;
+            vertical-align: middle;
+            font-weight: bold;
+            background-color: #f5f7c7;
+        }
+
+        /* icona triangolo celle editabili */
+        .icon-container::after {
+            content: '';
+            border-style: solid;
+            border-width: 0 5px 5px 5px; /* Adjust the size of the triangle as needed */
+            border-color: transparent transparent red transparent; /* Adjust the color of the triangle */
+            position: absolute;
+            top: -1;
+            right: -3;
+            transform: rotate(45deg);
+        }
+
+        /* Separatore orizzontale gruppi di criteri */
+        tbody tr:not([data-has-rowspan="true"]) + tr[data-has-rowspan="true"],
+        tbody tr[data-has-rowspan="true"] + tr[data-has-rowspan="true"] {
+            border-top: 2px solid rgb(170, 170, 170);
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    
+        <table id="example" class="table table-bordered" style="width:100%">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Criterio</th>
+                    <th>Titolo</th>
+                    <th>Input al Responsabile Progetto</th>
+                    <th>Risposta Responsabile Progetto</th>
+                    <th class="text-center">Punteggio</th>
+                    <th>Media1</th>
+                    <th>Media con univocità testi</th>
+                    <th>Prompt</th>
+                    <th>Risposta OpenAi</th>
+                    <th>Punteggio 1 analista</th>
+                    <th>Media2</th>
+                    <th>Punteggio 2 analista</th>
+                    <th>Media3</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
+
+
+
+<script>
+
+$(document).ready(function() {
+    var previousCriterio = null;
+    var previousCriterioColors = {};
+    var minBrightness = 180; // Minimum brightness threshold (0-255)
+    var minContrastRatio = 10; // Minimum contrast ratio threshold
+
+    var globalData;
+
+    //////////////////////////////////////////////////////////////
+    ///////// TABLE INITIALIZATION + DATA FETCHING + TABLE DRAW
+    ///////////////////////////
+
+    //// COLUMNS OPTIONS
+    var columns = [
+        {
+            data: 'criterio',
+            render: function(data, type, row) {
+                    if (type === 'display') {
+                    // Concatenate criterio and extra if extra is present
+                        var displayData = 'Criterio ' + data;
+                        if (row.extra) {
+                            displayData += ' (Extra)';
+                        }
+                    return displayData;
+                }
+                return data;
+            },
+            orderable: false
+        },
+        { data: 'titolo', orderable: false },
+        { data: 'input', orderable: false },
+        { data: 'risposta', orderable: false },
+        { data: 'punteggio', orderable: false },
+        {
+            data: 'media1',
+            createdCell: createCellWithRowspanLogic('media1')
+        },
+        // {
+        //     data: 'mediaTesti',
+        //     createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+        //         setTimeout(function() {
+        //             createCellWithRowspanLogic('mediaTesti')(cell, cellData, rowData, rowIndex, colIndex);
+        //         }, 5);
+        //     }
+        // },
+        {
+            data: 'mediaTesti',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('mediaTesti')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 5);
+            }
+        },
+        { data: 'prompt', orderable: false },
+        { data: 'rispostaOpenAi', orderable: false },
+        { data: 'punteggio1Analista', orderable: false, className: 'punteggio1Analista' },
+        {
+            data: 'media2',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('media2')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 200);
+            }
+        },
+        { data: 'punteggio2Analista', orderable: false, className: 'punteggio2Analista'  },
+        {
+            data: 'media3',
+            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
+                setTimeout(function() {
+                    createCellWithRowspanLogic('media3')(cell, cellData, rowData, rowIndex, colIndex);
+                }, 400);
+            }
+        },
+    ];
+
+    //// TABLE INITIALIZATION WITHOUT DATA
+    var table = $('#example').DataTable({
+        columns: columns,
+        scrollX: true,
+        searching: false,
+        paging: false,
+        info: false,
+        ordering: false,
+        rowCallback: function(row, data, index) {
+            // Store the ID in a data attribute for each row
+            $(row).attr('data-row-id', data.id);
+
+            // Generate or retrieve color for the current criterio
+            var color = previousCriterioColors[data.criterio];
+            if (!color) {
+                color = generateBrightColor();
+                previousCriterioColors[data.criterio] = color;
+            }
+            // Apply color to the first <td> of the current row
+            $(row).find('td:first-child').css('background-color', color);
+            if ($(row).find('td[rowspan]').length > 0) {
+                $(row).attr('data-has-rowspan', true);
+            }
+        },
+        createdRow: function(row, data, dataIndex) {
+            // Store the ID in a data attribute for each cell (if needed)
+            $(row).children('td').each(function(index) {
+                $(this).attr('data-row-id', data.id);
+            });
+        },
+        columnDefs: [
+            { targets: [4, 9, 11], width: '50px' },
+            { targets: [5, 6, 10, 12], width: '80px'  },
+            {
+                targets: [ 9, 11],
+                createdCell: function(td, cellData, rowData, row, col) {
+                // Add classes to <td> elements only
+                $(td).addClass('text-center align-middle editable icon-container position-relative').css('cursor', 'pointer');
+                }
+            },
+            {
+                targets: [13], // Assuming the ID is stored in the first column
+                visible: false, // Hide the ID column
+                data: "id"
+            },
+
+        ]
+    });
+
+    //// DATA FETCHING + TABLE DRAW
+    $.ajax({
+        url: './risposte.json',
+        dataType: 'json',
+        success: function(data) {
+            console.log('Data from AJAX:', data);
+            globalData = data;
+            table.clear().rows.add(data);
+
+            table.draw(false);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+
+    //// SPAN LOGIC
+    // Function to create a cell with rowspan logic
+    function createCellWithRowspanLogic(propertyName,numericValue) {
+        return function(cell, cellData, rowData, rowIndex, colIndex) {
+            if (propertyName !== createCellWithRowspanLogic.currentPropertyName) {
+                previousCriterio = null; // Reset previousCriterio to null
+                createCellWithRowspanLogic.currentPropertyName = propertyName; // Update currentPropertyName
+            }
+            
+            if (previousCriterio !== rowData.criterio ) {
+
+                previousCriterio = rowData.criterio;
+                var totalRows = getTotalRows(rowData.criterio, propertyName);
+                    cell.setAttribute('rowspan', totalRows);
+
+            } else {
+                
+                cell.remove();
+            }
+
+            // If cellData is null, assign the numericValue
+            if (cellData === null) {
+                var numericValue = calculateDynamicNumericValue(propertyName, rowData);
+                cellData = numericValue;
+            }
+         
+            // Set the cell content
+            $(cell).text(cellData);
+        };
+    }
+
+    //// AVERAGE CALCULATION
+    function calculateDynamicNumericValue(propertyName, rowData) {
+        var numericValue = 0;
+        var criterio = rowData.criterio;
+
+        // Determine which property to use for calculating the average value
+        var propertyToUse;
+        switch (propertyName) {
+            case 'media1':
+                propertyToUse = 'punteggio';
+                break;
+            case 'media2':
+                propertyToUse = 'punteggio1Analista';
+                break;
+            case 'media3':
+                propertyToUse = 'punteggio2Analista';
+                break;
+            case 'mediaTesti':
+                // For mediaTesti, return 0 (or any other appropriate default value)
+                console.log('sono qua')
+                return 0
+            default:
+                // Handle unknown propertyName (optional)
+                return null;
+        }
+
+        // Iterate through the rows to find objects with the same criterio value
+        $('#example').DataTable().rows().data().each(function(rowData) {
+            if (rowData.criterio === criterio) {
+                // Accumulate the property value based on the type of media
+                numericValue += rowData[propertyToUse];
+            }
+        });
+
+        // Calculate the average
+        numericValue = numericValue / getTotalRows(criterio, propertyName);
+
+        // Round the numeric value to 2 decimals
+        numericValue = Math.round(numericValue * 100) / 100;
+
+        return numericValue;
+    }
+
+    // Function to calculate totalRows based on criterio value and property name
+    function getTotalRows(criterio, propertyName) {
+        var totalRows = 0;
+        $('#example').DataTable().rows().data().each(function(rowData) {
+            if (rowData.criterio === criterio && rowData[propertyName] !== undefined) {
+                totalRows++;
+            }
+        });
+        return totalRows;
+    }
+
+
+    //////////////////////////////////////////////////////
+    ///////// EDIT PUNTEGGI + OPTIMISTIC UPDATE + AJAX
+    ///////////////////////////
+
+    //// LISTENERS
+    // Define keydownTriggered variable in the outer scope
+    var keydownTriggered = false;
+    var originalContent; // Variable to store the original content
+
+    // Attach event listeners to a parent element using event delegation
+    $('#example').on('blur', 'td.editable', function(event) {
+        var cell = $(this);
+        if (!keydownTriggered) {
+            saveChanges(cell, originalContent); // Pass the cell reference and original content to saveChanges
+        }
+        keydownTriggered = false; // Reset the flag
+    });
+
+    $('#example').on('keydown', 'td.editable', function(event) {
+        var cell = $(this);
+        if (event.keyCode === 13) { // Check if the pressed key is the return key
+            event.preventDefault(); // Prevent the default action of the return key
+            keydownTriggered = true; // Set the flag
+            saveChanges(cell, originalContent); // Pass the cell reference and original content to saveChanges
+        }
+    });
+
+    // Event listener for clicking on editable cells
+    $('#example').on('click', 'td.editable', function(event) {
+        event.stopPropagation(); // Prevent event propagation
+
+        var cell = $(this);
+        originalContent = cell.text().trim(); // Store the original content
+        cell.attr('contenteditable', true);
+        cell.css('cursor', 'pointer'); // Add cursor pointer
+        cell.focus();
+    });
+
+
+    //// CALLBACK FN TO UPDATE THE UI AND INVOKE THE AJAX
+    // Function to save changes when editing a cell
+    function saveChanges(cell, originalContent) {
+        var newContent = cell.text().trim(); // Get the new content of the cell
+
+        // Check if the new content is a valid number
+        if (/^\d+(\.\d+)?$/.test(newContent)) {
+            if (newContent !== originalContent) {
+                // Update the DataTable cell value only if newContent is different from originalContent
+                var row = cell.closest('tr');
+                var cellIndex = cell.index();
+                row.find('td:eq(' + cellIndex + ')').text(newContent); // Update the cell content
+
+                // Payload construction
+                var propertyName;
+                if (cell.hasClass('punteggio1Analista')) {
+                    propertyName = 'punteggio1Analista';
+                } else if (cell.hasClass('punteggio2Analista')) {
+                    propertyName = 'punteggio2Analista';
+                }
+
+                // Construct the payload object
+                var payload = {
+                    [propertyName]: newContent
+                };
+
+                // Add the ID of the corresponding JSON object
+                var rowId = cell.closest('tr').data('row-id');
+                payload.id = rowId;
+
+
+                ///// AJAX
+                console.log('payload per ajax',payload);
+
+
+                ///// OPTIMISTIC UPDATE
+                // Map over the JSON data array
+                const updatedData = globalData.map(item => {
+                    // Check if the current object's id matches the id in the payload
+                    if (item.id === payload.id) {
+                        // Update the appropriate property based on the payload
+                        if ('punteggio1Analista' in payload) {
+                            // Convert the value to a number using parseFloat or parseInt
+                            const newValue = parseFloat(payload.punteggio1Analista);
+                            return { ...item, punteggio1Analista: newValue };
+                        } else if ('punteggio2Analista' in payload) {
+                            // Convert the value to a number using parseFloat or parseInt
+                            const newValue = parseFloat(payload.punteggio2Analista);
+                            return { ...item, punteggio2Analista: newValue };
+                        }
+                    }
+                    // Return the item unchanged if the id doesn't match
+                    return item;
+                });
+                globalData = updatedData
+                console.log('Data updated in memory: ', updatedData);
+
+                // Clear the DataTable and add the updated data
+                table.clear().rows.add(updatedData);
+
+
+                //// REDRAW THE TABLE
+                setTimeout(()=>{
+                    // Redraw the DataTable
+                    table.draw(false);
+                    console.log('rerender')
+                },0)
+
+            }
+        } else {
+            // If the new content is not a valid number, revert to the original content
+            cell.text(originalContent);
+        }
+
+        cell.removeAttr('contenteditable');
+    }
+
+
+    //////////////////////////
+    ///////  COLORS
+    ///////////////////////
+
+    // Function to generate a bright random color
+    function generateBrightColor() {
+        var color;
+        do {
+            color = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate random color
+            // Calculate brightness (https://www.w3.org/TR/AERT/#color-contrast)
+            var brightness = (
+                parseInt(color.substr(1, 2), 16) * 299 +
+                parseInt(color.substr(3, 2), 16) * 587 +
+                parseInt(color.substr(5, 2), 16) * 114
+            ) / 1000;
+        } while (brightness < minBrightness); // Repeat until brightness meets threshold
+        return color;
+    }
+
+    // Function to check contrast ratio between color and previously generated colors
+    function checkContrast(color) {
+        var contrastSufficient = true;
+        $.each(previousCriterioColors, function(key, value) {
+            var contrast = calculateContrast(color, value);
+            if (contrast < minContrastRatio) {
+                contrastSufficient = false;
+                return false; // Break out of the loop
+            }
+        });
+        return contrastSufficient;
+    }
+
+    // Function to calculate contrast ratio between two colors
+    function calculateContrast(color1, color2) {
+        var brightness1 = (
+            parseInt(color1.substr(1, 2), 16) * 299 +
+            parseInt(color1.substr(3, 2), 16) * 587 +
+            parseInt(color1.substr(5, 2), 16) * 114
+        ) / 1000;
+        var brightness2 = (
+            parseInt(color2.substr(1, 2), 16) * 299 +
+            parseInt(color2.substr(3, 2), 16) * 587 +
+            parseInt(color2.substr(5, 2), 16) * 114
+        ) / 1000;
+        var contrast = Math.abs(brightness1 - brightness2);
+        return contrast;
+    }
+
+
+});
+
+
+
+
+</script>
+
+
+</body>

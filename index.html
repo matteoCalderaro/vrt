@@ -25,7 +25,7 @@
         body {
             background-color: #e8e8e8;
             font-size: 14px;
-            /* overflow-x: hidden; */
+            overflow-x: hidden;
             padding: 20px;
         }
         /* eye icon */
@@ -60,310 +60,188 @@
         #myTable_wrapper{
             margin-bottom: 70px !important;
         }
-
-
-        #example tbody tr[data-has-rowspan] td:nth-child(6),
-        #example tbody tr[data-has-rowspan] td:nth-child(7),
-        #example tbody tr[data-has-rowspan] td:nth-child(11),
-        #example tbody tr[data-has-rowspan] td:nth-child(13) {
-            text-align: center; 
-            vertical-align: middle;
-            font-weight: bold;
-            background-color: #f5f7c7;
-
-        }
-
-        #example tbody tr td:first-child {
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        /* .icon-container {
-            position: relative;
-        }
-
-        .icon-container .icon {
-            position: absolute;
-            top: -2;
-            right: -2;
-            color: red;
-            font-size: 13px;
-            transform: rotate(45deg);
-        } */
-        .icon-container::after {
-            content: '';
-            border-style: solid;
-            border-width: 0 5px 5px 5px; /* Adjust the size of the triangle as needed */
-            border-color: transparent transparent red transparent; /* Adjust the color of the triangle */
-            position: absolute;
-            top: -1;
-            right: -3;
-            transform: rotate(45deg);
-        }
-       
-                                
-    </style>  
+        
+    </style> 
     
 </head>
 
 <body>
+    <div class="modal fade" id="myModalVideo" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione Video</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-column gap-4 p-3">
+                    <!-- titolo bando -->
+                    <div>
+                        <label for="titoloBandoVideo" class="form-label">Titolo bando</label>
+                        <input type="text" class="form-control" id="titoloBandoVideo" disabled>
+                    </div>
+                    <!-- azienda/data inserimento -->
+                    <div class="gap-4 gap-md-0 row">
+                        <div class="col-12 col-md-6">
+                            <label for="denominazioneAziendaVideo" class="form-label">Azienda</label>
+                            <input type="text" class="form-control" id="denominazioneAziendaVideo" disabled>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="dataInserimentoVideo" class="form-label">Data inserimento</label>
+                            <input type="text" class="form-control" id="dataInserimentoVideo" disabled>
+                        </div>
+                    </div>
+                    <!-- linkVideo -->
+                    <div class="gap-4 gap-md-0 row align-items-end">
+                        <div class="col-12 col-md-6">
+                            <label for="linkVideo" class="form-label">Link Video</label>
+                            <input type="text" class="form-control" id="linkVideo" disabled>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio rendicontazione</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="d-flex flex-column gap-4 p-3">
+                <!-- titolo bando -->
+                <div>
+                    <label for="titoloBando" class="form-label">Titolo bando</label>
+                    <input type="text" class="form-control" id="titoloBando" disabled>
+                </div>
+                <!-- azienda/data inserimento -->
+                <div class="gap-4 gap-md-0 row">
+                    <div class="col-12 col-md-6">
+                        <label for="denominazioneAzienda" class="form-label">Azienda</label>
+                        <input type="text" class="form-control" id="denominazioneAzienda"disabled>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="dataInserimento" class="form-label">Data inserimento</label>
+                        <input type="text" class="form-control" id="dataInserimento" disabled>
+                    </div>
+                </div>
+                <!-- importo -->
+                <div class="gap-4 gap-md-0 row align-items-end">
+                    <div class="col-12 col-md-6">
+                        <label for="importo" class="form-label">Importo</label>
+                        <input type="text" class="form-control" id="importo"disabled>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
+            </div>
+          </div>
+        </div>
+    </div>
+ 
 
-    <table id="example" class="table table-bordered" style="width:100%">
-        <thead class="table-secondary">
+    <table id="myTable" class="table nowrap table-bordered" style="width: 100%;">
+        <thead>
             <tr>
-                <th>Criterio</th>
-                <th>Titolo</th>
-                <th>Input al Responsabile Progetto</th>
-                <th>Risposta Responsabile Progetto</th>
-                <th class="text-center">Punteggio</th>
-                <th>Media1</th>
-                <th>Media con univocità testi</th>
-                <th>Prompt</th>
-                <th>Risposta OpenAi</th>
-                <th>Punteggio 1 analista</th>
-                <th>Media2</th>
-                <th>Punteggio 2 analista</th>
-                <th>Media3</th>
+                <th scope="col"></th>
+                <th scope="col">Bando</th>
+                <th scope="col">Progetto</th>
+                <th scope="col">Data</th>
+                <th scope="col">Azienda</th>  
+                <th scope="col">Importo</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">Email</th>
             </tr>
         </thead>
-        <tbody>   
+        <tbody>
         </tbody>
     </table>
 
+    <table id="myTableVideo" class="table nowrap table-bordered" style="width: 100%;">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Bando</th>
+                <th scope="col">Progetto</th>
+                <th scope="col">Data</th>
+                <th scope="col">Azienda</th>  
+                <th scope="col">Link Video</th> <!-- Changed column header -->
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+       
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.js"></script>
-
-
+    <script src="rendicontazioni.js"></script>
+    <script src="video.js"></script>
+    
+</body>
 
 <script>
+    $('#myTable').on('click', 'button', function () {
+        var row = $(this).closest('tr');
+        selectedRowIndex = row.index(); // Save the index of the clicked row
+        console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
 
-$(document).ready(function() {
-    var previousCriterio = null; 
-    var previousCriterioColors = {};
-    var minBrightness = 180; // Minimum brightness threshold (0-255)
-    var minContrastRatio = 10; // Minimum contrast ratio threshold
+        var titoloBando = row.find('td').eq(1).text();
+        var denominazioneAzienda = row.find('td').eq(4).text();
+        var dataInserimento = row.find('td').eq(3).text();
+        var importo = row.find('td').eq(5).text();
 
-    var columns = [
-        {
-            data: 'criterio',
-            render: function(data, type, row) {
-            if (type === 'display') {
-            // Concatenate criterio and extra if extra is present
-                var displayData = 'Criterio ' + data;
-                if (row.extra) {
-                    displayData += ' (Extra)';
-                }
-            return displayData;
-        }
-        return data;
-    },
-    orderable: false
-        },
-        { data: 'titolo', orderable: false },
-        { data: 'input', orderable: false },
-        { data: 'risposta', orderable: false },
-        { data: 'punteggio', orderable: false },
-        {
-            data: 'media1',
-            createdCell: createCellWithRowspanLogic('media1')
-        },
-        {
-            data: 'mediaTesti',
-            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
-                setTimeout(function() {
-                    createCellWithRowspanLogic('mediaTesti')(cell, cellData, rowData, rowIndex, colIndex);
-                }, 50);
-            }
-        },
-        { data: 'prompt', orderable: false },
-        { data: 'rispostaOpenAi', orderable: false },
-        { data: 'punteggio1Analista', orderable: false },
-        {
-            data: 'media2',
-            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
-                setTimeout(function() {
-                    createCellWithRowspanLogic('media2')(cell, cellData, rowData, rowIndex, colIndex);
-                }, 70);
-            }
-        },
-        { data: 'punteggio2Analista', orderable: false },
-        {
-            data: 'media3',
-            createdCell: function(cell, cellData, rowData, rowIndex, colIndex) {
-                setTimeout(function() {
-                    createCellWithRowspanLogic('media3')(cell, cellData, rowData, rowIndex, colIndex);
-                }, 90); 
-            }
-        },
-    ];
+        $('#titoloBando').val(titoloBando);
+        $('#denominazioneAzienda').val(denominazioneAzienda);
+        $('#dataInserimento').val(dataInserimento);
+        $('#importo').val(importo);
 
-    // Initialize the DataTable without data
-    var table = $('#example').DataTable({
-        columns: columns,
-        scrollX: true,
-        searching: false,
-        paging: false,
-        info: false,
-        ordering: false,
-        rowCallback: function(row, data, index) {
-            // Generate or retrieve color for the current criterio
-            var color = previousCriterioColors[data.criterio];
-            if (!color) {
-                color = generateBrightColor();
-                previousCriterioColors[data.criterio] = color;
-            }
-            // Apply color to the first <td> of the current row
-            $(row).find('td:first-child').css('background-color', color);
-            if ($(row).find('td[rowspan]').length > 0) {
-                $(row).attr('data-has-rowspan', true);
-            }
-
-        },
-        columnDefs: [
-            { targets: [4, 9, 11], width: '50px' },
-            { targets: [5, 6, 10, 12], width: '80px'  },
-            {
-                targets: [4, 9, 11],
-                createdCell: function(td, cellData, rowData, row, col) {
-                // Add classes to <td> elements only
-                $(td).addClass('text-center align-middle editable icon-container position-relative').css('cursor', 'pointer');
-            }
-            }
-        ]
+        $('#myModal').modal("show");
+    });
+    $('#myModal .btn-secondary').on('click', function() {
+        $('#myModal').modal('hide');
     });
 
-    // Fetch data from AJAX and update DataTable
-    $.ajax({
-        url: './risposte.json',
-        dataType: 'json',
-        success: function(data) {
-            console.log('Data received from AJAX request:', data);
-            table.clear().rows.add(data);
+    $('#myTableVideo').on('click', 'button', function () {
+        var row = $(this).closest('tr');
+        selectedRowIndex = row.index(); // Save the index of the clicked row
+        console.log("Selected Row Index (Video):", selectedRowIndex); // Add this line for debugging
 
-            table.draw(false);
-        },
-        error: function(xhr, status, error) {
-            console.error('Error fetching data:', error);
-        }
+        var titoloBando = row.find('td').eq(1).text();
+        var denominazioneAzienda = row.find('td').eq(4).text();
+        var dataInserimento = row.find('td').eq(3).text();
+        var linkVideo = row.find('td').eq(5).text();
+
+        $('#titoloBandoVideo').val(titoloBando);
+        $('#denominazioneAziendaVideo').val(denominazioneAzienda);
+        $('#dataInserimentoVideo').val(dataInserimento);
+        $('#linkVideo').val(linkVideo);
+
+        $('#myModalVideo').modal("show");
     });
 
-    // Function to create a cell with rowspan logic
-    function createCellWithRowspanLogic(propertyName) {
-        return function(cell, cellData, rowData, rowIndex, colIndex) {
-            console.log('Creating cell for property:', propertyName);
-            if (previousCriterio !== rowData.criterio) {
-                previousCriterio = rowData.criterio;
-                var totalRows = getTotalRows(rowData.criterio, propertyName);
-                cell.setAttribute('rowspan', totalRows);
-            } else {
-                cell.remove();
-            }
-        };
-    }
-
-    // Function to calculate totalRows based on criterio value and property name
-    function getTotalRows(criterio, propertyName) {
-        var totalRows = 0;
-        $('#example').DataTable().rows().data().each(function(rowData) {
-            if (rowData.criterio === criterio && rowData[propertyName] !== undefined) {
-                totalRows++;
-            }
-        });
-        return totalRows;
-    }
-
-
-
-   
-
-    // Function to generate a bright random color
-    function generateBrightColor() {
-        var color;
-        do {
-            color = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate random color
-            // Calculate brightness (https://www.w3.org/TR/AERT/#color-contrast)
-            var brightness = (
-                parseInt(color.substr(1, 2), 16) * 299 +
-                parseInt(color.substr(3, 2), 16) * 587 +
-                parseInt(color.substr(5, 2), 16) * 114
-            ) / 1000;
-        } while (brightness < minBrightness); // Repeat until brightness meets threshold
-        return color;
-    }
-
-    // Function to check contrast ratio between color and previously generated colors
-    function checkContrast(color) {
-        var contrastSufficient = true;
-        $.each(previousCriterioColors, function(key, value) {
-            var contrast = calculateContrast(color, value);
-            if (contrast < minContrastRatio) {
-                contrastSufficient = false;
-                return false; // Break out of the loop
-            }
-        });
-        return contrastSufficient;
-    }
-
-    // Function to calculate contrast ratio between two colors
-    function calculateContrast(color1, color2) {
-        var brightness1 = (
-            parseInt(color1.substr(1, 2), 16) * 299 +
-            parseInt(color1.substr(3, 2), 16) * 587 +
-            parseInt(color1.substr(5, 2), 16) * 114
-        ) / 1000;
-        var brightness2 = (
-            parseInt(color2.substr(1, 2), 16) * 299 +
-            parseInt(color2.substr(3, 2), 16) * 587 +
-            parseInt(color2.substr(5, 2), 16) * 114
-        ) / 1000;
-        var contrast = Math.abs(brightness1 - brightness2);
-        return contrast;
-    }
-    
-    $('#example').on('click', 'td.editable', function(event) {
-    event.stopPropagation(); // Prevent event propagation
-    
-    var cell = $(this);
-    var originalContent = cell.text().trim(); // Trim any leading/trailing spaces
-    cell.attr('contenteditable', true);
-    cell.css('cursor', 'pointer'); // Add cursor pointer
-
-    cell.focus();
-    
-    // Save changes when focus is lost
-    cell.on('blur', function() {
-        var newContent = cell.text().trim(); // Get the new content
-        console.log('Original content:', originalContent);
-        console.log('New content:', newContent);
-        // Check if the new content is a valid number
-        if (/^\d+(\.\d+)?$/.test(newContent)) {
-            if (newContent !== originalContent) {
-                // Update DataTable cell value only if newContent is different from originalContent
-                var row = cell.closest('tr');
-                var cellIndex = cell.index();
-                row.find('td:eq(' + cellIndex + ')').text(newContent); // Update the cell content
-            }
-        } else {
-            // If the new content is not a valid number, revert to the original content
-            cell.text(originalContent);
-        }
-        cell.removeAttr('contenteditable');
-    });
-});
-
-
-
-
-});
-
-
-
-
-
-
+    // Function to handle the modalVideo button click
+    $('#myModalVideo .btn-secondary').on('click', function() {
+        $('#myModalVideo').modal('hide');
+    });    
 
     
 </script>
 
 
-</body>

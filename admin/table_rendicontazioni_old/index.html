@@ -64,7 +64,7 @@
     
 </head>
 
-<body>
+<body class="filterable">
     
     <div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -115,15 +115,29 @@
         </div>
     </div>
  
-
+    <div class="d-flex justify-content-between px-3 py-3 rounded-top" style="background-color: rgba(44, 56, 74, 0.95);">
+        <button id="new-user-btn" data-target="#manage-user" class="btn btn-light" data-toggle="modal" style="background-color: white;" onclick="manageUser(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" /></svg>
+        </button>
+        <div class="d-flex align-items-center gap-4">
+            <span class="text-light">FILTRA PER COLONNE</span>
+            <div class="float-right">
+                <button class="btn btn-default btn-xs btn-filter" style="background-color: white;">
+                    <svg class="nav-icon" width="16" height="16">
+                        <use xlink: href="/Content/vendors/coreui/icons/svg/free.svg#cil-filter"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
     <table id="myTable" class="table nowrap table-bordered" style="width: 100%;">
         <thead>
-            <tr>
+            <tr class="filters">
                 <th scope="col"></th>
-                <th scope="col">Bando</th>
-                <th scope="col">Progetto</th>
-                <th scope="col">Data</th>
-                <th scope="col">Azienda</th>  
+                <th scope="col"><input type="text" class="form-control" placeholder="Username" disabled style="font-weight: bold;">Bando</th>
+                <th scope="col"><input type="text" class="form-control" placeholder="Username" disabled style="font-weight: bold;">Progetto</th>
+                <th scope="col"><input type="text" class="form-control" placeholder="Username" disabled style="font-weight: bold;">Data</th>
+                <th scope="col"><input type="text" class="form-control" placeholder="Username" disabled style="font-weight: bold;">Azienda</th>  
                 <th scope="col">Importo</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Cognome</th>
@@ -142,78 +156,77 @@
     <script src="test.js"></script>
     
 </body>
-
 <script>
-// Define a variable to store the row index
-var selectedRowIndex;
 
-// Triggered when a row's button is clicked
-$('#myTable').on('click', 'button', function () {
-    var row = $(this).closest('tr');
-    selectedRowIndex = row.index(); // Save the index of the clicked row
-    console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
-
-    var titoloBando = row.find('td').eq(1).text();
-    var denominazioneAzienda = row.find('td').eq(4).text();
-    var dataInserimento = row.find('td').eq(3).text();
-    var importo = row.find('td').eq(5).text();
-
-    $('#titoloBando').val(titoloBando);
-    $('#denominazioneAzienda').val(denominazioneAzienda);
-    $('#dataInserimento').val(dataInserimento);
-    $('#importo').val(importo);
-
-    // Update modal checkbox based on DataTable checkbox
-    var isChecked = row.find('input[type="checkbox"]').prop('checked');
-    $('#autorizzato').prop('checked', isChecked);
-
-    // Set label text based on checkbox state
-    if (isChecked) {
-        $('label[for="autorizzato"]').text('Autorizzato');
-    } else {
-        $('label[for="autorizzato"]').text('Non autorizzato');
-    }
-
-    $('#myModal').modal("show");
-});
-
-
-
-// Attach click event listener to the "Salva" button in the modal
-$('#myModal .btn-secondary').on('click', function() {
-    var isChecked = $('#autorizzato').is(':checked');
+    ///////////////////////////////////////////
+    // FILTRA SU TUTTE LE COLONNE
+    /////////////////////////////////
+    $(document).ready(function () {
+        $('.filterable .btn-filter').click(function () {
+            console.log('fsfdsf')
+            var $panel = $(this).parents('.filterable'),
+                $filters = $panel.find('.filters input'),
+                $tbody = $panel.find('.table tbody');
+                //console.log('tbody: ',$tbody,'filters: ',$filters);
+            if ($filters.prop('disabled') == true) {
+                //console.log('son qua');
+                $filters.prop('disabled', false);
+                $filters.first().focus();
+            } else {
+                //console.log('son la');
+                $filters.val('').prop('disabled', true);
+                $tbody.find('.no-result').remove();
+                $tbody.find('tr').show();
+                //console.log($tbody.find('tr'))
+            }
+        });
+        $('.filterable .filters input').keyup(function (e) {
+            /* Ignore tab key */
+            var code = e.keyCode || e.which;
+            if (code == '9') return;
     
-    // Get the index of the selected row
-    var rowIndex = selectedRowIndex;
-    console.log('Selected Row Index:', rowIndex); // Add this line to check the selected row index
-
-    // Find the checkbox element within the selected row
-    var checkboxElement = $('#myTable tbody tr').eq(rowIndex).find('input[type="checkbox"]');
-    if (checkboxElement.length > 0) {
-        // Update the checkbox state
-        checkboxElement.prop('checked', isChecked);
-    } else {
-        console.error('Checkbox element not found in the row.');
-    }
-    $('#myModal').modal('hide');
-});
-
-
-
-
-
-
-
-// Update label text based on checkbox state
-$('#autorizzato').change(function () {
-    var isChecked = $(this).prop('checked');
-    if (isChecked) {
-        $('label[for="autorizzato"]').text('Autorizzato');
-    } else {
-        $('label[for="autorizzato"]').text('Non autorizzato');
-    }
-});
-
+            /* Useful DOM data and selectors */
+            var $input = $(this),
+                $panel = $input.parents('.filterable'),
+                $table = $panel.find('.table'),
+                $rows = $table.find('tbody tr'),
+                $inputs = $panel.find('.filters input');
+    
+            /* Combine filters for all input fields */
+            var $filteredRows = $rows.filter(function () {
+                var $row = $(this);
+                return $inputs.toArray().some(function (input) {
+                    var $input = $(input),
+                        inputContent = $input.val().toLowerCase(),
+                        column = $panel.find('.filters th').index($input.parents('th')),
+                        cellValue = $row.find('td').eq(column).text().toLowerCase();
+                        if ($table.attr('id') === 'listaRanking') {
+                            cellValue = $row.find('td').eq(column + 2).text().toLowerCase();
+                        } else if ($table.attr('id') === 'listaAdmin' ) {
+                            cellValue = $row.find('td').eq(column + 1).text().toLowerCase();
+                            console.log(cellValue)
+                        } else {
+                            cellValue = $row.find('td').eq(column).text().toLowerCase();
+                        }
+                    return inputContent && cellValue.indexOf(inputContent) === -1;
+                });
+            });
+    
+            /* Clean previous no-result if exist */
+            $table.find('tbody .no-result').remove();
+    
+            /* Show all rows, hide filtered ones */
+            $rows.show();
+            $filteredRows.hide();
+    
+            /* Prepend no-result row if all rows are filtered */
+            if ($filteredRows.length === $rows.length) {
+                $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="' + $table.find('.filters th').length + '">No result found</td></tr>'));
+            }
+        });
+    
+    });
 </script>
+
 
 

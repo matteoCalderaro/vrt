@@ -1,3 +1,60 @@
+// Define a variable to store the row index
+var selectedRowIndex;
+
+// Triggered when a row's button is clicked
+$('#myTable').on('click', 'button', function () {
+    var row = $(this).closest('tr');
+    selectedRowIndex = row.index(); // Save the index of the clicked row
+    console.log("Selected Row Index:", selectedRowIndex); // Add this line for debugging
+
+    var titoloBando = row.find('td').eq(1).text();
+    var denominazioneAzienda = row.find('td').eq(4).text();
+    var dataInserimento = row.find('td').eq(3).text();
+    var importo = row.find('td').eq(5).text();
+
+    $('#titoloBando').val(titoloBando);
+    $('#denominazioneAzienda').val(denominazioneAzienda);
+    $('#dataInserimento').val(dataInserimento);
+    $('#importo').val(importo);
+
+    // Update modal checkbox based on DataTable checkbox
+    var isChecked = row.find('input[type="checkbox"]').prop('checked');
+    $('#autorizzato').prop('checked', isChecked);
+
+    // Set label text based on checkbox state
+    if (isChecked) {
+        $('label[for="autorizzato"]').text('Autorizzato');
+    } else {
+        $('label[for="autorizzato"]').text('Non autorizzato');
+    }
+
+    $('#myModal').modal("show");
+});
+
+
+
+// Attach click event listener to the "Salva" button in the modal
+$('#myModal .btn-secondary').on('click', function() {
+    var isChecked = $('#autorizzato').is(':checked');
+    
+    // Get the index of the selected row
+    var rowIndex = selectedRowIndex;
+    console.log('Selected Row Index:', rowIndex); // Add this line to check the selected row index
+
+    // Find the checkbox element within the selected row
+    var checkboxElement = $('#myTable tbody tr').eq(rowIndex).find('input[type="checkbox"]');
+    if (checkboxElement.length > 0) {
+        // Update the checkbox state
+        checkboxElement.prop('checked', isChecked);
+    } else {
+        console.error('Checkbox element not found in the row.');
+    }
+    $('#myModal').modal('hide');
+});
+
+
+
+
 // Define a function to handle the search input keyup event
 function handleSearchHighlighting() {
     var searchText = $('input[type="search"]').val().trim();

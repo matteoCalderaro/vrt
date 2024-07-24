@@ -201,6 +201,7 @@
             (async () => {
                 const result = await eval(`validateStep${1}`)(this)
 
+
                 if (result == true) {
                     var dipartimento = $(this).siblings('#dipartimentoLista').text()
                     console.log(Boolean(dipartimento))
@@ -705,7 +706,7 @@
                         <!-- ORGANO DIRETTIVO -->
                         <div class="table-responsive" style="width: 100%;">
                             <label for="capitaleSociale" class="form-label">Organo direttivo</label>
-                            <table class="table-list table-hover table align-middle table-bordered myTable" id="capitaleSociale">
+                            <table class="table-list table-hover table align-middle table-bordered myTable" id="organoDirettivo">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome</th>
@@ -714,16 +715,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Matteo</td>
-                                        <td>Bianchi</td>
-                                        <td>NO</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Maria</td>
-                                        <td>Rossi</td>
-                                        <td>SI</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -733,6 +725,51 @@
         </div>           
     </div>
     <script>
+
+    let bo = {
+
+        "OrganoDirettivo": [
+            {
+                "idOrganoDirettivo": 4,
+                "Nome": "Matteo",
+                "Cognome": "Calderaro",
+                "Genere_Femminile": false,
+                "idDocumenti": null
+            },
+            {
+                "idOrganoDirettivo": 5,
+                "Nome": "Antonino",
+                "Cognome": "Cornuto",
+                "Genere_Femminile": false,
+                "idDocumenti": null
+            }
+        ],
+        "ComposizioneCapitaleSociale": [
+            {
+                "idComposizioneCapitaleSociale": 1,
+                "Nome": "antonino",
+                "Cognome": "cirruto",
+                "Quota_Partecipazione": "100",
+                "Genere_Femminile": false,
+                "idDocumenti": null
+            }
+        ]
+
+    }
+
+    var tbody = $('#organoDirettivo tbody');
+    tbody.empty();
+    bo.OrganoDirettivo.forEach(function(organo) {
+        var tr = $('<tr></tr>');
+        var genere = organo.Genere_Femminile ? 'SI' : 'NO';
+
+        tr.append('<td>' + organo.Nome + '</td>');
+        tr.append('<td>' + organo.Cognome + '</td>');
+        tr.append('<td>' + genere + '</td>');
+
+        tbody.append(tr);
+    });
+
 
     let setValues = () =>{
             // CATEGORIA
@@ -793,7 +830,12 @@
             $('#downloadDocumento').attr({target: '_blank', href  : `${localhost}/${documento.value}`});
 
             $('#caricheSociali').val(data.visura);
-            $('#downloadCaricheSociali').attr({target: '_blank', href  : `${localhost}/${caricheSociali.value}`});         
+            $('#downloadCaricheSociali').attr({target: '_blank', href  : `${localhost}/${caricheSociali.value}`});    
+            
+            
+
+
+
         }
 
 

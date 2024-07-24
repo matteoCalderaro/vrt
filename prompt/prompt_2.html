@@ -1,0 +1,458 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <!-- Index-->
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Access Impact</title>
+
+    <meta name="theme-color" content="#000000">
+
+    <!-- Main styles for this application-->
+    <link href="style.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+    <!--new part-->
+    <link href="custom.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+
+    <!-- Richieste-->
+    <!-- Main styles for this application-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.1.0/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-OaSt6YlNk8f06OeGRPsV4UfP2F3Si8sd9Rqxt7iOdIsBKk+zbBLgwCyBwoBqLjDE" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.1.0/dist/js/coreui.bundle.min.js" integrity="sha384-fb63TspjFf2/L20tRe69tGsAXArSQe9u0yJ/9+5w1jbov1NYHiDv/+4Rdh2FSnEd" crossorigin="anonymous"></script>
+
+
+    <!--filtro su tabelle Valutazioni e EditBando-->
+    <script src="Valutazioni.js"></script>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
+
+    
+
+    <style>
+        body{
+            background-color: rgb(233 233 233);
+            font-family: "Open Sans", sans-serif;
+        }
+        /* Make the dropdown animate. */
+        .dropdown-content {
+            min-width: max-content;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 1s;
+        }
+
+        /* The max-height should be set to something that will always be a little bit bigger than the height of the content. */
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
+            max-height: 200px;
+        }
+
+        /*FONT SIZE*/
+
+        html :not(.header,.sidebar, .h4, .modal-body, .modal-title, .close, .tag-icon) {
+            font-size: 12px !important;
+        }
+
+        .header span, .sidebar span, .modal-body, .modal-footer span, .close span {
+            font-size: 14px !important
+        }
+
+        .close span {
+            font-size: 30px !important
+        }
+
+        .h4 {
+            font-size: 1.25rem !important;
+            margin-bottom: 0
+        }
+
+        /* TABLE STRIPED*/
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgb(0, 0, 0, 12%);
+        }
+
+        a.nav-link {
+            font-size: 14px !important;
+        }
+
+        .sidebar-nav .nav-link {
+            color: white !important;
+        }
+
+        .sidebar-nav .nav-link.active {
+            color: yellow !important;
+        }
+
+        .sidebar-nav .nav-link:hover {
+            color: #d3d3d3 !important;
+        }
+
+        .sidebar-nav .nav-link .nav-icon {
+            color: inherit !important;
+        }
+
+        i.bi.bi-person {
+            font-size: 18px !important;
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                /* Your override styles here */
+                display: block !important; /* or any other style you want to apply */
+            }
+        }
+
+        .header-toggler .icon {
+            transform: scale(1.5) !important
+        }
+
+        .header-nav .nav-link:hover {
+            color: #d3d3d3 !important;
+        }
+
+
+
+
+        .sidebar-button {
+            width: 100%;
+            border: unset;
+            background-color: #d7d7d7;
+            border-radius: 5px !important;
+            color: rgb(50, 31, 219)
+        }
+
+        table button {
+            background-color: transparent;
+            border: unset
+        }
+
+        button.active {
+            background-color: rgb(255, 255, 255);
+            color: rgb(118, 129, 146)
+        }
+
+        .dropdown-domande {
+            display: none
+        }
+
+        .sidebar {
+            background-color: transparent;
+        }
+
+        .dropdown-domande button {
+            background-color: white
+        }
+
+        @media (max-width: 800px) {
+            .dropdown-domande {
+                display: block
+            }
+
+            .sidebar {
+                display: none
+            }
+        }
+
+        .tag {
+            background-color: #d7d7d7;
+            width: fit-content
+        }
+
+        .input-sm {
+            font-size: 14px;
+        }
+
+        /* Altezza tabella e sticky header */
+        .container-lg {
+            height: 70vh;
+        }
+
+        .card.filterable span {
+            font-size: 14px !important;
+            font-style: italic;
+        }
+
+        #myTabContent .table-responsive {
+            height: 550px;
+        }
+
+        #myTabContent .table-container {
+            background-color: white;
+            padding-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        #myTabContent .table thead th {
+            border-bottom: none
+        }
+
+
+        /* stile criteri */
+        .criterio-element-close{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 8px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- MODALE -->
+    <form class="modal fade needs-validation" id="myModal" aria-hidden="true" aria-labelledby="modEsistenteLabel1" tabindex="-1" novalidate>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title red fs-5" id="modEsistenteLabel1">Dettaglio criterio</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="d-flex flex-column gap-4 p-3 mb-3">
+                
+                <div class="gap-4 gap-md-0 row">
+                    <!-- Titolo -->
+                    <div class="col-12 col-md-6">
+                        <label for="titolo" class="form-label">Titolo</label>
+                        <input type="text" class="form-control" id="titolo" required>
+                        <div class="invalid-feedback">
+                            Campo obbligatorio
+                        </div>
+                    </div>
+                    <!-- Ambito -->
+                    <div class="col-12 col-md-6">
+                        <label for="ambito" class="form-label">Ambito</label>
+                        <select class="form-select" id="ambito" aria-label="select example" required>
+                            <option value="">Scegli l'ambito</option>
+                            <option value="1">La salute e il benessere</option>
+                            <option value="2">Il pianeta e l'ambiente</option>
+                            <option value="3">La montagna e lo sport</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Scelta obbligatoria
+                        </div>
+                    </div>
+                </div>
+                <div class="gap-4 gap-md-0 row">
+                    <!-- Prompt -->
+                    <div class="col-12">
+                        <label for="prompt" class="form-label">Prompt</label>
+                        <textarea class="form-control" placeholder="" id="prompt" style="height: 100px" required></textarea>
+                        <div class="invalid-feedback">
+                            Campo obbligatorio
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary gap-3" data-bs-dismiss="modal">ESCI</button>
+
+                <button class="btn btn-secondary">
+                    SALVA
+                </button>
+            </div>
+          </div>
+        </div>
+    </form>
+
+    <div class="body d-flex flex-grow-1 px-md-3 mt-4 edit-bando">
+        <div class="container-lg d-flex flex-column">
+            <ul class="nav nav-tabs justify-content-center mb-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button type="button" class="nav-link active" id="prompt-tab" data-coreui-toggle="tab" data-coreui-target="#prompt" role="tab" aria-controls="prompt" aria-selected="false">Prompt</button>
+                </li>
+            </ul>
+            <div class="tab-content mt-4 d-flex flex-column flex-grow-1" id="myTabContent">
+                <!--TAB PROMPT -->
+                <div class="tab-pane active d-flex- flex-column flex-grow-1" id="prompt" role="tabpanel" aria-labelledby="prompt-tab" tabindex="0">
+                    <!-- DROPDOWN -->
+                    <!-- <div class="dropdown dropdown-domande">
+                        <button class="btn mb-3 btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seleziona
+                        </button>
+                        <div class="dropdown-menu w-100">
+                            <ul class="nav flex-column">
+                                <li class="nav-item" role="presentation">
+                                    <a class="dropdown-item" id="criterio-prompt-1-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-1" role="tab" aria-controls="criterio-prompt-1" aria-selected="false">Criterio 1</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="dropdown-item" id="criterio-prompt-2-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-2" role="tab" aria-controls="criterio-prompt-2" aria-selected="false">Criterio 2</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="dropdown-item" id="criterio-prompt-3-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-3" role="tab" aria-controls="criterio-prompt-3" aria-selected="false">Criterio 3</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="dropdown-item" id="criterio-prompt-4-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-4" role="tab" aria-controls="criterio-prompt-4" aria-selected="false">Criterio 4</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="dropdown-item" id="criterio-prompt-5-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-5" role="tab" aria-controls="criterio-prompt-5" aria-selected="false">Criterio 5</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="dropdown-item" id="criterio-prompt-6-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-6" role="tab" aria-controls="criterio-prompt-6" aria-selected="false">Criterio 6</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+                    <div class="d-flex h-100 gap-4 align-items-start">
+                        <!--WRAPPER CRITERI-->
+                        <div>
+                            <ul class="sidebar nav justify-content-center mb-2 flex-column flex-shrink-0 gap-2 p-0" id="wrapperCriteri" role="tablist">
+                                <!-- <li class="nav-item" role="presentation">
+                                    <button type="button" class="sidebar-button active py-2 d-flex px-3" id="criterio-prompt-1-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-1" role="tab" aria-controls="criterio-prompt-1" aria-selected="false">Criterio 1</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button type="button" class="sidebar-button py-2 d-flex px-3" id="criterio-prompt-2-tab" data-coreui-toggle="tab" data-coreui-target="#criterio-prompt-2" role="tab" aria-controls="criterio-prompt-2" aria-selected="false">Criterio 2</button>
+                                </li> -->
+                            </ul>
+                            <div class="mt-2">
+                                <button id="addCriterio" class="btn btn-primary" type="button">Aggiungi criterio</button>
+                            </div>
+                        </div>
+                        <!-- WRAPPER PANES -->
+                        <div class="tab-content overflow-auto w-100 h-100" id="wrapperPanes">
+                            <!--CRITERIO 1-->
+                            <!-- <div class="tab-pane table-container active h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-prompt-1" role="tabpanel" aria-labelledby="criterio-1-tab" tabindex="0">
+                                <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                                    <i class="bi bi-tags"></i>
+                                    <span>Criterio 1</span>
+                                </div>
+                                <div class="mb-3">
+                                    <h1 class="fw-bold">TITOLO</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                </div>
+                                <div class="mb-3">
+                                    <h1 class="fw-bold">INPUT</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eleifend, sem sed ultrices facilisis, nunc nisl molestie ipsum, tincidunt tempor libero sapien vel lorem. In pretium, risus non iaculis fringilla, velit risus laoreet ligula, id pretium urna ligula vitae ex. Aenean lacinia ultricies elit vitae tincidunt. Praesent dolor nisl, maximus vitae interdum eu, auctor quis quam. In eu nulla non sem posuere pretium. Sed mollis laoreet mauris, vitae porttitor metus vestibulum et. Sed massa est, mollis et tincidunt in, tempor et augue. Maecenas auctor aliquet maximus. Vestibulum vel volutpat ipsum. Ut id scelerisque odio. Nam finibus vehicula placerat.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h1 class="fw-bold">PROMPT</h1>
+                                    <textarea class="form-control" id="prompt" rows="6" >Esamina la risposta del proponente. Per valutarne l'adeguatezza, considera i seguenti criteri: Specificità: Determina se la risposta fornisce dettagli concreti che dimostrano l'allineamento del progetto con l'ambito del bando selezionato. 2. Contributo: Valuta in che modo la risposta espone il contributo distintivo del progetto all'area tematica scelta. 3. Differenziazione: Assicurati che la risposta non si limiti a ripetere gli elementi dell'input iniziale, ma offra piuttosto una visione unica e un'interpretazione personale del tema del bando."</textarea>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-primary" type="submit">Aggiorna</button>
+                                </div>
+                            </div> -->
+                            <!--CRITERIO 2-->
+                            <!-- <div class="tab-pane table-container fade h-100 pt-2 pt-md-3 px-2 px-md-3 rounded-top" id="criterio-prompt-2" role="tabpanel" aria-labelledby="criterio-2-tab" tabindex="0">
+                                <div class="tag rounded tag-outline align-items-center d-flex gap-2 px-3 py-1 mb-3">
+                                    <i class="bi bi-tags"></i>
+                                    <span>Criterio 2</span>
+                                </div>
+                                <div class="table-responsive" style="width: 100%;">
+                                    <table class="table-list table align-middle" id="table-list5">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Titolo</th>
+                                                <th scope="col">Domanda</th>
+                                                <th scope="col">Etichetta</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                    <th scope="row" id="idDomanda">@item.idDomanda</th>
+                                                    <td id="Titolo">@item.Titolo</td>
+                                                    <td id="Domanda">@item.Domanda</td>
+                                                    <td>html</td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker3.css" />
+<script>
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    var options = {
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+        orientation: 'bottom'
+    };
+    date_input.datepicker(options);
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        $('.goToTabellaValutazioni').click(function () {
+            localStorage.setItem('origin', 'EditBando');
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('clickTab') === 'true') {
+
+
+            $('#richieste-tab').click();
+
+        }
+    });
+</script>
+
+<script src="newFeatures.js"></script>
+
+<!-- <script src="~/Scripts/Valutazioni/Valutazioni.js"></script> -->
+<!-- <script src="~/Scripts/EditBando/EditBando.js"></script> -->
+
+<script>
+    (() => {
+        'use strict'
+        
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+        
+        //Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()||form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
+
+
+</body>

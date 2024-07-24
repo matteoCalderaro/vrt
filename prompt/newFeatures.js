@@ -19,7 +19,7 @@ $(document).ready(function() {
 });
 
 
-function visualizza(data){
+function visualizza(data,providedIndex){
     console.log(data);
     // this.contatti.sort((a,b) => (a.nome > b.nome) ? 1 : ((b.nome > a.nome) ? -1 : 0))
     let wrapperCriteri = document.querySelector("#wrapperCriteri")
@@ -28,19 +28,25 @@ function visualizza(data){
     wrapperPanes.innerHTML =""
 
     data.forEach((criterio,index)=>{
-
-        let criterioElement = creaCriterio(criterio,index)
+        let criterioElement = creaCriterio(criterio,index,providedIndex)
         wrapperCriteri.appendChild(criterioElement)
-        let criterioPane = creaPane(criterio,index)
+        let criterioPane = creaPane(criterio,index,providedIndex)
         wrapperPanes.appendChild(criterioPane)
     })
 }
 
-function creaCriterio(criterio,index){
+function creaCriterio(criterio,index,providedIndex = 0){
     let del = index > 5 ? true : false
     let criterioElement = document.createElement("li")
         criterioElement.classList.add("nav-item")
         criterioElement.style.position = "relative";
+    console.log('provided index',providedIndex)
+    let buttonClass;
+        if (providedIndex === 0) {
+            buttonClass = index === 0 ? 'sidebar-button active py-2 d-flex px-3' : 'sidebar-button py-2 d-flex px-3';
+        } else {
+            buttonClass = index == providedIndex ? 'sidebar-button active py-2 d-flex px-3' : 'sidebar-button py-2 d-flex px-3';
+        }
 
         criterioElement.innerHTML = `
         ${del  ? `
@@ -54,7 +60,7 @@ function creaCriterio(criterio,index){
         }
         
         <button type="button" 
-                class="${index === 0 ? 'sidebar-button active py-2 d-flex px-3' : 'sidebar-button py-2 d-flex px-3'}"                id="${'criterio-prompt-' + criterio.criterio + '-tab'}" 
+                class="${buttonClass}" 
                 data-coreui-toggle="tab" 
                 data-coreui-target="${'#criterio-prompt-' + index}" 
                 role="tab" 
@@ -75,13 +81,23 @@ function creaCriterio(criterio,index){
     return criterioElement
 }
 
-function creaPane(criterio,index){
+function creaPane(criterio,index,providedIndex = 0){
     let criterioPane = document.createElement("div")
         criterioPane.classList.add("tab-pane", "table-container", "h-100", "pt-2", "pt-md-3", "px-2", "px-md-3", "rounded-top");
-        if (index === 0) {
-            criterioPane.classList.add("active");
+        if (providedIndex === 0) {
+            // No providedIndex, use default condition
+            if (index === 0) {
+                criterioPane.classList.add("active");
+            } else {
+                criterioPane.classList.add("fade");
+            }
         } else {
-            criterioPane.classList.add("fade");
+            // providedIndex is not 0, use providedIndex condition
+            if (index == providedIndex) {
+                criterioPane.classList.add("active");
+            } else {
+                criterioPane.classList.add("fade");
+            }
         }
         let paneId = `criterio-prompt-${index}`;
         criterioPane.setAttribute("id", paneId);
@@ -150,7 +166,7 @@ $(document).on('click', '.updatePromptButton', function () {
             criterio.prompt = prompt;
         }
     });
-    visualizza(criteri)
+    visualizza(criteri,buttonIndex)
     
 });
 
@@ -165,6 +181,11 @@ function cancellaCriterio(indexToRemove){
 
 // Triggered when a row's button is clicked
 $('#addCriterio').on('click', function () {
+    let form = document.querySelector('#myModal')
+    // Reset form validation state
+    form.classList.remove('was-validated'); // Remove Bootstrap validation classes if used
+    form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid')); // Remove custom invalid classes
+    form.querySelectorAll('.invalid-feedback').forEach(el => el.remove());
     $('#myModal').modal("show");
 });
 
@@ -183,9 +204,19 @@ $('#myModal .btn-secondary').on('click', function() {
             prompt : prompt,
             ambito : ambito
         })
-        visualizza(criteri)
+        var criteriLength = criteri.length
+        visualizza(criteri,criteriLength-1)
 
+        // Deselect the select element
+        $('#ambito').val(null); // This will clear the selection
+
+        // Clear the input and textarea fields
+        $('#titolo').val('');
+        $('#prompt').val('');
+
+        
         $('#myModal').modal('hide');
+        
     }
 });
 
